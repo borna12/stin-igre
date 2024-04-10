@@ -259,7 +259,7 @@ form {
 
 .questions-page__answer-line {
     margin: 0 auto;
-  
+    width: 100%;
     cursor: pointer;
     border: 1px solid #bb422a;
     border-radius: 5px;
