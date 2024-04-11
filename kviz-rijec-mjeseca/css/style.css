@@ -8,7 +8,7 @@
     font-display: swap;
 }
 
-@supports (-webkit-touch-callout: none) {
+@media (hover: none) {
     .questions-page__answer-div:hover {
         background: none;
     }
@@ -16,17 +16,9 @@
     .questions-page__answer-div:hover li{
         background: none;
     }
- }
- 
- @supports not (-webkit-touch-callout: none) {
-    .questions-page__answer-div:hover {
-        background: none;
-    }
-    
-    .questions-page__answer-div:hover li{
-        background: none;
-    }
- }
+  }
+
+
 
 .gla{font-family: 'FSGLA';text-shadow: 1px 1px 2px #c22626;}
 /* ----------------------------

@@ -184,7 +184,7 @@ $(document).ready(function () {
     };
     // Store the correct answer of a given question
     getCorrectAnswer = function () {
-        correctAnswer = podatci[questionCounter].značenje;
+        correctAnswer = podatci[questionCounter].značenje.replace("<br>","");
     };
     // Store the user's selected (clicked) answer
     getUserAnswer = function (target) {
