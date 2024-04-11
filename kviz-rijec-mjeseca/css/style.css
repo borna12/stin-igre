@@ -10,11 +10,11 @@
 
 @media (hover: none) {
     .questions-page__answer-div:hover {
-        background: none;
+        background: initial;
     }
     
     .questions-page__answer-div:hover li{
-        background: none;
+        background: initial;
     }
   }
 
