@@ -55,8 +55,7 @@ var initPage,
     generateQuestionAndAnswers,
     getCorrectAnswer,
     getUserAnswer,
-    selectAnswer,
-    deselectAnswer,
+
     selectCorrectAnswer,
     deselectCorrectAnswer,
     getSelectedAnswerDivs,
@@ -192,18 +191,7 @@ $(document).ready(function () {
 
         userSelectedAnswer = $(target).text();
     };
-    // Add the pointer to the clicked answer
-    selectAnswer = function (target) {
-        $(target).find(selectionDiv).addClass('ion-chevron-right');
-        $(target).addClass("odabir")
-    };
-    // Remove the pointer from any answer that has it
-    deselectAnswer = function () {
-        if (selectionDiv.hasClass('ion-chevron-right')) {
-            selectionDiv.removeClass('ion-chevron-right');
-            selectionDiv.parent().removeClass("odabir")
-        }
-    };
+    
     // Get the selected answer's div for highlighting purposes
     getSelectedAnswerDivs = function (target) {
         toBeHighlighted = $(target);
@@ -256,9 +244,7 @@ $(document).ready(function () {
         if (gumbic==1){
         // Make the submit button visible
         // Remove pointer from any answer that already has it
-        deselectAnswer();
         // Put pointer on clicked answer
-        selectAnswer(e);
         // Store current selection as user answer
         getUserAnswer(e);
         // Store current answer div for highlighting purposes
@@ -408,7 +394,6 @@ $(document).ready(function () {
         // Store the correct answer in a variable
         getCorrectAnswer();
         // Remove all selections, highlighting, and feedback
-        deselectAnswer();
         clearHighlightsAndFeedback();
         // Hide the continue button
         continueBtn.hide(300);
@@ -417,9 +402,7 @@ $(document).ready(function () {
             // Make the submit button visible
             // Remove pointer from any answer that already has it
             
-            deselectAnswer();
-            // Put pointer on clicked answer
-            selectAnswer(this);
+          
             // Store current answer div for highlighting purposes
             getSelectedAnswerDivs(this);
             // Store current selection as user answer
