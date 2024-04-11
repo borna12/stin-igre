@@ -409,6 +409,8 @@ $(document).ready(function () {
             getUserAnswer(this);
             odgovor()}
         );
+        $('.questions-page__answer-div').off('hover');
+        $('.questions-page__answer-div').off('mouseenter mouseleave');
     }
 
     $(".questions-page__answer-div").dblclick(function () {
