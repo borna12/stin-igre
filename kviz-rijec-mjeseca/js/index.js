@@ -309,7 +309,7 @@ $(document).ready(function () {
                 broj = vrijeme + 10
                 Swal.fire({
                     title: "<span style='color:green'>Točno</span>",
-                    html: "<span stlye='font-size:1.5em'>+" + broj + "</span><br><br><figure><img src='slike/" + podatci[questionCounter].slika + "'class='slikica2'/> </figure></p>",
+                    html: "<span style='font-size:1.5em'>+" + broj + "</span><br><br><figure><img src='slike/" + podatci[questionCounter].slika + "'class='slikica2'/> </figure></p>",
                     showCloseButton: true,
                     confirmButtonText: ' dalje',
                     backdrop: false,
@@ -376,7 +376,6 @@ $(document).ready(function () {
     }
     // Clicking on the submit button:
     function nastavi() {
-        // Increment question number until there are no more questions, then advance to the next page
         document.getElementById("linkovi").innerHTML="";
         if (questionCounter < podatci.length - 1) {
             questionCounter++;
@@ -385,7 +384,7 @@ $(document).ready(function () {
             document.getElementsByClassName('sakri')[0].style.display = "block"
             document.getElementsByClassName('results-page')[0].style.display = "block"
             // Display user score as a percentage
-            userScore.text(Math.floor((correctAnswersCounter / quiz.length) * 100) + " %");
+            userScore.text(Math.floor((correctAnswersCounter / podatci.length) * 100) + " %");
             prikazBodova.text(bodovi);
             $("#input-q2").attr("value", bodovi)
         }
