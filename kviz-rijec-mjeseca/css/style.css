@@ -369,7 +369,8 @@ form {
 
 
 /* RESULTS PAGE */
-
+.fa-facebook-square{    font-size: 5rem;
+    color: #3228B0;margin-top: 20px;}
 .results-page__info {
     font-size: 1.8rem;
 }
@@ -379,7 +380,7 @@ form {
 }
 
 .results-page__bodovi {
-    font-size: 5rem;
+    font-size: 3rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
 }
