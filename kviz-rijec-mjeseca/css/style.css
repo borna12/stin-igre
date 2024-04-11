@@ -10,7 +10,7 @@
 
 @media (hover:none), 
 (hover:on-demand) {
-  nav a:hover { 
+    .questions-page__answer-div:hover { 
     /* suppress hover effect on devices that don't support hover fully */
     background: none;
   }
