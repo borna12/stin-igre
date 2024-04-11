@@ -338,8 +338,6 @@ form {
     background: rgba(187, 222, 251, 0.3);
 }
 
-
-
 .questions-page--correct:hover li{
     background: rgba(197, 225, 165, 1);
 }
