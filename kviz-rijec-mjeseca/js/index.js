@@ -14,7 +14,6 @@ const csvData = Papa.parse(baza, {
     }
 });
 
-
 // VARIABLE DECLARATIONS ------
 // pages
 var initPage,
@@ -25,7 +24,6 @@ var initPage,
     submitBtn,
     continueBtn,
     retakeBtn,
-    
     spanishBtn,
     // question and answers
     question,
@@ -68,6 +66,7 @@ var initPage,
     clearHighlightsAndFeedback,
     prekidac, countdownTimer, bodovi = 0,
     vrijeme = 0,
+    gumbic=1,
     set_pitanja;
 function ProgressCountdown(timeleft, bar, text) {
     return new Promise((resolve, reject) => {
@@ -123,20 +122,6 @@ $(document).ready(function () {
     prikazBodova = $('.results-page__bodovi');
     // QUIZ CONTENT ------
     
-    function stvori(tekst, tekst2, tekst3) {
-        do {
-            predmet = cvijece[Math.floor(Math.random() * cvijece.length)];
-        }
-        while (predmet == tekst || predmet == tekst2 || predmet == tekst3);
-        return predmet
-    }
-    function stvori2(tekst, tekst2, tekst3) {
-        do {
-            predmet = cvijece2[Math.floor(Math.random() * cvijece2.length)];
-        }
-        while (predmet == tekst || predmet == tekst2 || predmet == tekst3);
-        return predmet
-    }
     // FUNCTION DECLARATIONS ------
     $.fn.declasse = function (re) {
         return this.each(function () {
@@ -159,9 +144,7 @@ $(document).ready(function () {
         }
     }
     // Start the quiz
-    newQuiz = function () {
-        
-        
+    newQuiz = function () {    
         prekidac = 1;
         bodovi = 0;
         // Set the question counter to 0
@@ -269,6 +252,8 @@ $(document).ready(function () {
    /* --- PAGE 2/3 --- */
     // Clicking on an answer:
     function odabir (e) {
+        
+        if (gumbic==1){
         // Make the submit button visible
         // Remove pointer from any answer that already has it
         deselectAnswer();
@@ -278,7 +263,7 @@ $(document).ready(function () {
         getUserAnswer(e);
         // Store current answer div for highlighting purposes
         getSelectedAnswerDivs(e);
-        odgovor();
+        odgovor();}
     };
     function odgovor() {
         vrijeme = parseInt($("#pageBeginCountdownText").text())
@@ -296,6 +281,7 @@ $(document).ready(function () {
         // Make correct answer green and add a checkmark
         highlightCorrectAnswerGreen();
         clearInterval(countdownTimer);
+        gumbic=0;
         if (document.getElementById("pageBeginCountdown").value == "0") {
             $("#krivo")[0].play();
             bodovi -= 10;
@@ -308,6 +294,7 @@ $(document).ready(function () {
                 allowOutsideClick: false, allowEscapeKey: false
             });
             $(".swal2-confirm").click(function () {
+                gumbic=1;
                 clearInterval(countdownTimer)
                 if (ide == 1) {
                     ProgressCountdown(60, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => odgovor());
@@ -315,6 +302,7 @@ $(document).ready(function () {
                 nastavi()
             })
             $(".swal2-close").click(function () {
+                gumbic=1;
                 clearInterval(countdownTimer)
                 if (ide == 1) {
                     ProgressCountdown(60, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => odgovor());
@@ -342,6 +330,7 @@ $(document).ready(function () {
                     allowOutsideClick: false, allowEscapeKey: false
                 });
                 $(".swal2-confirm").click(function () {
+                    gumbic=1;
                     clearInterval(countdownTimer)
                     if (ide == 1) {
                         ProgressCountdown(60, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => odgovor());
@@ -349,6 +338,7 @@ $(document).ready(function () {
                     nastavi()
                 })
                 $(".swal2-close").click(function () {
+                    gumbic=1;
                     clearInterval(countdownTimer)
                     if (ide == 1) {
                         ProgressCountdown(60, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => odgovor());
@@ -371,6 +361,7 @@ $(document).ready(function () {
                     allowOutsideClick: false, allowEscapeKey: false
                 });
                 $(".swal2-confirm").click(function () {
+                    gumbic=1;
                     clearInterval(countdownTimer)
                     if (ide == 1) {
                         ProgressCountdown(60, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => odgovor());
@@ -378,6 +369,7 @@ $(document).ready(function () {
                     nastavi()
                 })
                 $(".swal2-close").click(function () {
+                    gumbic=1;
                     clearInterval(countdownTimer)
                     if (ide == 1) {
                         ProgressCountdown(60, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => odgovor());
@@ -424,6 +416,7 @@ $(document).ready(function () {
         answerDiv.on('click', function () {
             // Make the submit button visible
             // Remove pointer from any answer that already has it
+            
             deselectAnswer();
             // Put pointer on clicked answer
             selectAnswer(this);
@@ -431,11 +424,12 @@ $(document).ready(function () {
             getSelectedAnswerDivs(this);
             // Store current selection as user answer
             getUserAnswer(this);
-            odgovor()
-        });
+            odgovor()}
+        );
     }
 
     $(".questions-page__answer-div").dblclick(function () {
+        
         odgovor()
     })
 
