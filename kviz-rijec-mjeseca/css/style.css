@@ -7,24 +7,48 @@
     font-style: normal;
     font-display: swap;
 }
-.gla{font-family: 'FSGLA';}
+.gla{font-family: 'FSGLA';text-shadow: 1px 1px 2px #c22626;}
 /* ----------------------------
 STYLES/LAYOUT
 ---------------------------- */
-#loader {
+
+
+  #loader {
     position: absolute;
     left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
     z-index: 1;
     width: 120px;
     height: 120px;
-    margin: -76px 0 0 -76px;
-    border: 16px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 16px solid #3498db;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
+    animation: rotate 1s linear infinite
   }
+  #loader::before , #loader::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid #FFF;
+    animation: prixClipFix 2s linear infinite ;
+  }
+  #loader::after{
+    transform: rotate3d(90, 90, 0, 180deg );
+    border-color: #3228B0;
+  }
+
+  @keyframes rotate {
+    0%   {transform: rotate(0deg)}
+    100%   {transform: rotate(360deg)}
+  }
+
+  @keyframes prixClipFix {
+      0%   {clip-path:polygon(50% 50%,0 0,0 0,0 0,0 0,0 0)}
+      50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 0,100% 0,100% 0)}
+      75%, 100%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
+  }
+
 .sakri{display: none}
 .sivo {
     padding-top:20px; 
@@ -259,7 +283,6 @@ form {
 
 .questions-page__answer-line {
     margin: 0 auto;
-    width: 100%;
     cursor: pointer;
     border: 1px solid #bb422a;
     border-radius: 5px;

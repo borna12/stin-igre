@@ -301,7 +301,7 @@ $(document).ready(function () {
             bodovi -= 10;
             Swal.fire({
                 title: "Isteklo je vrijeme.",
-                html: "<p style='text-align:center'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].značenje + "</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
+                html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].značenje + "</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
                 showCloseButton: true,
                 confirmButtonText: ' dalje',
                 backdrop: false,
@@ -335,7 +335,7 @@ $(document).ready(function () {
                 broj = vrijeme + 10
                 Swal.fire({
                     title: "<span style='color:green'>Točno</span>",
-                    html: "<span>+" + broj + "</span><br><br><figure><img src='slike/" + podatci[questionCounter].slika + "'class='slikica2'/> </figure></p>",
+                    html: "<span stlye='font-size:1.5em'>+" + broj + "</span><br><br><figure><img src='slike/" + podatci[questionCounter].slika + "'class='slikica2'/> </figure></p>",
                     showCloseButton: true,
                     confirmButtonText: ' dalje',
                     backdrop: false,
@@ -364,7 +364,7 @@ $(document).ready(function () {
                 $("#krivo")[0].play();
                 Swal.fire({
                     title: " <span style='color:#bb422a' >Netočno</span>",
-                    html: "<p style='text-align:center'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].značenje + "</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
+                    html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].značenje + "</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
                     showCloseButton: true,
                     confirmButtonText: ' dalje',
                     backdrop: false,
