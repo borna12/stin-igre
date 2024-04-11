@@ -377,8 +377,6 @@ $(document).ready(function () {
     // Clicking on the submit button:
     function nastavi() {
         // Increment question number until there are no more questions, then advance to the next page
-        $('.questions-page__answer-div').off('hover');
-        $('.questions-page__answer-div').off('mouseenter mouseleave');
         document.getElementById("linkovi").innerHTML="";
         if (questionCounter < podatci.length - 1) {
             questionCounter++;

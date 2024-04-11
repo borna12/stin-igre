@@ -8,18 +8,6 @@
     font-display: swap;
 }
 
-@media (hover: none) {
-    .questions-page__answer-div:hover {
-        background: initial;
-    }
-    
-    .questions-page__answer-div:hover li{
-        background: initial;
-    }
-  }
-
-
-
 .gla{font-family: 'FSGLA';text-shadow: 1px 1px 2px #c22626;}
 /* ----------------------------
 STYLES/LAYOUT
