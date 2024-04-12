@@ -160,7 +160,7 @@ $(document).ready(function () {
         $(".questions-page__answer-list").show()
         question.html("<span style='font-size: 1.3rem;'>" + (questionCounter + 1) + "/" + podatci.length + ".</span> <br>");
         //riječ za koju se pogađa značenje
-        $(".definicija").html("<span class='gla'>"+podatci[questionCounter].FSGLApisanje+"</span> ("+podatci[questionCounter].riječ+")")
+        $(".definicija").html("<span class='gla'>"+podatci[questionCounter].FSGLApisanje+"</span> <span class='lat'>("+podatci[questionCounter].riječ+")</span>")
         //spajanje krivih i točnih odgovora te generiranje liste pitanja
         lista=podatci[questionCounter].kriviodgovori.split(";")
         lista.push(podatci[questionCounter].značenje)
