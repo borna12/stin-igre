@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Kviz – glagoljska riječ mjeseca</title>
+    <title>Glagoljska riječ mjeseca – kviz</title>
     <meta charset="utf-8">
     <meta name="description" content="Na stranici Staroslavenskoga instituta na Facebooku svaki se mjesec objavljuje jedna riječ potvrđena u hrvatskoglagoljičnim tekstovima. Riječi su potvrđene u korpusu za Rječnik crkvenoslavenskoga jezika hrvatske redakcije, što je temeljni projekt Staroslavenskoga instituta. Taj korpus čini više od 60 hrvatskoglagoljičnih izvora iz razdoblja od 11./12. st. do 17. st. Provjerite svoje znanje hrvatskih crkvenoslavenskih riječi!">
     <meta name="keywords" content="kviz, LZMK, Leksikografski zavod Miroslav Krleža, enciklopedije, leksikoni">
@@ -20,7 +20,7 @@
     <script src="js/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <meta property="og:title" content="Kviz – glagoljska riječ mjeseca" />
+    <meta property="og:title" content="Glagoljska riječ mjeseca – kviz" />
     <meta property="og:description" content="Na stranici Staroslavenskoga instituta na Facebooku svaki se mjesec objavljuje jedna riječ potvrđena u hrvatskoglagoljičnim tekstovima. Riječi su potvrđene u korpusu za Rječnik crkvenoslavenskoga jezika hrvatske redakcije, što je temeljni projekt Staroslavenskoga instituta. Taj korpus čini više od 60 hrvatskoglagoljičnih izvora iz razdoblja od 11./12. st. do 17. st. Provjerite svoje znanje hrvatskih crkvenoslavenskih riječi!" />
     <meta property="og:image" content="og-slika.png" />
 </head>
@@ -38,12 +38,17 @@
             <div class="container container2">
                 <div class="modal-overlay">
                     <div class="modal">
-                        <h2 class="winner" style="text-transform: uppercase; font-size:2rem">KVIZ – glagoljska riječ mjeseca</h2>
+                        <h2 class="winner" style="text-transform: uppercase; font-size:2rem">Glagoljska riječ mjeseca – kviz</h2>
                         <br>
                         <hr class="style-two">
-                        <p class="opis" style="text-align: left; font-size:1.5rem; padding: 10px;"><br>Na stranici Staroslavenskoga instituta na <a href="https://www.facebook.com/stin.hr" target="_blank">Facebooku</a> svaki se mjesec objavljuje jedna riječ potvrđena u hrvatskoglagoljičnim tekstovima. Riječi su potvrđene u korpusu za Rječnik crkvenoslavenskoga jezika hrvatske redakcije, što je temeljni projekt Staroslavenskoga instituta. Taj korpus čini više od 60 hrvatskoglagoljičnih izvora iz razdoblja od 11./12. st. do 17. st. Provjerite svoje znanje hrvatskih crkvenoslavenskih riječi!</p>
+                        <div id="uvod"><p class="opis" style="text-align: left; font-size:1.5rem; padding: 10px;"><br>Na stranici Staroslavenskoga instituta na <a href="https://www.facebook.com/stin.hr" target="_blank">Facebooku</a> svaki se mjesec objavljuje jedna riječ potvrđena u hrvatskoglagoljičnim tekstovima. Riječi su potvrđene u korpusu za Rječnik crkvenoslavenskoga jezika hrvatske redakcije, što je temeljni projekt Staroslavenskoga instituta. Taj korpus čini više od 60 hrvatskoglagoljičnih izvora iz razdoblja od 11./12. st. do 17. st. Provjerite svoje znanje hrvatskih crkvenoslavenskih riječi!</p>
                         <br>
-                        <button class="init-page__btn btn uglata gla" onClick="set_pitanja=1;">igraj</button>
+                        <button class="btn uglata gla" onclick="document.getElementById('uvod').style.display = 'none';document.getElementById('razina').style.display = 'block'">igraj</button></div>
+                        <div id="razina" style="display: none;"> <p class="opis" style="text-align: left; font-size:1.5rem; padding: 10px;">Odaberi težinu:</p>
+                        <button class="init-page__btn btn uglata gla" onclick="set_pitanja=1">lako</button>
+                        <button class="init-page__btn btn uglata gla" onclick="set_pitanja=2">srednje</button>
+                        <button class="init-page__btn btn uglata gla" onclick="set_pitanja=3">teško</button></div>
+
                         <br>
                         <p style="text-align: center;">Ovaj je kviz izrađen u sklopu projekta <a href="https://stin.hr/sadrzaj/digistin/" target="_blank">DigiSTIN</a>.</p>
                     </div>
