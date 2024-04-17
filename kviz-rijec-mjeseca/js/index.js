@@ -169,7 +169,7 @@ $(document).ready(function () {
         //spajanje krivih i točnih odgovora te generiranje liste pitanja
         lista = podatci[questionCounter].kriviodgovori.split(";")
         lista.push(podatci[questionCounter].značenje)
-
+        shuffle(lista)
         for (x = 0; x < lista.length; x++) {
             document.getElementById("linkovi").innerHTML += '<div class="questions-page__answer-div questions-page__answer-div-' + x + '" onclick="odabir(this)"><div class=questions-page__selection-div></div><div class=questions-page__feedback-div></div><li class=questions-page__answer-line><span class="questions-page__answer-' + x + ' questions-page__answer-span">' + lista[x] + '</span></div>'
 
