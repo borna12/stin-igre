@@ -49,8 +49,43 @@ var initPage,
     prekidac, countdownTimer, bodovi = 0,
     sadrzaj1, kategorija,
     pogreske = [],
-    vrijeme = 0;
-
+    vrijeme = 0,
+    listaBrojeva = [];
+p1 = [];
+const glagoljicaSlova = {
+    1: "a",
+    2: "b",
+    3: "v",
+    4: "g",
+    5: "d",
+    6: "e",
+    7: "ž",
+    8: "Z",
+    9: "z",
+    10: "I",
+    20: "i",
+    30: "j",
+    40: "k",
+    50: "l",
+    60: "m",
+    70: "n",
+    80: "o",
+    90: "p",
+    100: "r",
+    200: "s",
+    300: "t",
+    400: "u",
+    500: "f",
+    600: "h",
+    700: "C",
+    800: "ć",
+    900: "c",
+    1000: "č",
+    2000: "š",
+    3000: "]",
+    4000: ";",
+    5000: "/",
+};
 
 function ProgressCountdown(timeleft, bar, text) {
     return new Promise((resolve, reject) => {
@@ -65,33 +100,55 @@ function ProgressCountdown(timeleft, bar, text) {
 
         }, 1000);
     });
-
 }
 
-$(document).ready(function() {
-    $('body').on('keydown', function(event) {
+// Funkcija koja generira nasumičan broj od 1 do 5000
+function generirajNasumicniBroj() {
+    return Math.floor(Math.random() * 10) + 1;
+}
+
+
+function pretvoriUGlagoljicu(br) {
+    let glagoljica = "";
+
+    let ostatak = br;
+    Object.keys(glagoljicaSlova).reverse().forEach(broj => {
+        const faktor = Math.floor(ostatak / broj);
+        if (faktor > 0) {
+            glagoljica += glagoljicaSlova[broj].repeat(faktor);
+            ostatak -= faktor * broj;
+        }
+    });
+
+    return {glagoljica: glagoljica };
+}
+
+$(document).ready(function () {
+    $('body').on('keydown', function (event) {
         var x = event.which;
         if (x === 13) {
             event.preventDefault();
         }
     });
-
-
-
-
-    $(".broj").click(function() {
+    $(".broj").click(function () {
         prezent = p1
+
+
         pitanja = jQuery(this).attr("id")
         if (pitanja == "20pitanja") {
-            shuffle(prezent)
-            prezent = prezent.slice(0, 20)
-        } else if (pitanja == "50pitanja") {
-            shuffle(prezent)
-            prezent = prezent.slice(0, 50)
-        } else if (pitanja == "100pitanja") {
-            shuffle(prezent)
-            prezent = prezent.slice(0, 100)
+            x = 20
         }
+        else if (pitanja == "50pitanja") {
+            x = 50
+        } else if (pitanja == "100pitanja") {
+            x = 100
+        }
+        for (let i = 0; i < x; i++) {
+            const nasumicniBroj = generirajNasumicniBroj();
+            listaBrojeva.push(nasumicniBroj);
+        }
+        prezent = listaBrojeva
+
         $("#opis").text("odaberi vrijeme po zadataku")
         $(".broj").hide()
         $(".init-page__btn").show();
@@ -108,14 +165,12 @@ $(document).ready(function() {
     // Page 3 - Results
     resultsPage = $('.results-page');
     slikica = $('.slikica');
-
     // Buttons
     startBtn = $('.init-page__btn, .results-page__retake-btn');
     submitBtn = $('.mrzim');
     continueBtn = $('.questions-page__continue-btn');
     retakeBtn = $('.results-page__retake-btn');
     spanishBtn = $('.results-page__spanish-btn');
-
     // Answer block divs
     answerDiv = $('.questions-page__answer-div');
     answerDivA = $('.questions-page__answer-div-a');
@@ -143,41 +198,18 @@ $(document).ready(function() {
     prikazBodova = $('.results-page__bodovi');
     // QUIZ CONTENT ------
 
-    function stvori(tekst, tekst2, tekst3) {
-        do {
-            predmet = cvijece[Math.floor(Math.random() * cvijece.length)];
-        }
-        while (predmet == tekst || predmet == tekst2 || predmet == tekst3);
-        return predmet
-    }
-
-    function shuffle(array) { //izmješaj pitanja
-        var i = 0,
-            j = 0,
-            temp = null
-
-        for (i = array.length - 1; i > 0; i -= 1) {
-            j = Math.floor(Math.random() * (i + 1))
-            temp = array[i]
-            array[i] = array[j]
-            array[j] = temp
-        }
-    }
-
-    /* shuffle(prezent)*/
-
     // FUNCTION DECLARATIONS ------
-    $.fn.declasse = function(re) {
-            return this.each(function() {
-                var c = this.classList
-                for (var i = c.length - 1; i >= 0; i--) {
-                    var classe = "" + c[i]
-                    if (classe.match(re)) c.remove(classe)
-                }
-            })
-        }
-        // Start the quiz
-    newQuiz = function() {
+    $.fn.declasse = function (re) {
+        return this.each(function () {
+            var c = this.classList
+            for (var i = c.length - 1; i >= 0; i--) {
+                var classe = "" + c[i]
+                if (classe.match(re)) c.remove(classe)
+            }
+        })
+    }
+    // Start the quiz
+    newQuiz = function () {
         slikica.hide()
         prekidac = 1;
         bodovi = 0;
@@ -192,14 +224,14 @@ $(document).ready(function() {
     };
 
     // Load the next question and set of answers
-    generateQuestionAndAnswers = function() {
+    generateQuestionAndAnswers = function () {
         question.html("<span style='font-size: 1.3rem;'>" + (questionCounter + 1) + "/" + prezent.length + "</span> <br>");
         $("#odgovor").val('')
         $(".popuni").show();
         var el = document.getElementById('odgovor');
         el.focus();
-        el.onblur = function() {
-            setTimeout(function() {
+        el.onblur = function () {
+            setTimeout(function () {
                 el.focus();
             });
         };
@@ -212,14 +244,8 @@ $(document).ready(function() {
 
 
 
-        $("#osnova2").text(prezent[questionCounter].split(" = ")[0])
+        $("#osnova2").text(pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica)
 
-        if (prezent[questionCounter].split(" = ")[1].length > 2) {
-            $("#oblik").html("<br> Prvo slovo odgovora: " + prezent[questionCounter].split(" = ")[1][0].toLowerCase() + "<br>broj znakova: " + prezent[questionCounter].split(" = ")[1].length)
-        } else {
-            $("#oblik").html("broj znakova: " + prezent[questionCounter].split(" = ")[1].length)
-        }
-        //$(".slikica").attr("src", "slike/" + prezent[questionCounter].slika)
 
         var input = document.querySelector('input'); // get the input element
         input.addEventListener('input', resizeInput); // bind the "resizeInput" callback on "input" event
@@ -233,23 +259,23 @@ $(document).ready(function() {
     };
 
     // Store the correct answer of a given question
-    getCorrectAnswer = function() {
-        correctAnswer = prezent[questionCounter].split(" = ")[1];
+    getCorrectAnswer = function () {
+        correctAnswer = prezent[questionCounter];
     };
 
     // Store the user's selected (clicked) answer
-    getUserAnswer = function(target) {
+    getUserAnswer = function (target) {
         userSelectedAnswer = $(target).find(answerSpan).text();
     };
 
     // Add the pointer to the clicked answer
-    selectAnswer = function(target) {
+    selectAnswer = function (target) {
         $(target).find(selectionDiv).addClass('ion-chevron-right');
         $(target).addClass("odabir")
     };
 
     // Remove the pointer from any answer that has it
-    deselectAnswer = function() {
+    deselectAnswer = function () {
         if (selectionDiv.hasClass('ion-chevron-right')) {
             selectionDiv.removeClass('ion-chevron-right');
             selectionDiv.parent().removeClass("odabir")
@@ -257,20 +283,20 @@ $(document).ready(function() {
     };
 
     // Get the selected answer's div for highlighting purposes
-    getSelectedAnswerDivs = function(target) {
+    getSelectedAnswerDivs = function (target) {
         toBeHighlighted = $(target);
         toBeMarked = $(target).find(feedbackDiv);
     };
 
 
     // Make the incorrect answer red and add X
-    highlightIncorrectAnswerRed = function() {
+    highlightIncorrectAnswerRed = function () {
         toBeHighlighted.addClass('questions-page--incorrect');
         toBeMarked.addClass('ion-close-round');
     };
 
     // Clear all highlighting and feedback
-    clearHighlightsAndFeedback = function() {
+    clearHighlightsAndFeedback = function () {
         answerDiv.removeClass('questions-page--correct');
         answerDiv.removeClass('questions-page--incorrect');
         feedbackDiv.removeClass('ion-checkmark-round');
@@ -285,7 +311,7 @@ $(document).ready(function() {
     newQuiz();
 
     // Clicking on start button:
-    startBtn.on('click', function() {
+    startBtn.on('click', function () {
         pogreske = []
         if ($(this).attr('id') == "bez") {
             iskljuci_v = 1;
@@ -310,7 +336,7 @@ $(document).ready(function() {
     });
 
     /* --- PAGE 2/3 --- */
-    $('#odgovor').on("keyup", function() {
+    $('#odgovor').on("keyup", function () {
         if ($("#odgovor").val().length == 0) {
             submitBtn.hide(300)
         } else {
@@ -325,7 +351,7 @@ $(document).ready(function() {
         vrijeme = parseInt($("#pageBeginCountdownText").text())
         prekidac = 0;
         var ide = 0
-            // Disable ability to select an answer
+        // Disable ability to select an answer
         answerDiv.off('click');
         if (questionCounter != prezent.length - 1) {
             ide = 1
@@ -334,12 +360,12 @@ $(document).ready(function() {
         }
         clearInterval(countdownTimer);
         if (document.getElementById("pageBeginCountdown").value == "0" && iskljuci_v == 0) {
-            pogreske.push("<strong>" + prezent[questionCounter].split(" = ")[1] + "</strong> = " + prezent[questionCounter].split(" = ")[0])
+            pogreske.push("<strong>" + prezent[questionCounter] + "</strong> = " + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica)
             bodovi -= 10;
             $("#zvono")[0].play();
             swal({
                 title: "Isteklo je vrijeme.",
-                html: "<p class='dodatak'>točan odgovor: <span class='nastavak'>" + prezent[questionCounter].split(" = ")[1] + "</span> – " + prezent[questionCounter].split(" = ")[0] + "<br></p><br><img src='slike/vrijeme.png'class='slikica2'/>",
+                html: "<p class='dodatak'>točan odgovor: <span class='nastavak'>" +prezent[questionCounter] + "</strong> = " + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica + "<br></p><br><img src='slike/vrijeme.png'class='slikica2'/>",
                 showCloseButton: true,
                 confirmButtonText: ' dalje',
                 backdrop: false,
@@ -347,14 +373,14 @@ $(document).ready(function() {
                 allowEscapeKey: false,
             });
 
-            $(".swal2-confirm").unbind("click").click(function() {
+            $(".swal2-confirm").unbind("click").click(function () {
                 clearInterval(countdownTimer)
                 nastavi()
                 if (ide == 1 && iskljuci_v == 0) {
                     ProgressCountdown(tajming, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => odgovor());
                 }
             })
-            $(".swal2-close").unbind("click").click(function() {
+            $(".swal2-close").unbind("click").click(function () {
                 clearInterval(countdownTimer)
                 nastavi()
                 if (ide == 1 && iskljuci_v == 0) {
@@ -362,7 +388,7 @@ $(document).ready(function() {
                 }
             })
         } else {
-            if ($("#odgovor").val().toLowerCase() == prezent[questionCounter].split(" = ")[1].toLowerCase()) {
+            if ($("#odgovor").val() == prezent[questionCounter]) {
                 // Increment the total correct answers counter
                 correctAnswersCounter++;
                 bodovi += 10;
@@ -382,7 +408,7 @@ $(document).ready(function() {
                     allowOutsideClick: false,
                     allowEscapeKey: false,
                 });
-                $(".swal2-confirm").unbind("click").click(function() {
+                $(".swal2-confirm").unbind("click").click(function () {
                     clearInterval(countdownTimer)
                     $(".swal2-modal").removeClass("swal-fix")
                     nastavi()
@@ -390,7 +416,7 @@ $(document).ready(function() {
                         ProgressCountdown(tajming, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => odgovor());
                     }
                 })
-                $(".swal2-close").unbind("click").click(function() {
+                $(".swal2-close").unbind("click").click(function () {
                     clearInterval(countdownTimer)
                     $(".swal2-modal").removeClass("swal-fix")
                     nastavi()
@@ -400,14 +426,14 @@ $(document).ready(function() {
                 })
 
             } else {
-                pogreske.push("<strong>" + prezent[questionCounter].split(" = ")[1] + "</strong> = " + prezent[questionCounter].split(" = ")[0])
+                pogreske.push("<strong>" + prezent[questionCounter] + "</strong> = " + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica)
                 bodovi -= 10;
                 $("#odgovor").val('')
 
                 $("#pogresno")[0].play()
                 swal({
                     title: "Netočno",
-                    html: "<p class='dodatak'>točan odgovor: <span class='nastavak'>" + prezent[questionCounter].split(" = ")[1] + "</span> – " + prezent[questionCounter].split(" = ")[0] + "<br></p><br><img src='slike/krivo.png' class='slikica2'/>",
+                    html: "<p class='dodatak'>točan odgovor: <span class='nastavak'>" +prezent[questionCounter] + "</strong> = " + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica + "<br></p><br><img src='slike/krivo.png' class='slikica2'/>",
                     showCloseButton: true,
                     confirmButtonText: ' dalje',
                     backdrop: false,
@@ -415,13 +441,7 @@ $(document).ready(function() {
                     allowEscapeKey: false,
 
                 });
-
-
-
-
-
-
-                $(".swal2-confirm").unbind("click").click(function() {
+                $(".swal2-confirm").unbind("click").click(function () {
                     clearInterval(countdownTimer)
                     nastavi()
 
@@ -429,7 +449,7 @@ $(document).ready(function() {
                         ProgressCountdown(tajming, 'pageBeginCountdown', 'pageBeginCountdownText').then(value => odgovor());
                     }
                 })
-                $(".swal2-close").unbind("click").click(function() {
+                $(".swal2-close").unbind("click").click(function () {
                     clearInterval(countdownTimer)
                     nastavi()
 
@@ -446,7 +466,7 @@ $(document).ready(function() {
 
     }
 
-    submitBtn.on('click', function() {
+    submitBtn.on('click', function () {
         odgovor();
     });
 
@@ -463,7 +483,7 @@ $(document).ready(function() {
             userScore.text(Math.floor((correctAnswersCounter / prezent.length) * 100) + " %");
             prikazBodova.text(bodovi);
             //obrazac za pohranu
-            
+
 
             if (pogreske.length != 0) {
                 $("#pogreske").show()
@@ -471,7 +491,7 @@ $(document).ready(function() {
                 $("#bootstrapForm").submit();
                 $("#bootstrapForm").remove();
             }
-            $("#pogreske").click(function() {
+            $("#pogreske").click(function () {
                 swal({
                     title: "pogreške:",
                     html: "" + pogreske.join("<br>"),
@@ -500,7 +520,7 @@ $(document).ready(function() {
         continueBtn.hide(300);
 
         // Enable ability to select an answer
-        answerDiv.on('click', function() {
+        answerDiv.on('click', function () {
             // Make the submit button visible
             submitBtn.show(300);
             // Remove pointer from any answer that already has it
@@ -516,17 +536,17 @@ $(document).ready(function() {
     }
 
     // Clicking on the continue button:
-    continueBtn.on('click', function() {
+    continueBtn.on('click', function () {
 
     });
 
-    $(".questions-page__answer-div").dblclick(function() {
-            odgovor()
-        })
-        /* --- PAGE 3/3 --- */
+    $(".questions-page__answer-div").dblclick(function () {
+        odgovor()
+    })
+    /* --- PAGE 3/3 --- */
 
     // Clicking on the retake button:
-    retakeBtn.on('click', function() {
+    retakeBtn.on('click', function () {
         // Go to the first page
         // Start the quiz over
         newQuiz();
@@ -572,7 +592,7 @@ function touchHandler(event) {
     simulatedEvent.initMouseEvent(type, true, true, window, 1,
         first.screenX, first.screenY,
         first.clientX, first.clientY, false,
-        false, false, false, 0 /*left*/ , null);
+        false, false, false, 0 /*left*/, null);
 
     first.target.dispatchEvent(simulatedEvent);
     event.preventDefault();

@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'FSGLA';
+    src: url('../fonts/FSGLAA.woff2') format('woff2'),
+        url('../fonts/FSGLAA.woff') format('woff'),
+        url('../fonts/FSGLAA.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 /* ----------------------------
 STYLES/LAYOUT
 ---------------------------- */
@@ -72,6 +83,8 @@ form {
     width: 20px;
     border-radius: 5px;
 }
+
+#osnova2{font-family: "FSGLA";}
 
 .init-page,
 .questions-page,
