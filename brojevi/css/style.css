@@ -84,7 +84,7 @@ form {
     border-radius: 5px;
 }
 
-#osnova2{font-family: "FSGLA";}
+#osnova2,.gla{font-family: "FSGLA";}
 
 .init-page,
 .questions-page,
