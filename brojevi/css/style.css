@@ -8,6 +8,15 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'EBGaramond';
+    src: url('../fonts/ebgaramond-variablefont_wght.woff2') format('woff2'),
+    url('../fonts/ebgaramond-variablefont_wght.woff') format('woff'),
+    url('../fonts/EBGaramond-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 /* ----------------------------
 STYLES/LAYOUT
@@ -27,14 +36,45 @@ body {
 
 body {
     font-size: 1rem;
-    font-family: Open Sans, sans-serif;
+    font-family: "EBGaramond", serif;
     color: rgba(0, 0, 0, 0.87);
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 480px;
     transition: background-color 1000ms linear;
+    background-image: url(../pozadina.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50% 50%;
 }
+
+body::before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: -webkit-linear-gradient(top left, rgb(255 247 247 / 90%), rgb(255 255 255 / 80%));
+    background-image: -o-linear-gradient(top left, rgb(255 247 247 / 90%), rgb(255 255 255 / 80%));
+    background-image: linear-gradient(to bottom right, rgb(255 247 247 / 90%), rgb(255 255 255 / 80%));
+    background-size: auto;
+}
+.btn,#odgovor,.swal2-modal h2,.swal2-content, .swal2-modal .swal2-content, .swal2-modal .swal2-styled{ font-family: "EBGaramond", serif;}
+
+.swal2-styled.swal2-confirm {
+    background: linear-gradient(#3228B0, #2c1c9a);
+}
+
+.swal2-actions:not(.swal2-loading) .swal2-styled:hover {
+    background: -webkit-linear-gradient(#2c1c9a, #3228B0);
+    background: linear-gradient(#2c1c9a, #3228B0);
+}
+
+/*.swal2-show{background:url("../slike/pozadina.jpg")!important}*/
 
 #progressBar {
     position: absolute;
@@ -52,7 +92,8 @@ body {
 }
 
 #opis {
-    text-align: center
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 h1,
@@ -116,7 +157,7 @@ form {
     width: 100%;
     font-size: 1.5rem;
     padding: 1rem 0;
-    background: #0162F3;
+    background: linear-gradient(#3228B0, #2c1c9a);;
     border: none;
     color: white;
     border-radius: 5px;
@@ -132,7 +173,7 @@ form {
 .btn:hover,
 #form-submit:hover {
     cursor: pointer;
-    background: #0162F3;
+    background: linear-gradient(#2c1c9a, #3228B0);;
 }
 
 .odgov:hover {
@@ -282,7 +323,7 @@ form {
 
 .dodatak {
     text-align: center;
-    font-size: 23px
+    font-size: 30px
 }
 
 
@@ -368,10 +409,10 @@ legend {
 }
 
 .vrime {
-    color: #0162F3;
+    color: background: linear-gradient(#3228B0, #2c1c9a);;
     font-weight: 900
 }
 
 .swal2-content strong {
-    color: #0162F3
+    color: background: linear-gradient(#3228B0, #2c1c9a);
 }

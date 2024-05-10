@@ -380,12 +380,12 @@ $(document).ready(function () {
         }
         clearInterval(countdownTimer);
         if (document.getElementById("pageBeginCountdown").value == "0" && iskljuci_v == 0) {
-            pogreske.push("<span class='nastavak'>" +prezent[questionCounter] + "</span> = <span class='gla'>" + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica + "</span>")
+            pogreske.push("<span class='gla'>" + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica + "</span> = <span class='nastavak'>" +prezent[questionCounter] + "</span>")
             bodovi -= 10;
-            $("#zvono")[0].play();
+            $("#pogresno")[0].play();
             swal({
                 title: "Isteklo je vrijeme.",
-                html: "<p class='dodatak'>točan odgovor: <span class='nastavak'>" +prezent[questionCounter] + "</span> = <span class='gla'>" + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica + "</span></p><br><img src='slike/vrijeme.png'class='slikica2'/>",
+                html: "<p class='dodatak'>točan odgovor: <span class='gla'>" + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica + "</span> = <span class='nastavak'>" +prezent[questionCounter] + "</span></p><br><img src='slike/vrijeme.png'class='slikica2'/>",
                 showCloseButton: true,
                 confirmButtonText: ' dalje',
                 backdrop: false,
@@ -446,14 +446,14 @@ $(document).ready(function () {
                 })
 
             } else {
-                pogreske.push("<span class='nastavak'>" +prezent[questionCounter] + "</span> = <span class='gla'>" + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica + "</span>")
+                pogreske.push("<span class='gla'>" + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica + "</span> = <span class='nastavak'>" +prezent[questionCounter] + "</span>")
                 bodovi -= 10;
                 $("#odgovor").val('')
 
                 $("#pogresno")[0].play()
                 swal({
                     title: "Netočno",
-                    html: "<p class='dodatak'>točan odgovor: <span class='nastavak'>" +prezent[questionCounter] + "</span> = <span class='gla'>" + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica + "</span><br></p><br><img src='slike/krivo.png' class='slikica2'/>",
+                    html: "<p class='dodatak'>točan odgovor: <span class='gla'>" + pretvoriUGlagoljicu(prezent[questionCounter]).glagoljica + "</span> = <span class='nastavak'>" +prezent[questionCounter] + "</span><br></p><br><img src='slike/krivo.png' class='slikica2'/>",
                     showCloseButton: true,
                     confirmButtonText: ' dalje',
                     backdrop: false,

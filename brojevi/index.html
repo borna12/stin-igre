@@ -9,30 +9,17 @@
     <meta name="author" content="Josip Mihaljević">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Flamenco|Asap:400,700' rel='stylesheet' type='text/css'>
-    <link rel='stylesheet prefetch' href='https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css'>
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="./favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <script src='js/jquery.min.js'></script>
     <script src="js/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="css/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <meta property="og:title" content="Napiši broj za zadano glagoljično slovo" />
     <meta property="og:description" content="Napiši broj za zadano glagoljično slovo" />
     <meta property="og:image" content="og-slika.jpg" />
@@ -46,16 +33,11 @@
     <audio class="audios" id="pogresno" preload="none">
         <source src="zvuk/krivo.mp3" type="audio/mpeg">
     </audio>
-    <audio class="audios" id="zvono" preload="none">
-        <source src="zvuk/zvono.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="init-page">
         <div class="container container2">
             <h1 class="init-page__title">Prevedi broj s glagoljice</h1>
             <p id="opis">odaberi mogući raspon brojeva za igru</p><br>
             <!--<img src="slike/uvodna.png" style="width: 100%; margin-left: auto; display: block; margin-right: auto; margin-top:20px" />-->
-            
             <button class="btn raspon" id="1-10">1-10</button>
             <button class="btn raspon" id="1-100">1-100</button>
             <button class="btn raspon" id="1-1000">1-1000</button>
@@ -63,7 +45,6 @@
             <button class="btn raspon" id="100-1000">100-1000</button>
             <button class="btn raspon" id="100-5000">100-5000</button>
             <button class="btn raspon" id="1000-5000">1000-5000</button>
-
             <button class="btn broj" id="10pitanja" style="display:none">10 pitanja</button>
             <button class="btn broj" id="20pitanja" style="display:none">20 pitanja</button>
             <button class="btn broj" id="50pitanja" style="display:none">50 pitanja</button>
@@ -80,7 +61,7 @@
             <h3 id="oblik"></h3>
 
             <div class="popuni">
-                <p class="ispunjavanje"><input type="text" id="odgovor" placeholder="..." onkeyup="if (event.keyCode == 13 && $('.mrzim').is(':visible')){$('.mrzim').click()}" autofocus> – <span id="osnova2"></span>
+                <p class="ispunjavanje">  <span id="osnova2"></span> – <input type="text" id="odgovor" placeholder="..." onkeyup="if (event.keyCode == 13 && $('.mrzim').is(':visible')){$('.mrzim').click()}" autofocus inputmode="numeric" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                 </p>
             </div>
             <div class="row begin-countdown">
@@ -108,10 +89,8 @@
             <p class="results-page__info">S obzirom na broj točnih odgovora i utrošeno vrijeme ostvarili ste sljedeći broj bodova:
             </p>
             <h3 class="results-page__bodovi">postavljenih pitanja!</h3>
-            <button id="pogreske" style="display: none;" class="btn">provjerite svoje pogreške</button>
-
+            <!--<button id="pogreske" style="display: none;" class="btn">provjerite svoje pogreške</button>-->
             <br>
-
             <p>
                 <form action="https://docs.google.com/forms/d/e/1FAIpQLSeqFHu33V_jYYsnrg4E4kcN2WnwT7as5DkJLltZrhHFCu0AcQ/formResponse"
       target="_self"
