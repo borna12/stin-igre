@@ -74,7 +74,10 @@ body::before {
     background: linear-gradient(#2c1c9a, #3228B0);
 }
 
-/*.swal2-show{background:url("../slike/pozadina.jpg")!important}*/
+.swal2-show{background:url("../slike/pozadina.jpg")!important;   border-width: 3px;
+    border-style: solid;
+    border-color: #2c1c9a;
+}
 
 #progressBar {
     position: absolute;

@@ -112,7 +112,6 @@ function generirajNasumicniBroj(manji, veci) {
 
 function pretvoriUGlagoljicu(br) {
     let glagoljica = "";
-
     let ostatak = br;
     Object.keys(glagoljicaSlova).reverse().forEach(broj => {
         const faktor = Math.floor(ostatak / broj);
@@ -158,17 +157,13 @@ $(document).ready(function () {
         } else if (pitanja == "100pitanja") {
             x = 100
         }
-        
-
             while (listaBrojeva.length < x) {
                 const nasumicniBroj = generirajNasumicniBroj(manji_b,veci_b);
                 if (!listaBrojeva.includes(nasumicniBroj)) {
                     listaBrojeva.push(nasumicniBroj);
               }
             }
-
         prezent = listaBrojeva
-
         $("#opis").text("odaberi vrijeme po zadataku")
         $(".broj").hide()
         $(".init-page__btn").show();
