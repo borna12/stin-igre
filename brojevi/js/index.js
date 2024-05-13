@@ -132,7 +132,7 @@ $(document).ready(function () {
         }
     });
     $(".raspon").click(function () {
-       brojkice= $(this).text().split("-")
+       brojkice= $(this).text().split(" - ")
        manji_b=parseInt(brojkice[0])
        veci_b=parseInt(brojkice[1])
        $(".broj").show()

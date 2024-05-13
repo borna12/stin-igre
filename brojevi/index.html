@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Napiši broj za zadano glagoljično slovo</title>
+    <title>Prepoznaj broj napisan glagoljicom</title>
     <meta charset="utf-8">
-    <meta name="description" content="Napiši broj za zadano glagoljično slovo">
+    <meta name="description" content="Igra u kojoj dobijete nasumično stvoren broj u odabranom rasponu koji je napisan na glagoljici. Trebate prpoznati o kojem se broju radi. Ova igra izrađena je u sklopu projekta DigiSTIN.">
     <meta name="author" content="Josip Mihaljević">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/normalize.min.css">
@@ -20,13 +20,11 @@
     <script src="js/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <meta property="og:title" content="Napiši broj za zadano glagoljično slovo" />
-    <meta property="og:description" content="Napiši broj za zadano glagoljično slovo" />
+    <meta property="og:title" content="Prepoznaj broj napisan glagoljicom" />
+    <meta property="og:description" content="Igra u kojoj dobijete nasumično stvoren broj u odabranom rasponu koji je napisan na glagoljici. Trebate prpoznati o kojem se broju radi. Ova igra izrađena je u sklopu projekta DigiSTIN." />
     <meta property="og:image" content="og-slika.jpg" />
 </head>
-
 <body>
-
     <audio class="audios" id="tocno" preload="none">
         <source src="zvuk/tocno.mp3" type="audio/mpeg">
     </audio>
@@ -35,23 +33,22 @@
     </audio>
     <div class="init-page">
         <div class="container container2">
-            <h1 class="init-page__title">Prevedi broj s glagoljice</h1>
+            <h1 class="init-page__title">Prepoznaj broj napisan glagoljicom</h1>
             <p id="opis">odaberi mogući raspon brojeva za igru</p><br>
             <!--<img src="slike/uvodna.png" style="width: 100%; margin-left: auto; display: block; margin-right: auto; margin-top:20px" />-->
-            <button class="btn raspon" id="1-10">1-10</button>
-            <button class="btn raspon" id="1-100">1-100</button>
-            <button class="btn raspon" id="1-1000">1-1000</button>
-            <button class="btn raspon" id="1-5000">1-5000</button>
-            <button class="btn raspon" id="100-1000">100-1000</button>
-            <button class="btn raspon" id="100-5000">100-5000</button>
-            <button class="btn raspon" id="1000-5000">1000-5000</button>
+            <button class="btn raspon" id="1-10">1 - 10</button>
+            <button class="btn raspon" id="1-100">1 - 100</button>
+            <button class="btn raspon" id="1-1000">1 - 1000</button>
+            <button class="btn raspon" id="1-5000">1 - 5000</button>
+            <button class="btn raspon" id="100-1000">100 - 1000</button>
+            <button class="btn raspon" id="100-5000">100 - 5000</button>
+            <button class="btn raspon" id="1000-5000">1000 - 5000</button>
             <button class="btn broj" id="10pitanja" style="display:none">10 pitanja</button>
             <button class="btn broj" id="20pitanja" style="display:none">20 pitanja</button>
             <button class="btn broj" id="50pitanja" style="display:none">50 pitanja</button>
             <button class="btn broj" id="100pitanja" style="display:none">100 pitanja</button>
             <button class="init-page__btn btn" id="bez" style="display:none">igra bez vremenskoga ograničenja</button>
             <button class="init-page__btn btn" id="20" style="display:none">20 sekunda po pitanju</button>
-
         </div>
     </div>
     <div class="questions-page ">
