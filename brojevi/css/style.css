@@ -99,6 +99,8 @@ body::before {
     font-size: 1.5rem;
 }
 
+.swal2-modal .swal2-close{color: #2c1c9a;}
+
 h1,
 h2,
 h3,
