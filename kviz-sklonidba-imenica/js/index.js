@@ -1,4 +1,4 @@
-let baza = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSXaaFhYVJ88lfpJo4nRHkzdXC3WPnp7f8zvnIAYpZQKJSFI-SGcd-I08t63nI6UiGUYbg-uNcSoi_6/pub?gid=0&single=true&output=csv";
+let baza = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXtp7kX64hR8NoKSljph3JyWjjSyeo_-qvrCuKwqSUJXx3IfrBOcfAwrehDtS8miEEJB3FvVxJ_FWV/pub?gid=0&single=true&output=csv";
 
 var podatci;
 const csvData = Papa.parse(baza, {
@@ -13,7 +13,6 @@ const csvData = Papa.parse(baza, {
         document.getElementById("myDiv").style.display = "block";
     }
 });
-
 // VARIABLE DECLARATIONS ------
 // pages
 var initPage,
@@ -65,7 +64,8 @@ var initPage,
     prekidac, countdownTimer, bodovi = 0,
     vrijeme = 0,
     gumbic = 1,
-    set_pitanja;
+    set_pitanja,
+    set_pitanja2;
 function ProgressCountdown(timeleft, bar, text) {
     return new Promise((resolve, reject) => {
         countdownTimer = setInterval(() => {
@@ -86,6 +86,7 @@ function ProgressCountdown(timeleft, bar, text) {
 }
 
 $(document).ready(function () {
+
     // DOM SELECTION ------
     // App pages
     // Page 1 - Initial
@@ -152,25 +153,33 @@ $(document).ready(function () {
         // Hide other pages of the app
         questionsPage.hide();
         resultsPage.hide();
-        if (set_pitanja==1){cat="lako"}
-        else if (set_pitanja==2){cat="srednje"}
-        else if (set_pitanja==3){cat="teško"}
-        let output =
-        podatci.filter(employee => employee.kategorija == cat);
+        if (set_pitanja==1){cat="muški";}
+        else if (set_pitanja==2){cat="ženski";}
+        else if (set_pitanja==3){cat="srednji";}
+
+        if (set_pitanja2==1){cat2="o-sklonidba";}
+        else if (set_pitanja2==2){cat2="jo-sklonidba";}
+        else if (set_pitanja2==3){cat2="a-sklonidba";}
+        else if (set_pitanja2==4){cat2="ja-sklonidba";}
+        let output =podatci.filter(employee => employee.rod == cat);
         podatci=output
+        let output2 =podatci.filter(employee => employee.kategorija == cat2);
+        podatci=output2
         shuffle(podatci)
     };
     // Load the next question and set of answers
     generateQuestionAndAnswers = function () {
         $(".questions-page__answer-list").show()
         question.html("<span style='font-size: 1.3rem;'>" + (questionCounter + 1) + "/" + podatci.length + ".</span> <br>");
-        //riječ za koju se pogađa značenje
-        $(".definicija").html("<span class='gla'>" + podatci[questionCounter].FSGLApisanje + "</span> <span class='lat'>(" + podatci[questionCounter].riječ + ")</span>")
+        //riječ za koju se pogađa točanodgovor
+        $(".definicija").html("<span >" + podatci[questionCounter].imenica + "</span> <span>(" + podatci[questionCounter].padež + ")</span>")
         //spajanje krivih i točnih odgovora te generiranje liste pitanja
         lista = podatci[questionCounter].kriviodgovori.split(";")
-        lista.push(podatci[questionCounter].značenje)
         shuffle(lista)
-        for (x = 0; x < lista.length; x++) {
+        lista=lista.slice(0,3)
+        lista.push(podatci[questionCounter].točanodgovor)
+        shuffle(lista)
+        for (x = 0; x < 4; x++) {
             document.getElementById("linkovi").innerHTML += '<div class="questions-page__answer-div questions-page__answer-div-' + x + '" onclick="odabir(this)"><div class=questions-page__selection-div></div><div class=questions-page__feedback-div></div><li class=questions-page__answer-line><span class="questions-page__answer-' + x + ' questions-page__answer-span">' + lista[x] + '</span></div>'
 
         }
@@ -187,7 +196,7 @@ $(document).ready(function () {
     };
     // Store the correct answer of a given question
     getCorrectAnswer = function () {
-        correctAnswer = podatci[questionCounter].značenje.replace("<br>", "");
+        correctAnswer = podatci[questionCounter].točanodgovor.replace("<br>", "");
     };
     // Store the user's selected (clicked) answer
     getUserAnswer = function (target) {
@@ -277,7 +286,7 @@ function odgovor() {
         bodovi -= 10;
         Swal.fire({
             title: "Isteklo je vrijeme.",
-            html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].značenje + "</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
+            html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točanodgovor + "</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
             showCloseButton: true,
             confirmButtonText: ' dalje',
             backdrop: false,
@@ -344,7 +353,7 @@ function odgovor() {
             $("#krivo")[0].play();
             Swal.fire({
                 title: " <span style='color:#bb422a' >Netočno</span>",
-                html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].značenje + "</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
+                html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točanodgovor + "</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
                 showCloseButton: true,
                 confirmButtonText: ' dalje',
                 backdrop: false,
