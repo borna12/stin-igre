@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Kviz iz sklonidbe imenica</title>
+    <title>Naučite glavne sklonidbe imenica</title>
     <meta charset="utf-8">
-    <meta name="description" content="Dodaj opis za igru">
+    <meta name="description" content="Kviz je namijenjen za ponavljanje glavnih sklonidba (a-, ja-, o-, jo-) imenica u hrvatskome crkvenoslavenskom jeziku. Igrač može odabrati koju sklonidbu želi vježbati, a zadatak je odabrati točan traženi oblik navedene riječi. Detaljnije o sklonidbama pogledajte u gramatici Hrvatski crkvenoslavenski jezik.">
     <meta name="keywords" content="STIN, imenice, sklonidba, crkvenoslavenski">
     <meta name="author" content="LZMK">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,13 +19,13 @@
     <script src="js/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <meta property="og:title" content="Kviz iz sklonidbe imenica" />
-    <meta property="og:description" content="Dodaj opis za igru" />
+    <meta property="og:title" content="Naučite glavne sklonidbe imenica" />
+    <meta property="og:description" content="Kviz je namijenjen za ponavljanje glavnih sklonidba (a-, ja-, o-, jo-) imenica u hrvatskome crkvenoslavenskom jeziku. Igrač može odabrati koju sklonidbu želi vježbati, a zadatak je odabrati točan traženi oblik navedene riječi. Detaljnije o sklonidbama pogledajte u gramatici Hrvatski crkvenoslavenski jezik." />
     <meta property="og:image" content="og-slika.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@stin" />
-    <meta name="twitter:title" content="Kviz iz sklonidbe imenica" />
-    <meta name="twitter:description" content="Dodaj opis za igru" />
+    <meta name="twitter:title" content="Naučite glavne sklonidbe imenica" />
+    <meta name="twitter:description" content="Kviz je namijenjen za ponavljanje glavnih sklonidba (a-, ja-, o-, jo-) imenica u hrvatskome crkvenoslavenskom jeziku. Igrač može odabrati koju sklonidbu želi vježbati, a zadatak je odabrati točan traženi oblik navedene riječi. Detaljnije o sklonidbama pogledajte u gramatici Hrvatski crkvenoslavenski jezik." />
     <meta name="twitter:image" content="og-slika.png" />
 </head>
 
@@ -42,24 +42,27 @@
             <div class="container container2">
                 <div class="modal-overlay">
                     <div class="modal">
-                        <h2 class="winner" style="text-transform: uppercase; font-size:2rem">Kviz iz sklonidbe imenica</h2>
+                        <h2 class="winner" style="text-transform: uppercase; font-size:2rem">Naučite glavne sklonidbe imenica</h2>
                         <br>
                         <hr class="style-two">
-                        <div id="uvod"><p class="opis" style="text-align: justify; font-size:1.5rem; padding: 10px;"><br>Uvodni tekst.</p>
+                        <div id="uvod"><p class="opis" style="text-align: justify; font-size:1.5rem; padding: 10px;">Kviz je namijenjen za ponavljanje glavnih sklonidba (a-, ja-, o-, jo-) imenica u hrvatskome crkvenoslavenskom jeziku. Igrač može odabrati koju sklonidbu želi vježbati, a zadatak je odabrati točan traženi oblik navedene riječi. Detaljnije o sklonidbama pogledajte u gramatici&nbsp;<em>Hrvatski crkvenoslavenski jezik</em>.</p>
+                            <button class="btn" onclick="$('#uvod').hide(); $('.kategorija').show()">igraj</button>
                         <br>
                         </div>
-                       <div class="kategorija"> <p class="opis" style="text-align: left; font-size:1.5rem; padding: 10px;text-align: center;">Odaberi rod:</p>
-                        <button class="btn" onclick="set_pitanja=1; $('.sklonidba').show(); $('.muski').show();$('.kategorija').hide()">muški</button>
-                        <button class="btn" onclick="set_pitanja=2; $('.sklonidba').show(); $('.zenski').show();$('.kategorija').hide()">ženski</button>
-                        <button class="btn" onclick="set_pitanja=3; $('.sklonidba').show(); $('.srednji').show(); $('.kategorija').hide();">srednji</button></div>
+                       <div class="kategorija"> <p class="opis" style="text-align: left; font-size:1.5rem; padding: 10px;text-align: center;">Uvježbavati možete sklonidbu imenica svih triju rodova.</p>
+                        <button class="btn" onclick="set_pitanja=1; $('.muski').show();$('.kategorija').hide()">muški</button>
+                        <button class="btn" onclick="set_pitanja=2;  $('.zenski').show();$('.kategorija').hide()">ženski</button>
+                        <button class="btn" onclick="set_pitanja=3;  $('.srednji').show(); $('.kategorija').hide();">srednji</button></div>
 
                  
-                        <div class="sklonidba"> <p class="opis" style="text-align: justify; font-size:1.5rem; padding: 10px;">Odaberi sklonidbu:</p>
-                        <button class="init-page__btn btn muski srednji" onclick="set_pitanja2=1">o-sklonidba</button>
-                        <button class="init-page__btn btn muski srednji" onclick="set_pitanja2=2">jo-sklonidba</button>
-                        <button class="init-page__btn btn zenski" onclick="set_pitanja2=3">a-sklonidba</button>
-                        <button class="init-page__btn btn zenski" onclick="set_pitanja2=4">ja-sklonidba</button>
-                        </div> 
+                        <div class="sklonidba muski srednji"> <p class="opis" style="text-align: justify; font-size:1.5rem; padding: 10px;">Odaberite želite li uvježbavati <em>o- </em>ili <em>jo</em>-sklonidbu.</p>
+                        <button class="init-page__btn btn muski srednji" onclick="set_pitanja2=1"><em>o-</em>sklonidba</button>
+                        <button class="init-page__btn btn muski srednji" onclick="set_pitanja2=2"><em>jo-</em>sklonidba</button>
+                    </div>
+                    <div class="sklonidba zenski"> <p class="opis" style="text-align: justify; font-size:1.5rem; padding: 10px;">Odaberite želite li uvježbavati <em>a- </em>ili <em>ja</em>-sklonidbu.</p>
+                        <button class="init-page__btn btn zenski" onclick="set_pitanja2=3"><em>a-</em>sklonidba</button>
+                        <button class="init-page__btn btn zenski" onclick="set_pitanja2=4"><em>ja-</em>sklonidba</button>
+                    </div>
                         
                         <br><p style="text-align: center;">Ovaj je kviz izrađen u sklopu projekta <a href="https://stin.hr/sadrzaj/digistin/" target="_blank">DigiSTIN</a>.</p>
                     </div>

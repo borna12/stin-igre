@@ -415,7 +415,7 @@ hr.style-two {
 .definicija{font-size: 3rem;font-style: normal;}
 .uglata{width:80%;font-family: "EBGaramond";}
 
-.muski, .zenski,.srednji,.sklonidba {display: none;}
+.kategorija, .muski, .zenski,.srednji,.sklonidba {display: none;}
 
 /* ----------------------------
 MEDIA QUERIES
