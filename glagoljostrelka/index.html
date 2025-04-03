@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="hr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Glagoljostrelka</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,
+            maximum-scale=1">
+            <meta name="description" content="Igra inspirirana klasičnom arkadnom igrom Space Invaders. Igrač u igri mora pogoditi sva glagoljična slova prije nego što se zabiju u njega ili ga pogode. Za svako pogođeno glagljično slovo pojavljuje se njegova inačica na latinici.">
+            <meta name="keywords" content="glagoljica, igra">
+            <meta name="author" content="Josip Mihaljević, Staroslavenski institut">
+        <link rel="stylesheet"
+            href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="css/all.css" rel="stylesheet">
+        <script src="js/jquery.min.js"></script>
+
+        <meta property="og:title" content="Glagoljostrelka" />
+        <meta property="og:description" content="Igra inspirirana klasičnom arkadnom igrom Space Invaders. Igrač u igri mora pogoditi sva glagoljična slova prije nego što se zabiju u njega ili ga pogode. Za svako pogođeno glagljično slovo pojavljuje se njegova inačica na latinici." />
+        <meta property="og:type" content="game" />
+        <meta property="og:image"
+            content="slika.png" />
+            <link rel="icon" type="image/png" href="./favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+            <meta name="theme-color" content="#ffffff">
+    </head>
+    <body>
+        <div id="loader">
+            <div class="loader-text top">Igra se u<span style="letter-spacing: 0.2em;">č</span>itava...</div>
+            <div class="loader-frame">
+                <div class="glagoljsko-slovo">s</div>
+            </div>
+            <div class="loader-text bottom">Igra nije namijenjena za mobilne uređaje</div>
+        </div>
+        <audio id="strela">
+            <source src="zvuk/pucanje.ogg" type="audio/ogg">
+            <source src="zvuk/pucanje.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="vrisak">
+            <source src="zvuk/vrisak.ogg" type="audio/ogg">
+            <source src="zvuk/vrisak.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="strela2">
+            <source src="zvuk/strela_protivnik.ogg" type="audio/ogg">
+            <source src="zvuk/strela_protivnik.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="pozadina" loop>
+            <source src="zvuk/pozadina.ogg" type="audio/ogg">
+            <source src="zvuk/pozadina.mp3" type="audio/mpeg">
+        </audio>
+
+        <div id="wrap">
+            <h1 style="margin-bottom: 0;">Glagoljostrelka</h1>
+            <p>Pogodi sva glagolji<span style="letter-spacing: 0.2em;">č</span>na slova kako bi dobio njihov prikaz na
+                latinici.</p>
+            <div id="game-wrap"></div>
+            <div id="instructions">
+                <b><i class="fas fa-arrow-left"></i>, <i class="fas fa-arrow-right"></i></b> - kretnje <b>SPACE</b> - gađanje <b>P</b> - pauza
+                <b>Q</b> - zvuk
+            </div> 
+        </div>
+        <div id="pauza">PAUZA</div>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/phaser/2.4.4/phaser.min.js"></script>
+        <script src="js/index.js"></script>
+        <div id="background-fade"></div>
+    </body>
+</html>

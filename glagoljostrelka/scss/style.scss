@@ -1,0 +1,25 @@
+body {
+    background: black;
+    color: #aaa;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+}
+
+#game-wrap canvas {
+    border: 1px solid #666;
+    margin: 0 auto;
+}
+
+#instructions {
+    font-family: monospace;
+    font-size: 13px;
+    color: #999;
+    padding: 5px;
+    
+    b {
+        color: #ffff99;
+    }
+}
