@@ -27,7 +27,30 @@
             <meta name="theme-color" content="#ffffff">
     </head>
     <body>
-        <div id="loader">
+        <div id="pismo-izbor" style="text-align:center; ">
+            <div style="max-width: 1200px; padding: 50px;">
+            <h1 style="margin-bottom: 0;">Glagoljostrelka</h1>
+<p>Igra inspirirana klasičnom arkadnom igrom Space Invaders. Igrač u igri mora pogoditi sva slova prije nego što se zabiju u njega ili ga pogode. <br>Igrači mogu izabrati žele li pogođati glagoljična ili latinična slova koja su zajedno oblikovana kao slova glagoljične azbuke. <br>Za svako pogođeno glagljično slovo pojavljuje se njegova inačica na latinici. Igra nije predviđena za mobilne uređaje te se igra na tipkovnici.</p>
+<h2>Odaberi pismo za gađanje</h2>
+<div class="gumbi-container">
+    <div class="pismo-opcija">
+        <button onclick="pokreniIgru('glagoljica')" class="pismo-gumb">
+          <img src="grafika/glagoljica.jpg" alt="Glagoljica" />
+        </button>
+        <span class="pismo-natpis">glagoljica</span>
+      </div>
+      
+      <div class="pismo-opcija">
+        <button onclick="pokreniIgru('latinica')" class="pismo-gumb">
+          <img src="grafika/latinica.jpg" alt="Latinica" />
+        </button>
+        <span class="pismo-natpis">latinica</span>
+      </div>
+</div>
+<p style="font-size: 12px;">Ovaj igra izrađen je u sklopu projekta <a style="color:#2F2D86" href="https://stin.hr/sadrzaj/digistin/">DigiSTIN</a>.</p>
+          </div>
+          </div>
+        <div id="loader" style="display: none;">
             <div class="loader-text top">Igra se u<span style="letter-spacing: 0.2em;">č</span>itava...</div>
             <div class="loader-frame">
                 <div class="glagoljsko-slovo">s</div>
@@ -52,11 +75,10 @@
             <source src="zvuk/pozadina.ogg" type="audio/ogg">
             <source src="zvuk/pozadina.mp3" type="audio/mpeg">
         </audio>
-
-        <div id="wrap">
+      
+        <div id="wrap" style="display:none;">
             <h1 style="margin-bottom: 0;">Glagoljostrelka</h1>
-            <p>Pogodi sva glagolji<span style="letter-spacing: 0.2em;">č</span>na slova kako bi dobio njihov prikaz na
-                latinici.</p>
+            <p></p>
             <div id="game-wrap"></div>
             <div id="instructions">
                 <b><i class="fas fa-arrow-left"></i>, <i class="fas fa-arrow-right"></i></b> - kretnje <b>SPACE</b> - gađanje <b>P</b> - pauza

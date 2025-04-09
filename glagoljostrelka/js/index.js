@@ -1,5 +1,16 @@
+var trenutnoPismo = null; // glagoljica ili latinica
+function pokreniIgru(pismo) {
+    trenutnoPismo = pismo;
+    document.getElementById('pismo-izbor').style.display = 'none';
+    document.getElementById('wrap').style.display = 'flex';
+    startPhaser();
+}
+
+function startPhaser(){
+    $("#loader").show()
 console.clear();
 var backgroundChanged = false; // stavi ovo globalno na vrh skripte
+var previousSlovoIndex = -1;
 
 window.PhaserGlobal = window.PhaserGlobal || {};
 window.PhaserGlobal.stopFocus = true;
@@ -9,6 +20,8 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'game-wrap', {
     create: create,
     update: update
 });
+
+
 var slovo_a = [
     [0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,1,1,0,0,0,0],
@@ -191,7 +204,248 @@ var slovo_u=[
     [1,0,0,0,1,1,0,0,1,0],
     [0,1,1,1,1,1,1,1,0,0]
 ]
-var slovaMatrice = [slovo_a, slovo_b, slovo_v, slovo_3, slovo_ž, slovo_e, slovo_d, slovo_g];
+
+var slovo_f = [
+    [0,0,0,1,1,1,1,0,0,0],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,1,1,1,1,1,1,1,1,0],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [0,1,1,1,1,1,1,1,1,0],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,0,0,0,1,1,0,0,0,0]
+];
+
+var slovo_h = [
+    [0,1,1,0,0,0,0,0,0,0],
+    [0,1,1,0,0,0,0,0,0,0],
+    [0,1,1,0,0,0,0,0,0,0],
+    [0,1,1,0,0,0,0,0,0,0],
+    [0,1,1,0,0,0,1,1,1,1],
+    [0,1,1,0,0,1,0,0,1,1],
+    [0,1,1,0,1,1,0,0,1,1],
+    [0,1,1,1,0,1,0,0,1,1],
+    [1,1,0,0,0,1,0,0, 1,1],
+    [0,0,0,0,0,0,1,1,1,0]
+];
+
+var slovo_i = [
+    [1,1,1,1,1,1,1,1,1,1],
+    [1,1,1,0,0,0,0,1,1,1],
+    [0,1,1,0,0,0,0,1,1,0],
+    [0,0,1,1,0,0,1,1,0,0],
+    [0,0,0,1,1,1,1,0,0,0],
+    [0,0,0,1,0,0,1,0,0,0],
+    [0,0,1,0,0,0,0,1,0,0],
+    [0,1,1,0,0,0,0,1,1,0],
+    [1,1,1,0,0,0,0,1,1,1],
+    [1,1,1,1,1,1,1,1,1,1]
+];
+
+
+var slovo_Ï = [
+    [1,1,1,1,1,1,1,1,1,1],
+    [1,0,0,1,0,0,1,0,1,1],
+    [1,0,0,1,0,0,1,0,0,1],
+    [1,0,0,1,0,0,1,0,0,1],
+    [1,0,0,1,0,0,1,0,0,1],
+    [1,1,1,1,1,1,1,1,1,1],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,0,0,1,1,1,1,0,0,0]
+];
+
+var slovo_j = [
+[1,1,1,1,0,0,1,1,1,1],
+[1,0,0,1,0,0,1,0,0,1],
+[1,0,0,1,0,0,1,0,0,1],
+[1,0,0,1,0,0,1,0,0,1],
+[1,0,0,1,1,1,1,1,1,1],
+[1,0,0,1,0,0,1,0,0,0],
+[1,0,0,1,0,0,1,0,0,0],
+[1,0,0,1,0,0,1,0,0,0],
+[1,0,0,1,0,0,1,0,0,0],
+[1,0,0,1,0,0,1,0,0,0]];
+
+var slovo_jat = [
+    [0,0,0,1,1,1,1,1,0,0],
+    [0,0,0,1,0,0,0,1,0,0],
+    [0,0,0,1,0,0,0,1,0,0],
+    [0,0,0,1,0,0,0,1,0,0],
+    [0,0,0,1,0,0,0,1,0,0],
+    [0,0,0,1,1,1,1,1,1,1],
+    [0,0,0,1,0,1,0,0,0,1],
+    [0,0,1,0,0,1,0,0,0,1],
+    [0,1,0,0,0,1,0,0,0,1],
+    [1,1,1,1,1,1,1,1,1,1]
+];
+
+var slovo_ju = [
+    [0,1,1,1,1,1,1,1,0,0],
+    [0,1,0,0,1,0,0,1,0,0],
+    [0,1,0,0,1,0,0,1,0,0],
+    [0,1,0,0,1,0,1,0,0,0],
+    [0,1,0,0,1,1,0,0,0,0],
+    [0,1,0,0,1,0,0,0,0,0],
+    [0,1,0,1,0,0,0,0,0,0],
+    [0,1,1,0,0,0,0,0,0,0],
+    [0,1,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0]
+];
+
+var slovo_k = [
+    [0,0,0,0,0,1,1,0,0,0],
+    [0,0,0,0,0,1,1,0,0,0],
+    [0,0,0,0,0,1,1,0,0,0],
+    [0,0,0,0,0,1,1,0,0,0],
+    [0,0,0,0,0,1,1,0,0,0],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,0,1,1,1,1,1,1,1,0],
+    [0,0,0,0,0,0,0,1,1,0],
+    [0,0,0,0,0,0,0,1,1,0],
+    [0,0,0,0,0,0,0,1,1,0]
+];
+
+var slovo_s = [
+    [0,0,1,1,1,1,1,1,0,0],
+    [0,1,1,0,0,0,0,1,1,0],
+    [1,1,0,0,0,0,0,0,1,1],
+    [1,0,0,0,0,0,0,0,0,1],
+    [1,0,0,1,0,0,1,0,0,1],
+    [0,1,1,1,0,0,1,1,1,0],
+    [0,0,0,1,0,0,1,0,0,0],
+    [0,0,0,1,0,0,1,0,0,0],
+    [0,0,0,1,0,0,1,0,0,0],
+    [0,0,0,1,1,1,1,0,0,0]
+];
+
+var slovo_š = [
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,1,1,1,1,1,1,1,1]
+];
+
+var slovo_z = [
+    [1,1,1,1,1,0,0,0,0,0],
+    [1,0,0,0,1,0,0,0,0,0],
+    [1,0,0,0,1,0,0,0,0,0],
+    [1,0,0,0,1,0,0,0,0,0],
+    [1,1,1,1,1,1,1,1,1,1],
+    [1,0,0,0,1,1,0,0,0,1],
+    [1,0,0,1,0,1,0,0,0,1],
+    [1,0,1,0,0,1,1,1,1,1],
+    [1,1,0,0,0,0,0,0,0,0],
+    [1,0,0,0,0,0,0,0,0,0]
+];
+
+
+var slovo_r = [
+    [0,1,1,1,1,1,1,1,0,0],
+    [0,1,1,0,0,0,0,0,0,0],
+    [0,1,1,0,0,0,0,0,0,0],
+    [0,1,1,0,0,0,0,0,0,0],
+    [0,1,1,0,0,0,0,0,0,0],
+    [0,1,1,1,1,1,1,1,1,0],
+    [0,1,1,1,1,1,1,1,1,0],
+    [0,1,1,0,0,0,0,1,1,0],
+    [0,1,1,0,0,0,0,1,1,0],
+    [0,1,1,1,1,1,1,1,1,0]
+];
+
+
+var slovo_p = [
+    [1,1,1,1,1,1,1,1,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,1,1,1,1],
+    [1,1,0,0,0,0,0,0,0,0],
+    [1,1,0,0,0,0,0,0,0,0],
+    [1,1,0,0,0,0,0,0,0,0]
+];
+
+var slovo_c = [
+    [1,1,1,1,1,1,0,0,0,0],
+    [1,0,0,0,1,1,0,0,0,0],
+    [1,0,0,0,1,1,0,0,0,0],
+    [1,1,1,1,1,1,0,0,0,1],
+    [0,0,0,0,1,1,0,0,1,1],
+    [0,0,0,0,1,1,0,1,1,0],
+    [0,0,0,0,1,1,1,1,0,0],
+    [0,0,0,0,1,1,1,0,0,0],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,0,0,0,1,0,0,0,0,0]
+];
+
+var slovo_č = [
+    [1,1,0,0,0,0,1,1,0,0],
+    [1,1,1,1,1,1,1,1,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,1,1,1,1,1,1,1,1],
+    [0,0,1,1,0,0,1,1,0,0],
+    [0,0,1,1,0,0,1,1,0,0],
+    [0,0,1,1,0,0,1,1,0,0],
+    [0,0,1,1,1,1,1,1,0,0]
+];
+var slovo_ć = [
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,1,1,1,1,1,1,1,1],
+    [0,0,1,1,0,0,1,1,0,0],
+    [0,0,1,1,0,0,1,1,0,0],
+    [0,0,1,1,0,0,1,1,0,0],
+    [0,0,1,1,0,0,1,1,0,0],
+    [0,0,1,1,1,1,1,1,0,0]
+];
+
+var slovo_ô = [
+    [1,1,1,1,0,0,1,1,1,1],
+    [1,1,0,1,0,0,1,0,1,1],
+    [1,1,0,1,0,0,1,0,1,1],
+    [1,1,0,1,1,1,1,0,1,1],
+    [1,1,0,0,0,0,0,0,1,1],
+    [1,1,1,1,1,1,1,1,1,1],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,0,0,0,1,1,0,0,0,0],
+    [0,0,1,1,1,1,1,1,0,0]
+];
+
+var slovo_bb = [
+    [0,0,0,0,1,1,1,1,1,1],
+    [0,0,0,0,1,1,0,0,1,1],
+    [0,0,0,0,1,1,0,0,1,1],
+    [0,0,0,0,1,1,0,0,1,1],
+    [0,0,0,1,1,1,1,1,1,1],
+    [0,0,1,1,1,1,0,0,1,1],
+    [0,1,1,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,0,0,1,1,0,0,1,1],
+    [1,1,1,1,1,1,1,1,1,1]
+];
+
+var slovaMatrice = [
+    slovo_a, slovo_b, slovo_v, slovo_3, slovo_ž, slovo_e, slovo_d, slovo_g,
+    slovo_m, slovo_n, slovo_b_custom, slovo_l, slovo_u, slovo_f, slovo_h, slovo_i,
+    slovo_Ï, slovo_j, slovo_jat, slovo_ju, slovo_k, slovo_s, slovo_š, slovo_z,
+    slovo_r, slovo_p, slovo_c, slovo_č, slovo_ć, slovo_ô, slovo_bb
+];
 
 // Globals
 var ship, enemies,
@@ -238,36 +492,44 @@ SPACING_Y = 35;
 // Called when the game is loading
 function preload() {
     game.load.crossOrigin = 'anonymous';
-    game.load.image('bg', 'https://dl.dropbox.com/s/6g7eq144u63sofr/pozadina.jpg?dl=0');
-    game.load.image('ship', 'https://dl.dropbox.com/s/ev85mgwop6iz2w7/ship_invaders.png?dl=0');
-    game.load.image('bullet', 'https://dl.dropbox.com/s/cuwp7fwoid3o2wz/ship_bullet.png?dl=0');
-    game.load.image('bullet2', 'https://dl.dropbox.com/s/jb3q3l4iul5wjfs/ship_bullet_2.png?dl=0');
-    game.load.image('invader-a', 'https://dl.dropbox.com/s/ofs2up142o9ignf/a.png?dl=0');
-    game.load.image('invader-b', 'https://dl.dropbox.com/s/q9kv2k6my3pmxnm/b.png?dl=0');
-    game.load.image('invader-c', 'https://dl.dropbox.com/s/dj79k5ou8fjl69j/c.png?dl=0');
-    game.load.image('invader-d', 'https://dl.dropbox.com/s/r5ozvu5vvt28q5w/d.png?dl=0');
-    game.load.image('invader-e', 'https://dl.dropbox.com/s/z0f0se2sv3jjm89/e.png?dl=0');
-    game.load.image('invader-f', 'https://dl.dropbox.com/s/b7pgqsgk10hzh1b/f.png?dl=0');
-    game.load.image('invader-g', 'https://dl.dropbox.com/s/ts7d5id10vbdb6u/g.png?dl=0');
-    game.load.image('invader-h', 'https://dl.dropbox.com/s/08lobltjwxhhiic/h.png?dl=0');
-    game.load.image('invader-i', 'https://dl.dropbox.com/s/9xdckut741w2aec/i.png?dl=0');
-    game.load.image('invader-j (đ)', 'https://dl.dropbox.com/s/lgidbqcufbh5tfh/j.png?dl=0');
-    game.load.image('invader-k', 'https://dl.dropbox.com/s/b6gj5jqrbfzpyof/k.png?dl=0');
-    game.load.image('invader-l', 'https://dl.dropbox.com/s/dot5eehm1mi6juu/l.png?dl=0');
-    game.load.image('invader-m', 'https://dl.dropbox.com/s/gktyi5926je6owt/m.png?dl=0');
-    game.load.image('invader-ć, šć', 'https://dl.dropbox.com/s/6h0j6jw4qhetefq/meko-c.png?dl=0');
-    game.load.image('invader-n', 'https://dl.dropbox.com/s/7jifk4j8dunmag0/n.png?dl=0');
-    game.load.image('invader-o', 'https://dl.dropbox.com/s/73ield8mkwb3e6d/o.png?dl=0');
-    game.load.image('invader-p', 'https://dl.dropbox.com/s/8ya5iyvsul9k5jo/p.png?dl=0');
-    game.load.image('invader-r', 'https://dl.dropbox.com/s/uajun33ys9hlov0/r.png?dl=0');
-    game.load.image('invader-s', 'https://dl.dropbox.com/s/q57o37rwvc6wtaw/s.png?dl=0');
-    game.load.image('invader-š', 'https://dl.dropbox.com/s/fgb3dnx73ozmn8e/slovo-s.png?dl=0');
-    game.load.image('invader-ž', 'https://dl.dropbox.com/s/r5whthcxnajolvt/slovo-z.png?dl=0');
-    game.load.image('invader-t', 'https://dl.dropbox.com/s/ojyo21zo1m33yud/t.png?dl=0');
-    game.load.image('invader-č', 'https://dl.dropbox.com/s/kwanvgkfg6jexq2/tvrdo-c.png?dl=0');
-    game.load.image('invader-u', 'https://dl.dropbox.com/s/5lanercj92jcno1/u.png?dl=0');
-    game.load.image('invader-v', 'https://dl.dropbox.com/s/rtibe2xgtxbhuv4/v.png?dl=0');
-    game.load.image('invader-z', 'https://dl.dropbox.com/s/mt80spoayvt74cu/z.png?dl=0');
+    game.load.image('bg', 'grafika/pozadina.jpg?dl=0');
+    game.load.image('ship', 'grafika/ship_invaders.png?dl=0');
+    game.load.image('bullet', 'grafika/ship_bullet.png?dl=0');
+    game.load.image('bullet2', 'grafika/ship_bullet_2.png?dl=0');
+    game.load.image('invader-a', 'grafika/'+trenutnoPismo+'/a.png?dl=0');
+    game.load.image('invader-b', 'grafika/'+trenutnoPismo+'/b.png?dl=0');
+    game.load.image('invader-c', 'grafika/'+trenutnoPismo+'/c.png?dl=0');
+    game.load.image('invader-d', 'grafika/'+trenutnoPismo+'/d.png?dl=0');
+    game.load.image('invader-e', 'grafika/'+trenutnoPismo+'/e.png?dl=0');
+    game.load.image('invader-f', 'grafika/'+trenutnoPismo+'/f.png?dl=0');
+    game.load.image('invader-g', 'grafika/'+trenutnoPismo+'/g.png?dl=0');
+    game.load.image('invader-h', 'grafika/'+trenutnoPismo+'/h.png?dl=0');
+    game.load.image('invader-i', 'grafika/'+trenutnoPismo+'/i.png?dl=0');
+    game.load.image('invader-k', 'grafika/'+trenutnoPismo+'/k.png?dl=0');
+    game.load.image('invader-l', 'grafika/'+trenutnoPismo+'/l.png?dl=0');
+    game.load.image('invader-m', 'grafika/'+trenutnoPismo+'/m.png?dl=0');
+    game.load.image('invader-ć, šć', 'grafika/'+trenutnoPismo+'/ć.png?dl=0');
+    game.load.image('invader-n', 'grafika/'+trenutnoPismo+'/n.png?dl=0');
+    game.load.image('invader-o', 'grafika/'+trenutnoPismo+'/o.png?dl=0');
+    game.load.image('invader-p', 'grafika/'+trenutnoPismo+'/p.png?dl=0');
+    game.load.image('invader-r', 'grafika/'+trenutnoPismo+'/r.png?dl=0');
+    game.load.image('invader-s', 'grafika/'+trenutnoPismo+'/s.png?dl=0');
+    game.load.image('invader-š', 'grafika/'+trenutnoPismo+'/š.png?dl=0');
+    game.load.image('invader-ž', 'grafika/'+trenutnoPismo+'/ž.png?dl=0');
+    game.load.image('invader-t', 'grafika/'+trenutnoPismo+'/t.png?dl=0');
+    game.load.image('invader-č', 'grafika/'+trenutnoPismo+'/č.png?dl=0');
+    game.load.image('invader-u', 'grafika/'+trenutnoPismo+'/u.png?dl=0');
+    game.load.image('invader-v', 'grafika/'+trenutnoPismo+'/v.png?dl=0');
+    game.load.image('invader-z', 'grafika/'+trenutnoPismo+'/z.png?dl=0');
+    if (trenutnoPismo=='latinica'){
+    game.load.image('invader-đ', 'grafika/'+trenutnoPismo+'/đ.png?dl=0');
+    game.load.image('invader-j', 'grafika/'+trenutnoPismo+'/j.png?dl=0');
+    game.load.image('invader-ć', 'grafika/'+trenutnoPismo+'/ć.png?dl=0');
+}
+else{
+    game.load.image('invader-j (đ)', 'grafika/'+trenutnoPismo+'/j.png?dl=0');
+    game.load.image('invader-ć, šć', 'grafika/'+trenutnoPismo+'/ć.png?dl=0');
+}
 
 }
 
@@ -416,9 +678,18 @@ function create2() {
 function _initEnemies() {
     enemies.removeAll();
 
-    var slovo = slovo_u
-    var rand = ["a", "b", "c", "č", "ć, šć", "d", "e", "f", "g", "h", "i", "j (đ)", "k", "l", "m", "n", "o", "p", "r", "s", "š", "u", "v", "t", "z", "ž"];
+    var newSlovoIndex;
+do {
+    newSlovoIndex = Math.floor(Math.random() * slovaMatrice.length);
+} while (newSlovoIndex === previousSlovoIndex);
+previousSlovoIndex = newSlovoIndex;
 
+var slovo = slovaMatrice[newSlovoIndex];
+    var rand = ["a", "b", "c", "č", "d", "e", "f", "g", "h", "i", "k", "l", "m", "n", "o", "p", "r", "s", "š", "u", "v", "t", "z", "ž"];
+    if (trenutnoPismo=='latinica'){
+        rand.push("j", "đ", "ć")
+    }
+    else{rand.push("j (đ)", "ć, šć")}
     // Dinamički izračunaj veličinu slova
     var redaka = slovo.length;
     var stupaca = slovo[0].length;
@@ -481,11 +752,12 @@ function _bulletHitEnemy(bullet, enemy) {
     enemy.kill();
     bullet.kill();
 
-    // Spawn a score notification and kill it shortly after
-    var scoreNotify = game.add.text(enemy.world.x, enemy.world.y, enemy.score, {
-        font: '20px monospace',
-        fill: '#ffff00'
-    });
+    var fontFamily = trenutnoPismo === 'latinica' ? '20px FSGLA' : '20px monospace';
+
+var scoreNotify = game.add.text(enemy.world.x, enemy.world.y, enemy.score, {
+    font: fontFamily,
+    fill: '#ffff00'
+});
     scoreNotify.anchor.setTo(0.5, 0.5);
     game.time.events.add(200, function () {
         scoreNotify.destroy();
@@ -557,7 +829,7 @@ function update() {
             fadeDiv.style.opacity = 0;
         }, 1000); // Čeka da fade završi prije zamjene glavne pozadine
 
-                var gameOverText2 = game.add.text(game.world.centerX, game.world.centerY + 50, 'PRITISNITE SPACE ZA NOVU IGRU', {
+                var gameOverText2 = game.add.text(game.world.centerX, game.world.centerY + 50, 'PRITISNITE ENTER ZA NOVU IGRU', {
                     font: '30px monospace',
                     fill: 'yellow'
                 });
@@ -569,7 +841,8 @@ function update() {
 
                 if (!smrt == 0) {
                     $(document).on("keyup", function (e) {
-                        if (e.keyCode == 32) {
+                        if (e.keyCode == 13) {
+                            location.reload();
                             gameOverText.setText("")
                             gameOverText2.setText("")
         var fadeDiv = document.getElementById('background-fade');
@@ -667,4 +940,4 @@ $(document).on("keyup", function (e) {
 
         }
     }
-});
+});}
