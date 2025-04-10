@@ -618,17 +618,20 @@ function create() {
     lastFireTime = game.time.now;
     moveTimerLoop = game.time.events.loop(MOVE_TIME, _moveEnemies);
 
-    // TOUCH kontrole — pomicanje broda s prevlačenjem, pucanje na tap
-    let isDragging = false;
-    let lastTouchX = null;
+    // TOUCH kontrole — pomicanje broda bilo gdje na ekranu, pucanje na tap
+let isDragging = false;
+let lastTouchX = null;
+let touchMoved = false;
 
-    game.input.onDown.add(function (pointer) {
+document.body.addEventListener('touchstart', function (e) {
+    if (e.touches.length === 1) {
         isDragging = true;
-        lastTouchX = pointer.x;
+        lastTouchX = e.touches[0].clientX;
+        touchMoved = false;
 
-        // PUCANJE na tap (samo ako nije slajdanje)
+        // Postavi timeout za pucanje ako nije bilo pomaka
         setTimeout(() => {
-            if (!playerBullet || !playerBullet.alive) {
+            if (!touchMoved && (!playerBullet || !playerBullet.alive)) {
                 playerBullet = game.add.sprite(ship.x, ship.y - ship.height, 'bullet');
                 playerBullet.anchor.setTo(0.5, 0.5);
                 game.physics.arcade.enable(playerBullet, Phaser.Physics.ARCADE);
@@ -637,23 +640,24 @@ function create() {
                 playerBullet.body.velocity.y = -BULLET_SPEED_P;
                 strela.play();
             }
-        }, 100);
-    }, this);
+        }, 150);
+    }
+}, false);
 
-    game.input.onUp.add(function () {
-        isDragging = false;
-    }, this);
+document.body.addEventListener('touchmove', function (e) {
+    if (isDragging && e.touches.length === 1) {
+        const deltaX = e.touches[0].clientX - lastTouchX;
+        ship.x += deltaX;
+        ship.x = Math.max(ship.width / 2, Math.min(game.width - ship.width / 2, ship.x));
+        lastTouchX = e.touches[0].clientX;
+        touchMoved = true;
+        e.preventDefault(); // spriječi skrolanje
+    }
+}, { passive: false });
 
-    game.input.addMoveCallback(function (pointer, x, y) {
-        if (isDragging && pointer.isDown) {
-            let deltaX = x - lastTouchX;
-            ship.x += deltaX;
-
-            // Ograniči brod unutar granica ekrana
-            ship.x = Math.max(ship.width / 2, Math.min(game.width - ship.width / 2, ship.x));
-            lastTouchX = x;
-        }
-    }, this);
+document.body.addEventListener('touchend', function () {
+    isDragging = false;
+}, false);
 
     // Pokretanje glazbe kad igrač dodirne ekran
     var loader = document.getElementById('loader');
@@ -887,10 +891,16 @@ function update() {
             fadeDiv.style.opacity = 0;
         }, 1000); // Čeka da fade završi prije zamjene glavne pozadine
 
-                var gameOverText2 = game.add.text(game.world.centerX, game.world.centerY + 50, 'PRITISNITE ENTER ZA NOVU IGRU', {
-                    font: '30px monospace',
-                    fill: 'yellow'
-                });
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        var gameOverText2 = game.add.text(
+            game.world.centerX,
+            game.world.centerY + 50,
+            isMobile ? 'PRITISNITE ZA NOVU IGRU' : 'PRITISNITE ENTER ZA NOVU IGRU',
+            {
+                font: '30px monospace',
+                fill: 'yellow'
+            }
+        );
 
                 if (playerBullet) playerBullet.destroy();
                 gameOverText.anchor.setTo(0.5, 0.5);
@@ -917,6 +927,27 @@ function update() {
                         }
                     });
                 }
+
+                if (isMobile) {
+                    document.getElementById('game-wrap').addEventListener('touchend', pokreniNovuIgru, { once: true });
+                    document.getElementById('game-wrap').addEventListener('click', pokreniNovuIgru, { once: true });
+                }
+                
+                function pokreniNovuIgru() {
+                    gameOverText.setText("");
+                    gameOverText2.setText("");
+                
+                    var fadeDiv = document.getElementById('background-fade');
+                    fadeDiv.style.backgroundImage = window.getComputedStyle(document.body).backgroundImage;
+                    fadeDiv.style.opacity = 1;
+                
+                    setTimeout(function () {
+                        document.body.style.backgroundImage = "url('../grafika/pozadina1.jpg')";
+                        fadeDiv.style.opacity = 0;
+                        create2();
+                    }, 1000);
+                }
+
             }
         });
 

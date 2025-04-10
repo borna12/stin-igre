@@ -174,10 +174,7 @@ html {
       display: block;
       margin: 0 auto;
     }
-  
-    html, body {
-      overflow: auto !important;
-    }
+
   
     body::before {
       height: auto;
