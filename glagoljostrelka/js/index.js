@@ -934,6 +934,7 @@ function update() {
                 }
                 
                 function pokreniNovuIgru() {
+                    location.reload();
                     gameOverText.setText("");
                     gameOverText2.setText("");
                 

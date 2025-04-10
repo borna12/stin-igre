@@ -181,3 +181,72 @@ html {
       min-height: 100%;
     }
   }
+
+  @media (max-width: 480px) {
+    #pismo-izbor{height: initial;}
+    #pismo-izbor .gumbi-container {
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+      max-height: 80vh;
+    }
+  
+    .pismo-opcija {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .pismo-gumb img {
+      width: 80%; /* prilagodi prema potrebi */
+      max-width: 250px;
+    }
+  }
+
+  #pismo-izbor h1 {
+    font-size: 36px;
+  }
+  
+  #pismo-izbor p,
+  #pismo-izbor h2 {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 1024px) {
+    #pismo-izbor h1 {
+      font-size: 32px;
+    }
+  
+    #pismo-izbor p,
+    #pismo-izbor h2 {
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #pismo-izbor h1 {
+      font-size: 28px;
+    }
+  
+    #pismo-izbor p,
+    #pismo-izbor h2 {
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #pismo-izbor h1 {
+      font-size: 24px;
+    }
+  
+    #pismo-izbor p,
+    #pismo-izbor h2 {
+      font-size: 14px;
+    }
+  
+    #pismo-izbor {
+      padding: 20px 10px;
+    }
+  }
