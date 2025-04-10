@@ -159,4 +159,28 @@ html {
   }
   }
 
+  @media only screen and (max-width: 800px) {
+    #wrap {
+      transform: scale(0.7);
+      -webkit-transform: scale(0.7);
+      -moz-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+      -o-transform: scale(0.7);
+      transform-origin: top center;
+      height: 100%;
+    }
   
+    #game-wrap canvas {
+      display: block;
+      margin: 0 auto;
+    }
+  
+    html, body {
+      overflow: auto !important;
+    }
+  
+    body::before {
+      height: auto;
+      min-height: 100%;
+    }
+  }

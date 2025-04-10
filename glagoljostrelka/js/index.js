@@ -5,7 +5,27 @@ function pokreniIgru(pismo) {
     document.getElementById('wrap').style.display = 'flex';
     startPhaser();
 }
+function applyZoomOutIfMobile() {
+    const wrap = document.getElementById('wrap');
+    const gameWidth = 800;
+    const screenWidth = window.innerWidth;
 
+    if (screenWidth < gameWidth) {
+        const zoom = screenWidth / gameWidth;
+        wrap.style.transform = `scale(${zoom})`;
+        wrap.style.transformOrigin = 'left center';
+        wrap.style.width = gameWidth + 'px';
+        wrap.style.height = '600px';
+        wrap.style.margin = '0 auto';
+    } else {
+        // Reset ako nije mobilni ekran
+        wrap.style.transform = '';
+        wrap.style.transformOrigin = '';
+        wrap.style.width = '';
+        wrap.style.height = '';
+        wrap.style.margin = '';
+    }
+}
 function startPhaser(){
     $("#loader").show()
 console.clear();
@@ -658,6 +678,7 @@ function create() {
             window.addEventListener('touchstart', tryPlayMusic);
         }, 500);
     }
+    applyZoomOutIfMobile()
 }
 
 
