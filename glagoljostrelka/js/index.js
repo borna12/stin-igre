@@ -534,6 +534,8 @@ else{
 }
 
 // Called when the game inits
+// Called when the game inits
+// Called when the game inits
 function create() {
     cursors = game.input.keyboard.createCursorKeys();
 
@@ -547,36 +549,11 @@ function create() {
     ship = game.add.sprite(game.world.centerX, game.height - SHIP_YOFS, 'ship');
     ship.anchor.setTo(0.5, 1);
 
-
-    // === Touch kontrola broda (klizanje) ===
-game.input.addMoveCallback(function (pointer, x, y) {
-    if (pointer.isDown && pointer.pointerId === 0) {
-        ship.x = x;
-    }
-}, this);
-
-// === Pucanje kad se pritisne ekran ===
-game.input.onDown.add(function (pointer) {
-    if (pointer.pointerId === 0) {
-        if (!playerBullet || !playerBullet.alive) {
-            playerBullet = game.add.sprite(ship.x, ship.y - ship.height, 'bullet');
-            playerBullet.anchor.setTo(0.5, 0.5);
-            strela.play();
-            game.physics.arcade.enable(playerBullet, Phaser.Physics.ARCADE);
-            playerBullet.checkWorldBounds = true;
-            playerBullet.outOfBoundsKill = true;
-            playerBullet.body.velocity.y = -BULLET_SPEED_P;
-        }
-    }
-}, this);
-
-    // Add enemy bullet pool.  Enemies draw from this when firing,
-    // the bullet instances get re-used throughout the game.
+    // Add enemy bullet pool
     enemyBullets = game.add.group();
     enemyBullets.enableBody = true;
     enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
     enemyBullets.createMultiple(5, 'bullet2', 0, false);
-
     enemyBullets.setAll('anchor.x', 0.5);
     enemyBullets.setAll('anchor.y', 0.5);
     enemyBullets.setAll('outOfBoundsKill', true);
@@ -620,32 +597,69 @@ game.input.onDown.add(function (pointer) {
     // Start enemy movement & firing
     lastFireTime = game.time.now;
     moveTimerLoop = game.time.events.loop(MOVE_TIME, _moveEnemies);
-var loader = document.getElementById('loader');
-if (loader) {
-    loader.style.transition = 'opacity 0.5s ease';
-    loader.style.opacity = '0';
-    setTimeout(() => {
-        loader.style.display = 'none';
-    
-        // Čekaj prvi klik/tap/tipku
-        function tryPlayMusic() {
-            pozadina.play().then(() => {
-                // Uspješno pokrenuto, ukloni listener
-                window.removeEventListener('keydown', tryPlayMusic);
-                window.removeEventListener('mousedown', tryPlayMusic);
-                window.removeEventListener('touchstart', tryPlayMusic);
-            }).catch((e) => {
-                console.warn("Autoplay blocked, waiting for user interaction...");
-            });
+
+    // TOUCH kontrole — pomicanje broda s prevlačenjem, pucanje na tap
+    let isDragging = false;
+    let lastTouchX = null;
+
+    game.input.onDown.add(function (pointer) {
+        isDragging = true;
+        lastTouchX = pointer.x;
+
+        // PUCANJE na tap (samo ako nije slajdanje)
+        setTimeout(() => {
+            if (!playerBullet || !playerBullet.alive) {
+                playerBullet = game.add.sprite(ship.x, ship.y - ship.height, 'bullet');
+                playerBullet.anchor.setTo(0.5, 0.5);
+                game.physics.arcade.enable(playerBullet, Phaser.Physics.ARCADE);
+                playerBullet.checkWorldBounds = true;
+                playerBullet.outOfBoundsKill = true;
+                playerBullet.body.velocity.y = -BULLET_SPEED_P;
+                strela.play();
+            }
+        }, 100);
+    }, this);
+
+    game.input.onUp.add(function () {
+        isDragging = false;
+    }, this);
+
+    game.input.addMoveCallback(function (pointer, x, y) {
+        if (isDragging && pointer.isDown) {
+            let deltaX = x - lastTouchX;
+            ship.x += deltaX;
+
+            // Ograniči brod unutar granica ekrana
+            ship.x = Math.max(ship.width / 2, Math.min(game.width - ship.width / 2, ship.x));
+            lastTouchX = x;
         }
-    
-        // Dodaj event listenere za prvi kontakt korisnika
-        window.addEventListener('keydown', tryPlayMusic);
-        window.addEventListener('mousedown', tryPlayMusic);
-        window.addEventListener('touchstart', tryPlayMusic);
-    }, 500);
+    }, this);
+
+    // Pokretanje glazbe kad igrač dodirne ekran
+    var loader = document.getElementById('loader');
+    if (loader) {
+        loader.style.transition = 'opacity 0.5s ease';
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+
+            function tryPlayMusic() {
+                pozadina.play().then(() => {
+                    window.removeEventListener('keydown', tryPlayMusic);
+                    window.removeEventListener('mousedown', tryPlayMusic);
+                    window.removeEventListener('touchstart', tryPlayMusic);
+                }).catch((e) => {
+                    console.warn("Autoplay blocked, waiting for user interaction...");
+                });
+            }
+
+            window.addEventListener('keydown', tryPlayMusic);
+            window.addEventListener('mousedown', tryPlayMusic);
+            window.addEventListener('touchstart', tryPlayMusic);
+        }, 500);
+    }
 }
-}
+
 
 function create2() {
     backgroundChanged = false;
