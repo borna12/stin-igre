@@ -759,7 +759,7 @@ var scoreNotify = game.add.text(enemy.world.x, enemy.world.y, enemy.score, {
     fill: '#ffff00'
 });
     scoreNotify.anchor.setTo(0.5, 0.5);
-    game.time.events.add(200, function () {
+    game.time.events.add(600, function () {
         scoreNotify.destroy();
     });
 
