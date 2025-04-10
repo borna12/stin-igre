@@ -547,6 +547,29 @@ function create() {
     ship = game.add.sprite(game.world.centerX, game.height - SHIP_YOFS, 'ship');
     ship.anchor.setTo(0.5, 1);
 
+
+    // === Touch kontrola broda (klizanje) ===
+game.input.addMoveCallback(function (pointer, x, y) {
+    if (pointer.isDown && pointer.pointerId === 0) {
+        ship.x = x;
+    }
+}, this);
+
+// === Pucanje kad se pritisne ekran ===
+game.input.onDown.add(function (pointer) {
+    if (pointer.pointerId === 0) {
+        if (!playerBullet || !playerBullet.alive) {
+            playerBullet = game.add.sprite(ship.x, ship.y - ship.height, 'bullet');
+            playerBullet.anchor.setTo(0.5, 0.5);
+            strela.play();
+            game.physics.arcade.enable(playerBullet, Phaser.Physics.ARCADE);
+            playerBullet.checkWorldBounds = true;
+            playerBullet.outOfBoundsKill = true;
+            playerBullet.body.velocity.y = -BULLET_SPEED_P;
+        }
+    }
+}, this);
+
     // Add enemy bullet pool.  Enemies draw from this when firing,
     // the bullet instances get re-used throughout the game.
     enemyBullets = game.add.group();
