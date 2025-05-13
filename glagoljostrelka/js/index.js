@@ -887,7 +887,7 @@ function update() {
         fadeDiv.style.opacity = 1;
     
         setTimeout(function () {
-            document.body.style.backgroundImage = "url('../grafika/kraj.jpg')";
+            document.body.style.backgroundImage = "url('https://stin.hr/igre/glagoljostrelka/grafika/kraj.jpg')";
             fadeDiv.style.opacity = 0;
         }, 1000); // Čeka da fade završi prije zamjene glavne pozadine
 
@@ -920,7 +920,7 @@ function update() {
         fadeDiv.style.opacity = 1;
     
         setTimeout(function () {
-            document.body.style.backgroundImage = "url('../grafika/pozadina1.jpg')";
+            document.body.style.backgroundImage = "url('https://stin.hr/igre/glagoljostrelka/grafika/pozadina1.jpg')";
             fadeDiv.style.opacity = 0;
         }, 1000); // Čeka da fade završi prije zamjene glavne pozadine
                             create2()
@@ -943,7 +943,7 @@ function update() {
                     fadeDiv.style.opacity = 1;
                 
                     setTimeout(function () {
-                        document.body.style.backgroundImage = "url('../grafika/pozadina1.jpg')";
+                        document.body.style.backgroundImage = "url('https://stin.hr/igre/glagoljostrelka/grafika/pozadina1.jpg')";
                         fadeDiv.style.opacity = 0;
                         create2();
                     }, 1000);
@@ -1004,7 +1004,7 @@ function update() {
         fadeDiv.style.opacity = 1;
     
         setTimeout(function () {
-            document.body.style.backgroundImage = "url('../grafika/pozadina2.jpg')";
+            document.body.style.backgroundImage = "url('https://stin.hr/igre/glagoljostrelka/grafika/pozadina2.jpg')";
             fadeDiv.style.opacity = 0;
         }, 1000); // Čeka da fade završi prije zamjene glavne pozadine
     }
