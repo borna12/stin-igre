@@ -1,0 +1,3120 @@
+/*!
+  Ionicons, v1.5.2
+  Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
+  https://twitter.com/benjsperry  https://twitter.com/ionicframework
+  MIT License: https://github.com/driftyco/ionicons
+*/
+
+@font-face {
+    font-family: "Ionicons";
+    src: url("../fonts/ionicons.eot?v=1.5.2");
+    src: url("../fonts/ionicons.eot?v=1.5.2#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=1.5.2") format("truetype"), url("../fonts/ionicons.woff?v=1.5.2") format("woff"), url("../fonts/ionicons.svg?v=1.5.2#Ionicons") format("svg");
+    font-weight: normal;
+    font-style: normal
+}
+
+.ion,
+.ion-loading-a,
+.ion-loading-b,
+.ion-loading-c,
+.ion-loading-d,
+.ion-looping,
+.ion-refreshing,
+.ion-ios7-reloading,
+.ionicons,
+.ion-alert:after,
+.ion-alert-circled:after,
+.ion-android-add:after,
+.ion-android-add-contact:after,
+.ion-android-alarm:after,
+.ion-android-archive:after,
+.ion-android-arrow-back:after,
+.ion-android-arrow-down-left:after,
+.ion-android-arrow-down-right:after,
+.ion-android-arrow-forward:after,
+.ion-android-arrow-up-left:after,
+.ion-android-arrow-up-right:after,
+.ion-android-battery:after,
+.ion-android-book:after,
+.ion-android-calendar:after,
+.ion-android-call:after,
+.ion-android-camera:after,
+.ion-android-chat:after,
+.ion-android-checkmark:after,
+.ion-android-clock:after,
+.ion-android-close:after,
+.ion-android-contact:after,
+.ion-android-contacts:after,
+.ion-android-data:after,
+.ion-android-developer:after,
+.ion-android-display:after,
+.ion-android-download:after,
+.ion-android-drawer:after,
+.ion-android-dropdown:after,
+.ion-android-earth:after,
+.ion-android-folder:after,
+.ion-android-forums:after,
+.ion-android-friends:after,
+.ion-android-hand:after,
+.ion-android-image:after,
+.ion-android-inbox:after,
+.ion-android-information:after,
+.ion-android-keypad:after,
+.ion-android-lightbulb:after,
+.ion-android-locate:after,
+.ion-android-location:after,
+.ion-android-mail:after,
+.ion-android-microphone:after,
+.ion-android-mixer:after,
+.ion-android-more:after,
+.ion-android-note:after,
+.ion-android-playstore:after,
+.ion-android-printer:after,
+.ion-android-promotion:after,
+.ion-android-reminder:after,
+.ion-android-remove:after,
+.ion-android-search:after,
+.ion-android-send:after,
+.ion-android-settings:after,
+.ion-android-share:after,
+.ion-android-social:after,
+.ion-android-social-user:after,
+.ion-android-sort:after,
+.ion-android-stair-drawer:after,
+.ion-android-star:after,
+.ion-android-stopwatch:after,
+.ion-android-storage:after,
+.ion-android-system-back:after,
+.ion-android-system-home:after,
+.ion-android-system-windows:after,
+.ion-android-timer:after,
+.ion-android-trash:after,
+.ion-android-user-menu:after,
+.ion-android-volume:after,
+.ion-android-wifi:after,
+.ion-aperture:after,
+.ion-archive:after,
+.ion-arrow-down-a:after,
+.ion-arrow-down-b:after,
+.ion-arrow-down-c:after,
+.ion-arrow-expand:after,
+.ion-arrow-graph-down-left:after,
+.ion-arrow-graph-down-right:after,
+.ion-arrow-graph-up-left:after,
+.ion-arrow-graph-up-right:after,
+.ion-arrow-left-a:after,
+.ion-arrow-left-b:after,
+.ion-arrow-left-c:after,
+.ion-arrow-move:after,
+.ion-arrow-resize:after,
+.ion-arrow-return-left:after,
+.ion-arrow-return-right:after,
+.ion-arrow-right-a:after,
+.ion-arrow-right-b:after,
+.ion-arrow-right-c:after,
+.ion-arrow-shrink:after,
+.ion-arrow-swap:after,
+.ion-arrow-up-a:after,
+.ion-arrow-up-b:after,
+.ion-arrow-up-c:after,
+.ion-asterisk:after,
+.ion-at:after,
+.ion-bag:after,
+.ion-battery-charging:after,
+.ion-battery-empty:after,
+.ion-battery-full:after,
+.ion-battery-half:after,
+.ion-battery-low:after,
+.ion-beaker:after,
+.ion-beer:after,
+.ion-bluetooth:after,
+.ion-bonfire:after,
+.ion-bookmark:after,
+.ion-briefcase:after,
+.ion-bug:after,
+.ion-calculator:after,
+.ion-calendar:after,
+.ion-camera:after,
+.ion-card:after,
+.ion-cash:after,
+.ion-chatbox:after,
+.ion-chatbox-working:after,
+.ion-chatboxes:after,
+.ion-chatbubble:after,
+.ion-chatbubble-working:after,
+.ion-chatbubbles:after,
+.ion-checkmark:after,
+.ion-checkmark-circled:after,
+.ion-checkmark-round:after,
+.ion-chevron-down:after,
+.ion-chevron-left:after,
+.ion-chevron-right:after,
+.ion-chevron-up:after,
+.ion-clipboard:after,
+.ion-clock:after,
+.ion-close:after,
+.ion-close-circled:after,
+.ion-close-round:after,
+.ion-closed-captioning:after,
+.ion-cloud:after,
+.ion-code:after,
+.ion-code-download:after,
+.ion-code-working:after,
+.ion-coffee:after,
+.ion-compass:after,
+.ion-compose:after,
+.ion-connection-bars:after,
+.ion-contrast:after,
+.ion-cube:after,
+.ion-disc:after,
+.ion-document:after,
+.ion-document-text:after,
+.ion-drag:after,
+.ion-earth:after,
+.ion-edit:after,
+.ion-egg:after,
+.ion-eject:after,
+.ion-email:after,
+.ion-eye:after,
+.ion-eye-disabled:after,
+.ion-female:after,
+.ion-filing:after,
+.ion-film-marker:after,
+.ion-fireball:after,
+.ion-flag:after,
+.ion-flame:after,
+.ion-flash:after,
+.ion-flash-off:after,
+.ion-flask:after,
+.ion-folder:after,
+.ion-fork:after,
+.ion-fork-repo:after,
+.ion-forward:after,
+.ion-funnel:after,
+.ion-game-controller-a:after,
+.ion-game-controller-b:after,
+.ion-gear-a:after,
+.ion-gear-b:after,
+.ion-grid:after,
+.ion-hammer:after,
+.ion-happy:after,
+.ion-headphone:after,
+.ion-heart:after,
+.ion-heart-broken:after,
+.ion-help:after,
+.ion-help-buoy:after,
+.ion-help-circled:after,
+.ion-home:after,
+.ion-icecream:after,
+.ion-icon-social-google-plus:after,
+.ion-icon-social-google-plus-outline:after,
+.ion-image:after,
+.ion-images:after,
+.ion-information:after,
+.ion-information-circled:after,
+.ion-ionic:after,
+.ion-ios7-alarm:after,
+.ion-ios7-alarm-outline:after,
+.ion-ios7-albums:after,
+.ion-ios7-albums-outline:after,
+.ion-ios7-americanfootball:after,
+.ion-ios7-americanfootball-outline:after,
+.ion-ios7-analytics:after,
+.ion-ios7-analytics-outline:after,
+.ion-ios7-arrow-back:after,
+.ion-ios7-arrow-down:after,
+.ion-ios7-arrow-forward:after,
+.ion-ios7-arrow-left:after,
+.ion-ios7-arrow-right:after,
+.ion-ios7-arrow-thin-down:after,
+.ion-ios7-arrow-thin-left:after,
+.ion-ios7-arrow-thin-right:after,
+.ion-ios7-arrow-thin-up:after,
+.ion-ios7-arrow-up:after,
+.ion-ios7-at:after,
+.ion-ios7-at-outline:after,
+.ion-ios7-barcode:after,
+.ion-ios7-barcode-outline:after,
+.ion-ios7-baseball:after,
+.ion-ios7-baseball-outline:after,
+.ion-ios7-basketball:after,
+.ion-ios7-basketball-outline:after,
+.ion-ios7-bell:after,
+.ion-ios7-bell-outline:after,
+.ion-ios7-bolt:after,
+.ion-ios7-bolt-outline:after,
+.ion-ios7-bookmarks:after,
+.ion-ios7-bookmarks-outline:after,
+.ion-ios7-box:after,
+.ion-ios7-box-outline:after,
+.ion-ios7-briefcase:after,
+.ion-ios7-briefcase-outline:after,
+.ion-ios7-browsers:after,
+.ion-ios7-browsers-outline:after,
+.ion-ios7-calculator:after,
+.ion-ios7-calculator-outline:after,
+.ion-ios7-calendar:after,
+.ion-ios7-calendar-outline:after,
+.ion-ios7-camera:after,
+.ion-ios7-camera-outline:after,
+.ion-ios7-cart:after,
+.ion-ios7-cart-outline:after,
+.ion-ios7-chatboxes:after,
+.ion-ios7-chatboxes-outline:after,
+.ion-ios7-chatbubble:after,
+.ion-ios7-chatbubble-outline:after,
+.ion-ios7-checkmark:after,
+.ion-ios7-checkmark-empty:after,
+.ion-ios7-checkmark-outline:after,
+.ion-ios7-circle-filled:after,
+.ion-ios7-circle-outline:after,
+.ion-ios7-clock:after,
+.ion-ios7-clock-outline:after,
+.ion-ios7-close:after,
+.ion-ios7-close-empty:after,
+.ion-ios7-close-outline:after,
+.ion-ios7-cloud:after,
+.ion-ios7-cloud-download:after,
+.ion-ios7-cloud-download-outline:after,
+.ion-ios7-cloud-outline:after,
+.ion-ios7-cloud-upload:after,
+.ion-ios7-cloud-upload-outline:after,
+.ion-ios7-cloudy:after,
+.ion-ios7-cloudy-night:after,
+.ion-ios7-cloudy-night-outline:after,
+.ion-ios7-cloudy-outline:after,
+.ion-ios7-cog:after,
+.ion-ios7-cog-outline:after,
+.ion-ios7-compose:after,
+.ion-ios7-compose-outline:after,
+.ion-ios7-contact:after,
+.ion-ios7-contact-outline:after,
+.ion-ios7-copy:after,
+.ion-ios7-copy-outline:after,
+.ion-ios7-download:after,
+.ion-ios7-download-outline:after,
+.ion-ios7-drag:after,
+.ion-ios7-email:after,
+.ion-ios7-email-outline:after,
+.ion-ios7-expand:after,
+.ion-ios7-eye:after,
+.ion-ios7-eye-outline:after,
+.ion-ios7-fastforward:after,
+.ion-ios7-fastforward-outline:after,
+.ion-ios7-filing:after,
+.ion-ios7-filing-outline:after,
+.ion-ios7-film:after,
+.ion-ios7-film-outline:after,
+.ion-ios7-flag:after,
+.ion-ios7-flag-outline:after,
+.ion-ios7-folder:after,
+.ion-ios7-folder-outline:after,
+.ion-ios7-football:after,
+.ion-ios7-football-outline:after,
+.ion-ios7-gear:after,
+.ion-ios7-gear-outline:after,
+.ion-ios7-glasses:after,
+.ion-ios7-glasses-outline:after,
+.ion-ios7-heart:after,
+.ion-ios7-heart-outline:after,
+.ion-ios7-help:after,
+.ion-ios7-help-empty:after,
+.ion-ios7-help-outline:after,
+.ion-ios7-home:after,
+.ion-ios7-home-outline:after,
+.ion-ios7-infinite:after,
+.ion-ios7-infinite-outline:after,
+.ion-ios7-information:after,
+.ion-ios7-information-empty:after,
+.ion-ios7-information-outline:after,
+.ion-ios7-ionic-outline:after,
+.ion-ios7-keypad:after,
+.ion-ios7-keypad-outline:after,
+.ion-ios7-lightbulb:after,
+.ion-ios7-lightbulb-outline:after,
+.ion-ios7-location:after,
+.ion-ios7-location-outline:after,
+.ion-ios7-locked:after,
+.ion-ios7-locked-outline:after,
+.ion-ios7-loop:after,
+.ion-ios7-loop-strong:after,
+.ion-ios7-medkit:after,
+.ion-ios7-medkit-outline:after,
+.ion-ios7-mic:after,
+.ion-ios7-mic-off:after,
+.ion-ios7-mic-outline:after,
+.ion-ios7-minus:after,
+.ion-ios7-minus-empty:after,
+.ion-ios7-minus-outline:after,
+.ion-ios7-monitor:after,
+.ion-ios7-monitor-outline:after,
+.ion-ios7-moon:after,
+.ion-ios7-moon-outline:after,
+.ion-ios7-more:after,
+.ion-ios7-more-outline:after,
+.ion-ios7-musical-note:after,
+.ion-ios7-musical-notes:after,
+.ion-ios7-navigate:after,
+.ion-ios7-navigate-outline:after,
+.ion-ios7-paper:after,
+.ion-ios7-paper-outline:after,
+.ion-ios7-paperplane:after,
+.ion-ios7-paperplane-outline:after,
+.ion-ios7-partlysunny:after,
+.ion-ios7-partlysunny-outline:after,
+.ion-ios7-pause:after,
+.ion-ios7-pause-outline:after,
+.ion-ios7-paw:after,
+.ion-ios7-paw-outline:after,
+.ion-ios7-people:after,
+.ion-ios7-people-outline:after,
+.ion-ios7-person:after,
+.ion-ios7-person-outline:after,
+.ion-ios7-personadd:after,
+.ion-ios7-personadd-outline:after,
+.ion-ios7-photos:after,
+.ion-ios7-photos-outline:after,
+.ion-ios7-pie:after,
+.ion-ios7-pie-outline:after,
+.ion-ios7-play:after,
+.ion-ios7-play-outline:after,
+.ion-ios7-plus:after,
+.ion-ios7-plus-empty:after,
+.ion-ios7-plus-outline:after,
+.ion-ios7-pricetag:after,
+.ion-ios7-pricetag-outline:after,
+.ion-ios7-pricetags:after,
+.ion-ios7-pricetags-outline:after,
+.ion-ios7-printer:after,
+.ion-ios7-printer-outline:after,
+.ion-ios7-pulse:after,
+.ion-ios7-pulse-strong:after,
+.ion-ios7-rainy:after,
+.ion-ios7-rainy-outline:after,
+.ion-ios7-recording:after,
+.ion-ios7-recording-outline:after,
+.ion-ios7-redo:after,
+.ion-ios7-redo-outline:after,
+.ion-ios7-refresh:after,
+.ion-ios7-refresh-empty:after,
+.ion-ios7-refresh-outline:after,
+.ion-ios7-reload:after,
+.ion-ios7-reloading:after,
+.ion-ios7-reverse-camera:after,
+.ion-ios7-reverse-camera-outline:after,
+.ion-ios7-rewind:after,
+.ion-ios7-rewind-outline:after,
+.ion-ios7-search:after,
+.ion-ios7-search-strong:after,
+.ion-ios7-settings:after,
+.ion-ios7-settings-strong:after,
+.ion-ios7-shrink:after,
+.ion-ios7-skipbackward:after,
+.ion-ios7-skipbackward-outline:after,
+.ion-ios7-skipforward:after,
+.ion-ios7-skipforward-outline:after,
+.ion-ios7-snowy:after,
+.ion-ios7-speedometer:after,
+.ion-ios7-speedometer-outline:after,
+.ion-ios7-star:after,
+.ion-ios7-star-half:after,
+.ion-ios7-star-outline:after,
+.ion-ios7-stopwatch:after,
+.ion-ios7-stopwatch-outline:after,
+.ion-ios7-sunny:after,
+.ion-ios7-sunny-outline:after,
+.ion-ios7-telephone:after,
+.ion-ios7-telephone-outline:after,
+.ion-ios7-tennisball:after,
+.ion-ios7-tennisball-outline:after,
+.ion-ios7-thunderstorm:after,
+.ion-ios7-thunderstorm-outline:after,
+.ion-ios7-time:after,
+.ion-ios7-time-outline:after,
+.ion-ios7-timer:after,
+.ion-ios7-timer-outline:after,
+.ion-ios7-toggle:after,
+.ion-ios7-toggle-outline:after,
+.ion-ios7-trash:after,
+.ion-ios7-trash-outline:after,
+.ion-ios7-undo:after,
+.ion-ios7-undo-outline:after,
+.ion-ios7-unlocked:after,
+.ion-ios7-unlocked-outline:after,
+.ion-ios7-upload:after,
+.ion-ios7-upload-outline:after,
+.ion-ios7-videocam:after,
+.ion-ios7-videocam-outline:after,
+.ion-ios7-volume-high:after,
+.ion-ios7-volume-low:after,
+.ion-ios7-wineglass:after,
+.ion-ios7-wineglass-outline:after,
+.ion-ios7-world:after,
+.ion-ios7-world-outline:after,
+.ion-ipad:after,
+.ion-iphone:after,
+.ion-ipod:after,
+.ion-jet:after,
+.ion-key:after,
+.ion-knife:after,
+.ion-laptop:after,
+.ion-leaf:after,
+.ion-levels:after,
+.ion-lightbulb:after,
+.ion-link:after,
+.ion-load-a:after,
+.ion-loading-a:after,
+.ion-load-b:after,
+.ion-loading-b:after,
+.ion-load-c:after,
+.ion-loading-c:after,
+.ion-load-d:after,
+.ion-loading-d:after,
+.ion-location:after,
+.ion-locked:after,
+.ion-log-in:after,
+.ion-log-out:after,
+.ion-loop:after,
+.ion-looping:after,
+.ion-magnet:after,
+.ion-male:after,
+.ion-man:after,
+.ion-map:after,
+.ion-medkit:after,
+.ion-merge:after,
+.ion-mic-a:after,
+.ion-mic-b:after,
+.ion-mic-c:after,
+.ion-minus:after,
+.ion-minus-circled:after,
+.ion-minus-round:after,
+.ion-model-s:after,
+.ion-monitor:after,
+.ion-more:after,
+.ion-mouse:after,
+.ion-music-note:after,
+.ion-navicon:after,
+.ion-navicon-round:after,
+.ion-navigate:after,
+.ion-network:after,
+.ion-no-smoking:after,
+.ion-nuclear:after,
+.ion-outlet:after,
+.ion-paper-airplane:after,
+.ion-paperclip:after,
+.ion-pause:after,
+.ion-person:after,
+.ion-person-add:after,
+.ion-person-stalker:after,
+.ion-pie-graph:after,
+.ion-pin:after,
+.ion-pinpoint:after,
+.ion-pizza:after,
+.ion-plane:after,
+.ion-planet:after,
+.ion-play:after,
+.ion-playstation:after,
+.ion-plus:after,
+.ion-plus-circled:after,
+.ion-plus-round:after,
+.ion-podium:after,
+.ion-pound:after,
+.ion-power:after,
+.ion-pricetag:after,
+.ion-pricetags:after,
+.ion-printer:after,
+.ion-pull-request:after,
+.ion-qr-scanner:after,
+.ion-quote:after,
+.ion-radio-waves:after,
+.ion-record:after,
+.ion-refresh:after,
+.ion-refreshing:after,
+.ion-reply:after,
+.ion-reply-all:after,
+.ion-ribbon-a:after,
+.ion-ribbon-b:after,
+.ion-sad:after,
+.ion-scissors:after,
+.ion-search:after,
+.ion-settings:after,
+.ion-share:after,
+.ion-shuffle:after,
+.ion-skip-backward:after,
+.ion-skip-forward:after,
+.ion-social-android:after,
+.ion-social-android-outline:after,
+.ion-social-apple:after,
+.ion-social-apple-outline:after,
+.ion-social-bitcoin:after,
+.ion-social-bitcoin-outline:after,
+.ion-social-buffer:after,
+.ion-social-buffer-outline:after,
+.ion-social-designernews:after,
+.ion-social-designernews-outline:after,
+.ion-social-dribbble:after,
+.ion-social-dribbble-outline:after,
+.ion-social-dropbox:after,
+.ion-social-dropbox-outline:after,
+.ion-social-facebook:after,
+.ion-social-facebook-outline:after,
+.ion-social-foursquare:after,
+.ion-social-foursquare-outline:after,
+.ion-social-freebsd-devil:after,
+.ion-social-github:after,
+.ion-social-github-outline:after,
+.ion-social-google:after,
+.ion-social-google-outline:after,
+.ion-social-googleplus:after,
+.ion-social-googleplus-outline:after,
+.ion-social-hackernews:after,
+.ion-social-hackernews-outline:after,
+.ion-social-instagram:after,
+.ion-social-instagram-outline:after,
+.ion-social-linkedin:after,
+.ion-social-linkedin-outline:after,
+.ion-social-pinterest:after,
+.ion-social-pinterest-outline:after,
+.ion-social-reddit:after,
+.ion-social-reddit-outline:after,
+.ion-social-rss:after,
+.ion-social-rss-outline:after,
+.ion-social-skype:after,
+.ion-social-skype-outline:after,
+.ion-social-tumblr:after,
+.ion-social-tumblr-outline:after,
+.ion-social-tux:after,
+.ion-social-twitter:after,
+.ion-social-twitter-outline:after,
+.ion-social-usd:after,
+.ion-social-usd-outline:after,
+.ion-social-vimeo:after,
+.ion-social-vimeo-outline:after,
+.ion-social-windows:after,
+.ion-social-windows-outline:after,
+.ion-social-wordpress:after,
+.ion-social-wordpress-outline:after,
+.ion-social-yahoo:after,
+.ion-social-yahoo-outline:after,
+.ion-social-youtube:after,
+.ion-social-youtube-outline:after,
+.ion-speakerphone:after,
+.ion-speedometer:after,
+.ion-spoon:after,
+.ion-star:after,
+.ion-stats-bars:after,
+.ion-steam:after,
+.ion-stop:after,
+.ion-thermometer:after,
+.ion-thumbsdown:after,
+.ion-thumbsup:after,
+.ion-toggle:after,
+.ion-toggle-filled:after,
+.ion-trash-a:after,
+.ion-trash-b:after,
+.ion-trophy:after,
+.ion-umbrella:after,
+.ion-university:after,
+.ion-unlocked:after,
+.ion-upload:after,
+.ion-usb:after,
+.ion-videocamera:after,
+.ion-volume-high:after,
+.ion-volume-low:after,
+.ion-volume-medium:after,
+.ion-volume-mute:after,
+.ion-wand:after,
+.ion-waterdrop:after,
+.ion-wifi:after,
+.ion-wineglass:after,
+.ion-woman:after,
+.ion-wrench:after,
+.ion-xbox:after {
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.ion-spin,
+.ion-loading-a,
+.ion-loading-b,
+.ion-loading-c,
+.ion-loading-d,
+.ion-looping,
+.ion-refreshing,
+.ion-ios7-reloading {
+    -webkit-animation: spin 1s infinite linear;
+    -moz-animation: spin 1s infinite linear;
+    -o-animation: spin 1s infinite linear;
+    animation: spin 1s infinite linear
+}
+
+@-moz-keyframes spin {
+    0% {
+        -moz-transform: rotate(0deg)
+    }
+    100% {
+        -moz-transform: rotate(359deg)
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg)
+    }
+    100% {
+        -webkit-transform: rotate(359deg)
+    }
+}
+
+@-o-keyframes spin {
+    0% {
+        -o-transform: rotate(0deg)
+    }
+    100% {
+        -o-transform: rotate(359deg)
+    }
+}
+
+@-ms-keyframes spin {
+    0% {
+        -ms-transform: rotate(0deg)
+    }
+    100% {
+        -ms-transform: rotate(359deg)
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg)
+    }
+    100% {
+        transform: rotate(359deg)
+    }
+}
+
+.ion-loading-a {
+    -webkit-animation-timing-function: steps(8, start);
+    -moz-animation-timing-function: steps(8, start);
+    animation-timing-function: steps(8, start)
+}
+
+.ion-alert:after {
+    content: "\f101"
+}
+
+.ion-alert-circled:after {
+    content: "\f100"
+}
+
+.ion-android-add:after {
+    content: "\f2c7"
+}
+
+.ion-android-add-contact:after {
+    content: "\f2c6"
+}
+
+.ion-android-alarm:after {
+    content: "\f2c8"
+}
+
+.ion-android-archive:after {
+    content: "\f2c9"
+}
+
+.ion-android-arrow-back:after {
+    content: "\f2ca"
+}
+
+.ion-android-arrow-down-left:after {
+    content: "\f2cb"
+}
+
+.ion-android-arrow-down-right:after {
+    content: "\f2cc"
+}
+
+.ion-android-arrow-forward:after {
+    content: "\f30f"
+}
+
+.ion-android-arrow-up-left:after {
+    content: "\f2cd"
+}
+
+.ion-android-arrow-up-right:after {
+    content: "\f2ce"
+}
+
+.ion-android-battery:after {
+    content: "\f2cf"
+}
+
+.ion-android-book:after {
+    content: "\f2d0"
+}
+
+.ion-android-calendar:after {
+    content: "\f2d1"
+}
+
+.ion-android-call:after {
+    content: "\f2d2"
+}
+
+.ion-android-camera:after {
+    content: "\f2d3"
+}
+
+.ion-android-chat:after {
+    content: "\f2d4"
+}
+
+.ion-android-checkmark:after {
+    content: "\f2d5"
+}
+
+.ion-android-clock:after {
+    content: "\f2d6"
+}
+
+.ion-android-close:after {
+    content: "\f2d7"
+}
+
+.ion-android-contact:after {
+    content: "\f2d8"
+}
+
+.ion-android-contacts:after {
+    content: "\f2d9"
+}
+
+.ion-android-data:after {
+    content: "\f2da"
+}
+
+.ion-android-developer:after {
+    content: "\f2db"
+}
+
+.ion-android-display:after {
+    content: "\f2dc"
+}
+
+.ion-android-download:after {
+    content: "\f2dd"
+}
+
+.ion-android-drawer:after {
+    content: "\f310"
+}
+
+.ion-android-dropdown:after {
+    content: "\f2de"
+}
+
+.ion-android-earth:after {
+    content: "\f2df"
+}
+
+.ion-android-folder:after {
+    content: "\f2e0"
+}
+
+.ion-android-forums:after {
+    content: "\f2e1"
+}
+
+.ion-android-friends:after {
+    content: "\f2e2"
+}
+
+.ion-android-hand:after {
+    content: "\f2e3"
+}
+
+.ion-android-image:after {
+    content: "\f2e4"
+}
+
+.ion-android-inbox:after {
+    content: "\f2e5"
+}
+
+.ion-android-information:after {
+    content: "\f2e6"
+}
+
+.ion-android-keypad:after {
+    content: "\f2e7"
+}
+
+.ion-android-lightbulb:after {
+    content: "\f2e8"
+}
+
+.ion-android-locate:after {
+    content: "\f2e9"
+}
+
+.ion-android-location:after {
+    content: "\f2ea"
+}
+
+.ion-android-mail:after {
+    content: "\f2eb"
+}
+
+.ion-android-microphone:after {
+    content: "\f2ec"
+}
+
+.ion-android-mixer:after {
+    content: "\f2ed"
+}
+
+.ion-android-more:after {
+    content: "\f2ee"
+}
+
+.ion-android-note:after {
+    content: "\f2ef"
+}
+
+.ion-android-playstore:after {
+    content: "\f2f0"
+}
+
+.ion-android-printer:after {
+    content: "\f2f1"
+}
+
+.ion-android-promotion:after {
+    content: "\f2f2"
+}
+
+.ion-android-reminder:after {
+    content: "\f2f3"
+}
+
+.ion-android-remove:after {
+    content: "\f2f4"
+}
+
+.ion-android-search:after {
+    content: "\f2f5"
+}
+
+.ion-android-send:after {
+    content: "\f2f6"
+}
+
+.ion-android-settings:after {
+    content: "\f2f7"
+}
+
+.ion-android-share:after {
+    content: "\f2f8"
+}
+
+.ion-android-social:after {
+    content: "\f2fa"
+}
+
+.ion-android-social-user:after {
+    content: "\f2f9"
+}
+
+.ion-android-sort:after {
+    content: "\f2fb"
+}
+
+.ion-android-stair-drawer:after {
+    content: "\f311"
+}
+
+.ion-android-star:after {
+    content: "\f2fc"
+}
+
+.ion-android-stopwatch:after {
+    content: "\f2fd"
+}
+
+.ion-android-storage:after {
+    content: "\f2fe"
+}
+
+.ion-android-system-back:after {
+    content: "\f2ff"
+}
+
+.ion-android-system-home:after {
+    content: "\f300"
+}
+
+.ion-android-system-windows:after {
+    content: "\f301"
+}
+
+.ion-android-timer:after {
+    content: "\f302"
+}
+
+.ion-android-trash:after {
+    content: "\f303"
+}
+
+.ion-android-user-menu:after {
+    content: "\f312"
+}
+
+.ion-android-volume:after {
+    content: "\f304"
+}
+
+.ion-android-wifi:after {
+    content: "\f305"
+}
+
+.ion-aperture:after {
+    content: "\f313"
+}
+
+.ion-archive:after {
+    content: "\f102"
+}
+
+.ion-arrow-down-a:after {
+    content: "\f103"
+}
+
+.ion-arrow-down-b:after {
+    content: "\f104"
+}
+
+.ion-arrow-down-c:after {
+    content: "\f105"
+}
+
+.ion-arrow-expand:after {
+    content: "\f25e"
+}
+
+.ion-arrow-graph-down-left:after {
+    content: "\f25f"
+}
+
+.ion-arrow-graph-down-right:after {
+    content: "\f260"
+}
+
+.ion-arrow-graph-up-left:after {
+    content: "\f261"
+}
+
+.ion-arrow-graph-up-right:after {
+    content: "\f262"
+}
+
+.ion-arrow-left-a:after {
+    content: "\f106"
+}
+
+.ion-arrow-left-b:after {
+    content: "\f107"
+}
+
+.ion-arrow-left-c:after {
+    content: "\f108"
+}
+
+.ion-arrow-move:after {
+    content: "\f263"
+}
+
+.ion-arrow-resize:after {
+    content: "\f264"
+}
+
+.ion-arrow-return-left:after {
+    content: "\f265"
+}
+
+.ion-arrow-return-right:after {
+    content: "\f266"
+}
+
+.ion-arrow-right-a:after {
+    content: "\f109"
+}
+
+.ion-arrow-right-b:after {
+    content: "\f10a"
+}
+
+.ion-arrow-right-c:after {
+    content: "\f10b"
+}
+
+.ion-arrow-shrink:after {
+    content: "\f267"
+}
+
+.ion-arrow-swap:after {
+    content: "\f268"
+}
+
+.ion-arrow-up-a:after {
+    content: "\f10c"
+}
+
+.ion-arrow-up-b:after {
+    content: "\f10d"
+}
+
+.ion-arrow-up-c:after {
+    content: "\f10e"
+}
+
+.ion-asterisk:after {
+    content: "\f314"
+}
+
+.ion-at:after {
+    content: "\f10f"
+}
+
+.ion-bag:after {
+    content: "\f110"
+}
+
+.ion-battery-charging:after {
+    content: "\f111"
+}
+
+.ion-battery-empty:after {
+    content: "\f112"
+}
+
+.ion-battery-full:after {
+    content: "\f113"
+}
+
+.ion-battery-half:after {
+    content: "\f114"
+}
+
+.ion-battery-low:after {
+    content: "\f115"
+}
+
+.ion-beaker:after {
+    content: "\f269"
+}
+
+.ion-beer:after {
+    content: "\f26a"
+}
+
+.ion-bluetooth:after {
+    content: "\f116"
+}
+
+.ion-bonfire:after {
+    content: "\f315"
+}
+
+.ion-bookmark:after {
+    content: "\f26b"
+}
+
+.ion-briefcase:after {
+    content: "\f26c"
+}
+
+.ion-bug:after {
+    content: "\f2be"
+}
+
+.ion-calculator:after {
+    content: "\f26d"
+}
+
+.ion-calendar:after {
+    content: "\f117"
+}
+
+.ion-camera:after {
+    content: "\f118"
+}
+
+.ion-card:after {
+    content: "\f119"
+}
+
+.ion-cash:after {
+    content: "\f316"
+}
+
+.ion-chatbox:after {
+    content: "\f11b"
+}
+
+.ion-chatbox-working:after {
+    content: "\f11a"
+}
+
+.ion-chatboxes:after {
+    content: "\f11c"
+}
+
+.ion-chatbubble:after {
+    content: "\f11e"
+}
+
+.ion-chatbubble-working:after {
+    content: "\f11d"
+}
+
+.ion-chatbubbles:after {
+    content: "\f11f"
+}
+
+.ion-checkmark:after {
+    content: "\f122"
+}
+
+.ion-checkmark-circled:after {
+    content: "\f120"
+}
+
+.ion-checkmark-round:after {
+    content: "\f121"
+}
+
+.ion-chevron-down:after {
+    content: "\f123"
+}
+
+.ion-chevron-left:after {
+    content: "\f124"
+}
+
+.ion-chevron-right:after {
+    content: "\f125"
+}
+
+.ion-chevron-up:after {
+    content: "\f126"
+}
+
+.ion-clipboard:after {
+    content: "\f127"
+}
+
+.ion-clock:after {
+    content: "\f26e"
+}
+
+.ion-close:after {
+    content: "\f12a"
+}
+
+.ion-close-circled:after {
+    content: "\f128"
+}
+
+.ion-close-round:after {
+    content: "\f129"
+}
+
+.ion-closed-captioning:after {
+    content: "\f317"
+}
+
+.ion-cloud:after {
+    content: "\f12b"
+}
+
+.ion-code:after {
+    content: "\f271"
+}
+
+.ion-code-download:after {
+    content: "\f26f"
+}
+
+.ion-code-working:after {
+    content: "\f270"
+}
+
+.ion-coffee:after {
+    content: "\f272"
+}
+
+.ion-compass:after {
+    content: "\f273"
+}
+
+.ion-compose:after {
+    content: "\f12c"
+}
+
+.ion-connection-bars:after {
+    content: "\f274"
+}
+
+.ion-contrast:after {
+    content: "\f275"
+}
+
+.ion-cube:after {
+    content: "\f318"
+}
+
+.ion-disc:after {
+    content: "\f12d"
+}
+
+.ion-document:after {
+    content: "\f12f"
+}
+
+.ion-document-text:after {
+    content: "\f12e"
+}
+
+.ion-drag:after {
+    content: "\f130"
+}
+
+.ion-earth:after {
+    content: "\f276"
+}
+
+.ion-edit:after {
+    content: "\f2bf"
+}
+
+.ion-egg:after {
+    content: "\f277"
+}
+
+.ion-eject:after {
+    content: "\f131"
+}
+
+.ion-email:after {
+    content: "\f132"
+}
+
+.ion-eye:after {
+    content: "\f133"
+}
+
+.ion-eye-disabled:after {
+    content: "\f306"
+}
+
+.ion-female:after {
+    content: "\f278"
+}
+
+.ion-filing:after {
+    content: "\f134"
+}
+
+.ion-film-marker:after {
+    content: "\f135"
+}
+
+.ion-fireball:after {
+    content: "\f319"
+}
+
+.ion-flag:after {
+    content: "\f279"
+}
+
+.ion-flame:after {
+    content: "\f31a"
+}
+
+.ion-flash:after {
+    content: "\f137"
+}
+
+.ion-flash-off:after {
+    content: "\f136"
+}
+
+.ion-flask:after {
+    content: "\f138"
+}
+
+.ion-folder:after {
+    content: "\f139"
+}
+
+.ion-fork:after {
+    content: "\f27a"
+}
+
+.ion-fork-repo:after {
+    content: "\f2c0"
+}
+
+.ion-forward:after {
+    content: "\f13a"
+}
+
+.ion-funnel:after {
+    content: "\f31b"
+}
+
+.ion-game-controller-a:after {
+    content: "\f13b"
+}
+
+.ion-game-controller-b:after {
+    content: "\f13c"
+}
+
+.ion-gear-a:after {
+    content: "\f13d"
+}
+
+.ion-gear-b:after {
+    content: "\f13e"
+}
+
+.ion-grid:after {
+    content: "\f13f"
+}
+
+.ion-hammer:after {
+    content: "\f27b"
+}
+
+.ion-happy:after {
+    content: "\f31c"
+}
+
+.ion-headphone:after {
+    content: "\f140"
+}
+
+.ion-heart:after {
+    content: "\f141"
+}
+
+.ion-heart-broken:after {
+    content: "\f31d"
+}
+
+.ion-help:after {
+    content: "\f143"
+}
+
+.ion-help-buoy:after {
+    content: "\f27c"
+}
+
+.ion-help-circled:after {
+    content: "\f142"
+}
+
+.ion-home:after {
+    content: "\f144"
+}
+
+.ion-icecream:after {
+    content: "\f27d"
+}
+
+.ion-icon-social-google-plus:after {
+    content: "\f146"
+}
+
+.ion-icon-social-google-plus-outline:after {
+    content: "\f145"
+}
+
+.ion-image:after {
+    content: "\f147"
+}
+
+.ion-images:after {
+    content: "\f148"
+}
+
+.ion-information:after {
+    content: "\f14a"
+}
+
+.ion-information-circled:after {
+    content: "\f149"
+}
+
+.ion-ionic:after {
+    content: "\f14b"
+}
+
+.ion-ios7-alarm:after {
+    content: "\f14d"
+}
+
+.ion-ios7-alarm-outline:after {
+    content: "\f14c"
+}
+
+.ion-ios7-albums:after {
+    content: "\f14f"
+}
+
+.ion-ios7-albums-outline:after {
+    content: "\f14e"
+}
+
+.ion-ios7-americanfootball:after {
+    content: "\f31f"
+}
+
+.ion-ios7-americanfootball-outline:after {
+    content: "\f31e"
+}
+
+.ion-ios7-analytics:after {
+    content: "\f321"
+}
+
+.ion-ios7-analytics-outline:after {
+    content: "\f320"
+}
+
+.ion-ios7-arrow-back:after {
+    content: "\f150"
+}
+
+.ion-ios7-arrow-down:after {
+    content: "\f151"
+}
+
+.ion-ios7-arrow-forward:after {
+    content: "\f152"
+}
+
+.ion-ios7-arrow-left:after {
+    content: "\f153"
+}
+
+.ion-ios7-arrow-right:after {
+    content: "\f154"
+}
+
+.ion-ios7-arrow-thin-down:after {
+    content: "\f27e"
+}
+
+.ion-ios7-arrow-thin-left:after {
+    content: "\f27f"
+}
+
+.ion-ios7-arrow-thin-right:after {
+    content: "\f280"
+}
+
+.ion-ios7-arrow-thin-up:after {
+    content: "\f281"
+}
+
+.ion-ios7-arrow-up:after {
+    content: "\f155"
+}
+
+.ion-ios7-at:after {
+    content: "\f157"
+}
+
+.ion-ios7-at-outline:after {
+    content: "\f156"
+}
+
+.ion-ios7-barcode:after {
+    content: "\f323"
+}
+
+.ion-ios7-barcode-outline:after {
+    content: "\f322"
+}
+
+.ion-ios7-baseball:after {
+    content: "\f325"
+}
+
+.ion-ios7-baseball-outline:after {
+    content: "\f324"
+}
+
+.ion-ios7-basketball:after {
+    content: "\f327"
+}
+
+.ion-ios7-basketball-outline:after {
+    content: "\f326"
+}
+
+.ion-ios7-bell:after {
+    content: "\f159"
+}
+
+.ion-ios7-bell-outline:after {
+    content: "\f158"
+}
+
+.ion-ios7-bolt:after {
+    content: "\f15b"
+}
+
+.ion-ios7-bolt-outline:after {
+    content: "\f15a"
+}
+
+.ion-ios7-bookmarks:after {
+    content: "\f15d"
+}
+
+.ion-ios7-bookmarks-outline:after {
+    content: "\f15c"
+}
+
+.ion-ios7-box:after {
+    content: "\f15f"
+}
+
+.ion-ios7-box-outline:after {
+    content: "\f15e"
+}
+
+.ion-ios7-briefcase:after {
+    content: "\f283"
+}
+
+.ion-ios7-briefcase-outline:after {
+    content: "\f282"
+}
+
+.ion-ios7-browsers:after {
+    content: "\f161"
+}
+
+.ion-ios7-browsers-outline:after {
+    content: "\f160"
+}
+
+.ion-ios7-calculator:after {
+    content: "\f285"
+}
+
+.ion-ios7-calculator-outline:after {
+    content: "\f284"
+}
+
+.ion-ios7-calendar:after {
+    content: "\f163"
+}
+
+.ion-ios7-calendar-outline:after {
+    content: "\f162"
+}
+
+.ion-ios7-camera:after {
+    content: "\f165"
+}
+
+.ion-ios7-camera-outline:after {
+    content: "\f164"
+}
+
+.ion-ios7-cart:after {
+    content: "\f167"
+}
+
+.ion-ios7-cart-outline:after {
+    content: "\f166"
+}
+
+.ion-ios7-chatboxes:after {
+    content: "\f169"
+}
+
+.ion-ios7-chatboxes-outline:after {
+    content: "\f168"
+}
+
+.ion-ios7-chatbubble:after {
+    content: "\f16b"
+}
+
+.ion-ios7-chatbubble-outline:after {
+    content: "\f16a"
+}
+
+.ion-ios7-checkmark:after {
+    content: "\f16e"
+}
+
+.ion-ios7-checkmark-empty:after {
+    content: "\f16c"
+}
+
+.ion-ios7-checkmark-outline:after {
+    content: "\f16d"
+}
+
+.ion-ios7-circle-filled:after {
+    content: "\f16f"
+}
+
+.ion-ios7-circle-outline:after {
+    content: "\f170"
+}
+
+.ion-ios7-clock:after {
+    content: "\f172"
+}
+
+.ion-ios7-clock-outline:after {
+    content: "\f171"
+}
+
+.ion-ios7-close:after {
+    content: "\f2bc"
+}
+
+.ion-ios7-close-empty:after {
+    content: "\f2bd"
+}
+
+.ion-ios7-close-outline:after {
+    content: "\f2bb"
+}
+
+.ion-ios7-cloud:after {
+    content: "\f178"
+}
+
+.ion-ios7-cloud-download:after {
+    content: "\f174"
+}
+
+.ion-ios7-cloud-download-outline:after {
+    content: "\f173"
+}
+
+.ion-ios7-cloud-outline:after {
+    content: "\f175"
+}
+
+.ion-ios7-cloud-upload:after {
+    content: "\f177"
+}
+
+.ion-ios7-cloud-upload-outline:after {
+    content: "\f176"
+}
+
+.ion-ios7-cloudy:after {
+    content: "\f17a"
+}
+
+.ion-ios7-cloudy-night:after {
+    content: "\f308"
+}
+
+.ion-ios7-cloudy-night-outline:after {
+    content: "\f307"
+}
+
+.ion-ios7-cloudy-outline:after {
+    content: "\f179"
+}
+
+.ion-ios7-cog:after {
+    content: "\f17c"
+}
+
+.ion-ios7-cog-outline:after {
+    content: "\f17b"
+}
+
+.ion-ios7-compose:after {
+    content: "\f17e"
+}
+
+.ion-ios7-compose-outline:after {
+    content: "\f17d"
+}
+
+.ion-ios7-contact:after {
+    content: "\f180"
+}
+
+.ion-ios7-contact-outline:after {
+    content: "\f17f"
+}
+
+.ion-ios7-copy:after {
+    content: "\f182"
+}
+
+.ion-ios7-copy-outline:after {
+    content: "\f181"
+}
+
+.ion-ios7-download:after {
+    content: "\f184"
+}
+
+.ion-ios7-download-outline:after {
+    content: "\f183"
+}
+
+.ion-ios7-drag:after {
+    content: "\f185"
+}
+
+.ion-ios7-email:after {
+    content: "\f187"
+}
+
+.ion-ios7-email-outline:after {
+    content: "\f186"
+}
+
+.ion-ios7-expand:after {
+    content: "\f30d"
+}
+
+.ion-ios7-eye:after {
+    content: "\f189"
+}
+
+.ion-ios7-eye-outline:after {
+    content: "\f188"
+}
+
+.ion-ios7-fastforward:after {
+    content: "\f18b"
+}
+
+.ion-ios7-fastforward-outline:after {
+    content: "\f18a"
+}
+
+.ion-ios7-filing:after {
+    content: "\f18d"
+}
+
+.ion-ios7-filing-outline:after {
+    content: "\f18c"
+}
+
+.ion-ios7-film:after {
+    content: "\f18f"
+}
+
+.ion-ios7-film-outline:after {
+    content: "\f18e"
+}
+
+.ion-ios7-flag:after {
+    content: "\f191"
+}
+
+.ion-ios7-flag-outline:after {
+    content: "\f190"
+}
+
+.ion-ios7-folder:after {
+    content: "\f193"
+}
+
+.ion-ios7-folder-outline:after {
+    content: "\f192"
+}
+
+.ion-ios7-football:after {
+    content: "\f329"
+}
+
+.ion-ios7-football-outline:after {
+    content: "\f328"
+}
+
+.ion-ios7-gear:after {
+    content: "\f195"
+}
+
+.ion-ios7-gear-outline:after {
+    content: "\f194"
+}
+
+.ion-ios7-glasses:after {
+    content: "\f197"
+}
+
+.ion-ios7-glasses-outline:after {
+    content: "\f196"
+}
+
+.ion-ios7-heart:after {
+    content: "\f199"
+}
+
+.ion-ios7-heart-outline:after {
+    content: "\f198"
+}
+
+.ion-ios7-help:after {
+    content: "\f19c"
+}
+
+.ion-ios7-help-empty:after {
+    content: "\f19a"
+}
+
+.ion-ios7-help-outline:after {
+    content: "\f19b"
+}
+
+.ion-ios7-home:after {
+    content: "\f32b"
+}
+
+.ion-ios7-home-outline:after {
+    content: "\f32a"
+}
+
+.ion-ios7-infinite:after {
+    content: "\f19e"
+}
+
+.ion-ios7-infinite-outline:after {
+    content: "\f19d"
+}
+
+.ion-ios7-information:after {
+    content: "\f1a1"
+}
+
+.ion-ios7-information-empty:after {
+    content: "\f19f"
+}
+
+.ion-ios7-information-outline:after {
+    content: "\f1a0"
+}
+
+.ion-ios7-ionic-outline:after {
+    content: "\f1a2"
+}
+
+.ion-ios7-keypad:after {
+    content: "\f1a4"
+}
+
+.ion-ios7-keypad-outline:after {
+    content: "\f1a3"
+}
+
+.ion-ios7-lightbulb:after {
+    content: "\f287"
+}
+
+.ion-ios7-lightbulb-outline:after {
+    content: "\f286"
+}
+
+.ion-ios7-location:after {
+    content: "\f1a6"
+}
+
+.ion-ios7-location-outline:after {
+    content: "\f1a5"
+}
+
+.ion-ios7-locked:after {
+    content: "\f1a8"
+}
+
+.ion-ios7-locked-outline:after {
+    content: "\f1a7"
+}
+
+.ion-ios7-loop:after {
+    content: "\f32d"
+}
+
+.ion-ios7-loop-strong:after {
+    content: "\f32c"
+}
+
+.ion-ios7-medkit:after {
+    content: "\f289"
+}
+
+.ion-ios7-medkit-outline:after {
+    content: "\f288"
+}
+
+.ion-ios7-mic:after {
+    content: "\f1ab"
+}
+
+.ion-ios7-mic-off:after {
+    content: "\f1a9"
+}
+
+.ion-ios7-mic-outline:after {
+    content: "\f1aa"
+}
+
+.ion-ios7-minus:after {
+    content: "\f1ae"
+}
+
+.ion-ios7-minus-empty:after {
+    content: "\f1ac"
+}
+
+.ion-ios7-minus-outline:after {
+    content: "\f1ad"
+}
+
+.ion-ios7-monitor:after {
+    content: "\f1b0"
+}
+
+.ion-ios7-monitor-outline:after {
+    content: "\f1af"
+}
+
+.ion-ios7-moon:after {
+    content: "\f1b2"
+}
+
+.ion-ios7-moon-outline:after {
+    content: "\f1b1"
+}
+
+.ion-ios7-more:after {
+    content: "\f1b4"
+}
+
+.ion-ios7-more-outline:after {
+    content: "\f1b3"
+}
+
+.ion-ios7-musical-note:after {
+    content: "\f1b5"
+}
+
+.ion-ios7-musical-notes:after {
+    content: "\f1b6"
+}
+
+.ion-ios7-navigate:after {
+    content: "\f1b8"
+}
+
+.ion-ios7-navigate-outline:after {
+    content: "\f1b7"
+}
+
+.ion-ios7-paper:after {
+    content: "\f32f"
+}
+
+.ion-ios7-paper-outline:after {
+    content: "\f32e"
+}
+
+.ion-ios7-paperplane:after {
+    content: "\f1ba"
+}
+
+.ion-ios7-paperplane-outline:after {
+    content: "\f1b9"
+}
+
+.ion-ios7-partlysunny:after {
+    content: "\f1bc"
+}
+
+.ion-ios7-partlysunny-outline:after {
+    content: "\f1bb"
+}
+
+.ion-ios7-pause:after {
+    content: "\f1be"
+}
+
+.ion-ios7-pause-outline:after {
+    content: "\f1bd"
+}
+
+.ion-ios7-paw:after {
+    content: "\f331"
+}
+
+.ion-ios7-paw-outline:after {
+    content: "\f330"
+}
+
+.ion-ios7-people:after {
+    content: "\f1c0"
+}
+
+.ion-ios7-people-outline:after {
+    content: "\f1bf"
+}
+
+.ion-ios7-person:after {
+    content: "\f1c2"
+}
+
+.ion-ios7-person-outline:after {
+    content: "\f1c1"
+}
+
+.ion-ios7-personadd:after {
+    content: "\f1c4"
+}
+
+.ion-ios7-personadd-outline:after {
+    content: "\f1c3"
+}
+
+.ion-ios7-photos:after {
+    content: "\f1c6"
+}
+
+.ion-ios7-photos-outline:after {
+    content: "\f1c5"
+}
+
+.ion-ios7-pie:after {
+    content: "\f28b"
+}
+
+.ion-ios7-pie-outline:after {
+    content: "\f28a"
+}
+
+.ion-ios7-play:after {
+    content: "\f1c8"
+}
+
+.ion-ios7-play-outline:after {
+    content: "\f1c7"
+}
+
+.ion-ios7-plus:after {
+    content: "\f1cb"
+}
+
+.ion-ios7-plus-empty:after {
+    content: "\f1c9"
+}
+
+.ion-ios7-plus-outline:after {
+    content: "\f1ca"
+}
+
+.ion-ios7-pricetag:after {
+    content: "\f28d"
+}
+
+.ion-ios7-pricetag-outline:after {
+    content: "\f28c"
+}
+
+.ion-ios7-pricetags:after {
+    content: "\f333"
+}
+
+.ion-ios7-pricetags-outline:after {
+    content: "\f332"
+}
+
+.ion-ios7-printer:after {
+    content: "\f1cd"
+}
+
+.ion-ios7-printer-outline:after {
+    content: "\f1cc"
+}
+
+.ion-ios7-pulse:after {
+    content: "\f335"
+}
+
+.ion-ios7-pulse-strong:after {
+    content: "\f334"
+}
+
+.ion-ios7-rainy:after {
+    content: "\f1cf"
+}
+
+.ion-ios7-rainy-outline:after {
+    content: "\f1ce"
+}
+
+.ion-ios7-recording:after {
+    content: "\f1d1"
+}
+
+.ion-ios7-recording-outline:after {
+    content: "\f1d0"
+}
+
+.ion-ios7-redo:after {
+    content: "\f1d3"
+}
+
+.ion-ios7-redo-outline:after {
+    content: "\f1d2"
+}
+
+.ion-ios7-refresh:after {
+    content: "\f1d6"
+}
+
+.ion-ios7-refresh-empty:after {
+    content: "\f1d4"
+}
+
+.ion-ios7-refresh-outline:after {
+    content: "\f1d5"
+}
+
+.ion-ios7-reload:after,
+.ion-ios7-reloading:after {
+    content: "\f28e"
+}
+
+.ion-ios7-reverse-camera:after {
+    content: "\f337"
+}
+
+.ion-ios7-reverse-camera-outline:after {
+    content: "\f336"
+}
+
+.ion-ios7-rewind:after {
+    content: "\f1d8"
+}
+
+.ion-ios7-rewind-outline:after {
+    content: "\f1d7"
+}
+
+.ion-ios7-search:after {
+    content: "\f1da"
+}
+
+.ion-ios7-search-strong:after {
+    content: "\f1d9"
+}
+
+.ion-ios7-settings:after {
+    content: "\f339"
+}
+
+.ion-ios7-settings-strong:after {
+    content: "\f338"
+}
+
+.ion-ios7-shrink:after {
+    content: "\f30e"
+}
+
+.ion-ios7-skipbackward:after {
+    content: "\f1dc"
+}
+
+.ion-ios7-skipbackward-outline:after {
+    content: "\f1db"
+}
+
+.ion-ios7-skipforward:after {
+    content: "\f1de"
+}
+
+.ion-ios7-skipforward-outline:after {
+    content: "\f1dd"
+}
+
+.ion-ios7-snowy:after {
+    content: "\f309"
+}
+
+.ion-ios7-speedometer:after {
+    content: "\f290"
+}
+
+.ion-ios7-speedometer-outline:after {
+    content: "\f28f"
+}
+
+.ion-ios7-star:after {
+    content: "\f1e0"
+}
+
+.ion-ios7-star-half:after {
+    content: "\f33a"
+}
+
+.ion-ios7-star-outline:after {
+    content: "\f1df"
+}
+
+.ion-ios7-stopwatch:after {
+    content: "\f1e2"
+}
+
+.ion-ios7-stopwatch-outline:after {
+    content: "\f1e1"
+}
+
+.ion-ios7-sunny:after {
+    content: "\f1e4"
+}
+
+.ion-ios7-sunny-outline:after {
+    content: "\f1e3"
+}
+
+.ion-ios7-telephone:after {
+    content: "\f1e6"
+}
+
+.ion-ios7-telephone-outline:after {
+    content: "\f1e5"
+}
+
+.ion-ios7-tennisball:after {
+    content: "\f33c"
+}
+
+.ion-ios7-tennisball-outline:after {
+    content: "\f33b"
+}
+
+.ion-ios7-thunderstorm:after {
+    content: "\f1e8"
+}
+
+.ion-ios7-thunderstorm-outline:after {
+    content: "\f1e7"
+}
+
+.ion-ios7-time:after {
+    content: "\f292"
+}
+
+.ion-ios7-time-outline:after {
+    content: "\f291"
+}
+
+.ion-ios7-timer:after {
+    content: "\f1ea"
+}
+
+.ion-ios7-timer-outline:after {
+    content: "\f1e9"
+}
+
+.ion-ios7-toggle:after {
+    content: "\f33e"
+}
+
+.ion-ios7-toggle-outline:after {
+    content: "\f33d"
+}
+
+.ion-ios7-trash:after {
+    content: "\f1ec"
+}
+
+.ion-ios7-trash-outline:after {
+    content: "\f1eb"
+}
+
+.ion-ios7-undo:after {
+    content: "\f1ee"
+}
+
+.ion-ios7-undo-outline:after {
+    content: "\f1ed"
+}
+
+.ion-ios7-unlocked:after {
+    content: "\f1f0"
+}
+
+.ion-ios7-unlocked-outline:after {
+    content: "\f1ef"
+}
+
+.ion-ios7-upload:after {
+    content: "\f1f2"
+}
+
+.ion-ios7-upload-outline:after {
+    content: "\f1f1"
+}
+
+.ion-ios7-videocam:after {
+    content: "\f1f4"
+}
+
+.ion-ios7-videocam-outline:after {
+    content: "\f1f3"
+}
+
+.ion-ios7-volume-high:after {
+    content: "\f1f5"
+}
+
+.ion-ios7-volume-low:after {
+    content: "\f1f6"
+}
+
+.ion-ios7-wineglass:after {
+    content: "\f294"
+}
+
+.ion-ios7-wineglass-outline:after {
+    content: "\f293"
+}
+
+.ion-ios7-world:after {
+    content: "\f1f8"
+}
+
+.ion-ios7-world-outline:after {
+    content: "\f1f7"
+}
+
+.ion-ipad:after {
+    content: "\f1f9"
+}
+
+.ion-iphone:after {
+    content: "\f1fa"
+}
+
+.ion-ipod:after {
+    content: "\f1fb"
+}
+
+.ion-jet:after {
+    content: "\f295"
+}
+
+.ion-key:after {
+    content: "\f296"
+}
+
+.ion-knife:after {
+    content: "\f297"
+}
+
+.ion-laptop:after {
+    content: "\f1fc"
+}
+
+.ion-leaf:after {
+    content: "\f1fd"
+}
+
+.ion-levels:after {
+    content: "\f298"
+}
+
+.ion-lightbulb:after {
+    content: "\f299"
+}
+
+.ion-link:after {
+    content: "\f1fe"
+}
+
+.ion-load-a:after,
+.ion-loading-a:after {
+    content: "\f29a"
+}
+
+.ion-load-b:after,
+.ion-loading-b:after {
+    content: "\f29b"
+}
+
+.ion-load-c:after,
+.ion-loading-c:after {
+    content: "\f29c"
+}
+
+.ion-load-d:after,
+.ion-loading-d:after {
+    content: "\f29d"
+}
+
+.ion-location:after {
+    content: "\f1ff"
+}
+
+.ion-locked:after {
+    content: "\f200"
+}
+
+.ion-log-in:after {
+    content: "\f29e"
+}
+
+.ion-log-out:after {
+    content: "\f29f"
+}
+
+.ion-loop:after,
+.ion-looping:after {
+    content: "\f201"
+}
+
+.ion-magnet:after {
+    content: "\f2a0"
+}
+
+.ion-male:after {
+    content: "\f2a1"
+}
+
+.ion-man:after {
+    content: "\f202"
+}
+
+.ion-map:after {
+    content: "\f203"
+}
+
+.ion-medkit:after {
+    content: "\f2a2"
+}
+
+.ion-merge:after {
+    content: "\f33f"
+}
+
+.ion-mic-a:after {
+    content: "\f204"
+}
+
+.ion-mic-b:after {
+    content: "\f205"
+}
+
+.ion-mic-c:after {
+    content: "\f206"
+}
+
+.ion-minus:after {
+    content: "\f209"
+}
+
+.ion-minus-circled:after {
+    content: "\f207"
+}
+
+.ion-minus-round:after {
+    content: "\f208"
+}
+
+.ion-model-s:after {
+    content: "\f2c1"
+}
+
+.ion-monitor:after {
+    content: "\f20a"
+}
+
+.ion-more:after {
+    content: "\f20b"
+}
+
+.ion-mouse:after {
+    content: "\f340"
+}
+
+.ion-music-note:after {
+    content: "\f20c"
+}
+
+.ion-navicon:after {
+    content: "\f20e"
+}
+
+.ion-navicon-round:after {
+    content: "\f20d"
+}
+
+.ion-navigate:after {
+    content: "\f2a3"
+}
+
+.ion-network:after {
+    content: "\f341"
+}
+
+.ion-no-smoking:after {
+    content: "\f2c2"
+}
+
+.ion-nuclear:after {
+    content: "\f2a4"
+}
+
+.ion-outlet:after {
+    content: "\f342"
+}
+
+.ion-paper-airplane:after {
+    content: "\f2c3"
+}
+
+.ion-paperclip:after {
+    content: "\f20f"
+}
+
+.ion-pause:after {
+    content: "\f210"
+}
+
+.ion-person:after {
+    content: "\f213"
+}
+
+.ion-person-add:after {
+    content: "\f211"
+}
+
+.ion-person-stalker:after {
+    content: "\f212"
+}
+
+.ion-pie-graph:after {
+    content: "\f2a5"
+}
+
+.ion-pin:after {
+    content: "\f2a6"
+}
+
+.ion-pinpoint:after {
+    content: "\f2a7"
+}
+
+.ion-pizza:after {
+    content: "\f2a8"
+}
+
+.ion-plane:after {
+    content: "\f214"
+}
+
+.ion-planet:after {
+    content: "\f343"
+}
+
+.ion-play:after {
+    content: "\f215"
+}
+
+.ion-playstation:after {
+    content: "\f30a"
+}
+
+.ion-plus:after {
+    content: "\f218"
+}
+
+.ion-plus-circled:after {
+    content: "\f216"
+}
+
+.ion-plus-round:after {
+    content: "\f217"
+}
+
+.ion-podium:after {
+    content: "\f344"
+}
+
+.ion-pound:after {
+    content: "\f219"
+}
+
+.ion-power:after {
+    content: "\f2a9"
+}
+
+.ion-pricetag:after {
+    content: "\f2aa"
+}
+
+.ion-pricetags:after {
+    content: "\f2ab"
+}
+
+.ion-printer:after {
+    content: "\f21a"
+}
+
+.ion-pull-request:after {
+    content: "\f345"
+}
+
+.ion-qr-scanner:after {
+    content: "\f346"
+}
+
+.ion-quote:after {
+    content: "\f347"
+}
+
+.ion-radio-waves:after {
+    content: "\f2ac"
+}
+
+.ion-record:after {
+    content: "\f21b"
+}
+
+.ion-refresh:after,
+.ion-refreshing:after {
+    content: "\f21c"
+}
+
+.ion-reply:after {
+    content: "\f21e"
+}
+
+.ion-reply-all:after {
+    content: "\f21d"
+}
+
+.ion-ribbon-a:after {
+    content: "\f348"
+}
+
+.ion-ribbon-b:after {
+    content: "\f349"
+}
+
+.ion-sad:after {
+    content: "\f34a"
+}
+
+.ion-scissors:after {
+    content: "\f34b"
+}
+
+.ion-search:after {
+    content: "\f21f"
+}
+
+.ion-settings:after {
+    content: "\f2ad"
+}
+
+.ion-share:after {
+    content: "\f220"
+}
+
+.ion-shuffle:after {
+    content: "\f221"
+}
+
+.ion-skip-backward:after {
+    content: "\f222"
+}
+
+.ion-skip-forward:after {
+    content: "\f223"
+}
+
+.ion-social-android:after {
+    content: "\f225"
+}
+
+.ion-social-android-outline:after {
+    content: "\f224"
+}
+
+.ion-social-apple:after {
+    content: "\f227"
+}
+
+.ion-social-apple-outline:after {
+    content: "\f226"
+}
+
+.ion-social-bitcoin:after {
+    content: "\f2af"
+}
+
+.ion-social-bitcoin-outline:after {
+    content: "\f2ae"
+}
+
+.ion-social-buffer:after {
+    content: "\f229"
+}
+
+.ion-social-buffer-outline:after {
+    content: "\f228"
+}
+
+.ion-social-designernews:after {
+    content: "\f22b"
+}
+
+.ion-social-designernews-outline:after {
+    content: "\f22a"
+}
+
+.ion-social-dribbble:after {
+    content: "\f22d"
+}
+
+.ion-social-dribbble-outline:after {
+    content: "\f22c"
+}
+
+.ion-social-dropbox:after {
+    content: "\f22f"
+}
+
+.ion-social-dropbox-outline:after {
+    content: "\f22e"
+}
+
+.ion-social-facebook:after {
+    content: "\f231"
+}
+
+.ion-social-facebook-outline:after {
+    content: "\f230"
+}
+
+.ion-social-foursquare:after {
+    content: "\f34d"
+}
+
+.ion-social-foursquare-outline:after {
+    content: "\f34c"
+}
+
+.ion-social-freebsd-devil:after {
+    content: "\f2c4"
+}
+
+.ion-social-github:after {
+    content: "\f233"
+}
+
+.ion-social-github-outline:after {
+    content: "\f232"
+}
+
+.ion-social-google:after {
+    content: "\f34f"
+}
+
+.ion-social-google-outline:after {
+    content: "\f34e"
+}
+
+.ion-social-googleplus:after {
+    content: "\f235"
+}
+
+.ion-social-googleplus-outline:after {
+    content: "\f234"
+}
+
+.ion-social-hackernews:after {
+    content: "\f237"
+}
+
+.ion-social-hackernews-outline:after {
+    content: "\f236"
+}
+
+.ion-social-instagram:after {
+    content: "\f351"
+}
+
+.ion-social-instagram-outline:after {
+    content: "\f350"
+}
+
+.ion-social-linkedin:after {
+    content: "\f239"
+}
+
+.ion-social-linkedin-outline:after {
+    content: "\f238"
+}
+
+.ion-social-pinterest:after {
+    content: "\f2b1"
+}
+
+.ion-social-pinterest-outline:after {
+    content: "\f2b0"
+}
+
+.ion-social-reddit:after {
+    content: "\f23b"
+}
+
+.ion-social-reddit-outline:after {
+    content: "\f23a"
+}
+
+.ion-social-rss:after {
+    content: "\f23d"
+}
+
+.ion-social-rss-outline:after {
+    content: "\f23c"
+}
+
+.ion-social-skype:after {
+    content: "\f23f"
+}
+
+.ion-social-skype-outline:after {
+    content: "\f23e"
+}
+
+.ion-social-tumblr:after {
+    content: "\f241"
+}
+
+.ion-social-tumblr-outline:after {
+    content: "\f240"
+}
+
+.ion-social-tux:after {
+    content: "\f2c5"
+}
+
+.ion-social-twitter:after {
+    content: "\f243"
+}
+
+.ion-social-twitter-outline:after {
+    content: "\f242"
+}
+
+.ion-social-usd:after {
+    content: "\f353"
+}
+
+.ion-social-usd-outline:after {
+    content: "\f352"
+}
+
+.ion-social-vimeo:after {
+    content: "\f245"
+}
+
+.ion-social-vimeo-outline:after {
+    content: "\f244"
+}
+
+.ion-social-windows:after {
+    content: "\f247"
+}
+
+.ion-social-windows-outline:after {
+    content: "\f246"
+}
+
+.ion-social-wordpress:after {
+    content: "\f249"
+}
+
+.ion-social-wordpress-outline:after {
+    content: "\f248"
+}
+
+.ion-social-yahoo:after {
+    content: "\f24b"
+}
+
+.ion-social-yahoo-outline:after {
+    content: "\f24a"
+}
+
+.ion-social-youtube:after {
+    content: "\f24d"
+}
+
+.ion-social-youtube-outline:after {
+    content: "\f24c"
+}
+
+.ion-speakerphone:after {
+    content: "\f2b2"
+}
+
+.ion-speedometer:after {
+    content: "\f2b3"
+}
+
+.ion-spoon:after {
+    content: "\f2b4"
+}
+
+.ion-star:after {
+    content: "\f24e"
+}
+
+.ion-stats-bars:after {
+    content: "\f2b5"
+}
+
+.ion-steam:after {
+    content: "\f30b"
+}
+
+.ion-stop:after {
+    content: "\f24f"
+}
+
+.ion-thermometer:after {
+    content: "\f2b6"
+}
+
+.ion-thumbsdown:after {
+    content: "\f250"
+}
+
+.ion-thumbsup:after {
+    content: "\f251"
+}
+
+.ion-toggle:after {
+    content: "\f355"
+}
+
+.ion-toggle-filled:after {
+    content: "\f354"
+}
+
+.ion-trash-a:after {
+    content: "\f252"
+}
+
+.ion-trash-b:after {
+    content: "\f253"
+}
+
+.ion-trophy:after {
+    content: "\f356"
+}
+
+.ion-umbrella:after {
+    content: "\f2b7"
+}
+
+.ion-university:after {
+    content: "\f357"
+}
+
+.ion-unlocked:after {
+    content: "\f254"
+}
+
+.ion-upload:after {
+    content: "\f255"
+}
+
+.ion-usb:after {
+    content: "\f2b8"
+}
+
+.ion-videocamera:after {
+    content: "\f256"
+}
+
+.ion-volume-high:after {
+    content: "\f257"
+}
+
+.ion-volume-low:after {
+    content: "\f258"
+}
+
+.ion-volume-medium:after {
+    content: "\f259"
+}
+
+.ion-volume-mute:after {
+    content: "\f25a"
+}
+
+.ion-wand:after {
+    content: "\f358"
+}
+
+.ion-waterdrop:after {
+    content: "\f25b"
+}
+
+.ion-wifi:after {
+    content: "\f25c"
+}
+
+.ion-wineglass:after {
+    content: "\f2b9"
+}
+
+.ion-woman:after {
+    content: "\f25d"
+}
+
+.ion-wrench:after {
+    content: "\f2ba"
+}
+
+.ion-xbox:after {
+    content: "\f30c"
+}

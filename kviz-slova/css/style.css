@@ -1,0 +1,364 @@
+/* ----------------------------
+STYLES/LAYOUT
+---------------------------- */
+
+@font-face {
+    font-family: 'glagoljica';
+    src: url('fsgla.eot');
+    src: url('fsgla.eot?#iefix') format('embedded-opentype'), url('fsgla.woff') format('woff'), url('fsgla.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: 'glagoljica';
+    src: url('fsgla.ttf');
+}
+
+@font-face {
+    font-family: cardo;
+    src: url(Cardo-Regular.ttf);
+}
+
+@font-face {
+    font-family: cardo-strong;
+    src: url(Cardo-Bold.ttf);
+}
+
+@font-face {
+    font-family: cardo-italic;
+    src: url(Cardo-Italic.ttf);
+}
+
+strong {
+    font-family: "cardo-strong";
+}
+
+em {
+    font-family: "cardo-italic";
+}
+
+html {
+    font-family: cardo;
+    font-size: 60%;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 480px;
+    background-image: url(pozadina.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+}
+
+#opis {
+    text-align: center
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+p,
+i {
+    margin: 0;
+}
+
+form {
+    margin-top: 20px;
+}
+
+
+/* Container divs*/
+
+.init-page,
+.questions-page,
+.results-page {
+}
+.begin-countdown{margin-top: 20px}
+.container {
+    width: 90%;
+    height: 100%;
+    max-width: 45rem;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-self: center
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Button */
+
+.btn {
+    margin: 1rem auto 0;
+    display: block;
+    width: 100%;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    background: rgb(104, 0, 2);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.5s ease;
+    font-family: cardo;
+    margin-bottom: 20px;
+
+}
+.init-page__btn{width:45%}
+.swal2-confirm{background: rgb(104, 0, 2)!important}
+.senka {
+    box-shadow: 2px 2px 5px #888888;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background: rgb(124, 7, 16);
+}
+
+
+/* TITLE PAGE */
+
+.init-page__title {
+    margin: 0;
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+.init-page__icon {
+    font-size: 20rem;
+    margin: 0;
+}
+
+
+/* QUESTIONS PAGE*/
+
+.questions-page__question {
+    font-size: 1.8rem;
+    -webkit-margin-before: 0.67em;
+    -webkit-margin-after: 0.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.questions-page__answer-list {
+    padding: 0;
+    list-style-type: none;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    text-align: center;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.questions-page__answer-line {
+    margin: 0 auto;
+    width: 100%;
+    cursor: pointer;
+}
+
+.questions-page__selection-div {
+    float: left;
+    padding-left: 1rem;
+    font-size: 1.75rem;
+}
+
+.questions-page__feedback-div {
+    float: right;
+    padding-right: 1rem;
+}
+
+.odabir {
+      background: rgba(123,7,15,0.65);
+    border-radius: 5px;
+    color: white;
+}
+
+.questions-page__answer-div:hover {
+    background: rgba(255, 205, 210, 0.3);
+}
+
+.odabir:hover {
+      background: rgba(123,7,15,0.65);
+}
+
+.questions-page--correct {
+    background: #1B5E20;
+    border-radius: 5px;
+    color: white;
+}
+
+.questions-page--incorrect {
+    background: #7B070F;
+}
+
+.questions-page--correct:hover {
+    background: #1B5E20;
+    border-radius: 5px;
+}
+
+.questions-page--incorrect:hover {
+    background: #7B070F;
+}
+
+.btn-holder {
+    height: 4.5rem;
+}
+
+
+/* RESULTS PAGE */
+
+.results-page__info {
+    font-size: 2rem;
+}
+
+.results-page__info2 {
+    font-size: 2rem;
+}
+
+.results-page__bodovi {
+    font-size: 5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+}
+.results-page__spanish-btn {
+    margin-top: 3rem;
+}
+.results-page__spanish-btn-link {
+    text-decoration: none;
+}
+.slikica {
+    max-width: 100%;
+    max-height: 200px;
+    box-shadow: 2px 2px 5px #888888;
+    border-radius: 5px;
+    margin-top: 20px;
+    align-self: center!important;
+}
+
+
+/* ----------------------------
+MEDIA QUERIES
+---------------------------- */
+@media screen and (min-width: 480px) {
+    html {
+        font-size: 85%;
+    }
+    
+    body {
+        min-height: 700px;
+    }
+    
+    .container {
+        width: 100%;
+    }
+    
+    .slikica {
+        max-height: 300px;
+    }
+}
+@media screen and (min-width: 1680px) {
+    html {
+        font-size: 100%;
+    }
+    
+    body {
+        min-height: 800px;
+    }
+    
+    .slikica {
+        max-height: 500px;
+    }
+}
+/*  SECTIONS  */
+.section {
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+
+/*  COLUMN SETUP  */
+.col {
+	display: block;
+	float:left;
+	margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+/*  GROUPING  */
+.group:before,
+.group:after { content:""; display:table; }
+.group:after { clear:both;}
+.group { zoom:1; /* For IE 6/7 */ }
+
+/*  GRID OF TWO  */
+.span_2_of_2 {
+	width: 100%;
+}
+.span_1_of_2 {
+	width: 49.2%;
+}
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+
+@media only screen and (max-width: 480px) {
+	.col { 
+		margin: 1% 0 1% 0%;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	.span_2_of_2, .span_1_of_2 { width: 100%; }
+}
+
+#glass {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+    display: none;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 1000000;
+}
+footer {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    bottom: 0
+}
+.slikica2 {
+    margin-top: 20px;
+    max-width: 100%;
+    max-height: 500px;
+    display: block;
+    margin: auto;
+}
+
+.swal2-content{text-align: center!important}
