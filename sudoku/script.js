@@ -187,7 +187,7 @@ Sudoku.prototype.drawBoard = function(){
     var sudoku_board = $('<div></div>').addClass('sudoku_board');
     var sudoku_statistics = $('<div></div>')
                                 .addClass('statistics')
-    .html('<b>Cells:</b> <span class="cells_complete">'+ this.cellsComplete +'/'+this.cellsNr +'</span> <b>Time:</b> <span class="time">' + this.secondsElapsed + '</span>');
+    .html('<b>Ćelije:</b> <span class="cells_complete">'+ this.cellsComplete +'/'+this.cellsNr +'</span> <b>Vrijeme:</b> <span class="time">' + this.secondsElapsed + '</span>');
     
     $('#'+ this.id).empty();
     
@@ -204,6 +204,7 @@ Sudoku.prototype.drawBoard = function(){
                             .attr('x', position.x)
                             .attr('y', position.y)
                             .attr('gr', group_position.x +''+ group_position.y)
+                            .attr('title', value)
                             .html('<span>'+ value +'</span>' );
           
             if (this.displaySolution) {
@@ -234,7 +235,7 @@ Sudoku.prototype.drawBoard = function(){
     var sudoku_console = $('<div></div>').addClass('board_console');
     
     for (i=1; i <= this.nn; i++) {
-        $('<div></div>').addClass('num').text(i).appendTo(sudoku_console);
+        $('<div></div>').addClass('num').text(i).appendTo(sudoku_console).attr('title', String(i));
     }
     $('<div></div>').addClass('num remove').text('X').appendTo(sudoku_console);
     $('<div></div>').addClass('num note').text('?').appendTo(sudoku_console);
@@ -406,7 +407,11 @@ Sudoku.prototype.addValue = function(value) {
   
     //delete value or write it in cell
     $( this.cell ).find('span').text( (value === 0) ? '' : value );
-        
+        if (value === 0) {
+  $(this.cell).removeAttr('title');
+} else {
+  $(this.cell).attr('title', String(value)); // uvijek latinica
+}
     if ( this.cell !== null && ( horizontal_cells_exists.length || vertical_cells_exists.length || group_cells_exists.length ) ) {
         if (old_value !== value) {
             $( this.cell ).addClass('notvalid');            
@@ -581,3 +586,107 @@ $(function() {
     
     console.timeEnd("loading time");
 });
+
+// ===== Sudoku tooltip add-on (non-intrusive) =====
+(function () {
+  // Jedan tooltip element na body (izbjegne overflow: hidden na ploči/ćeliji)
+  var tip = document.createElement('div');
+  tip.id = 'sudoku-tooltip';
+  document.body.appendChild(tip);
+
+  // Delegacija: hvataj elemente s title unutar sudoku containera
+  var root = document.getElementById('sudoku_container');
+
+  if (!root) return; // safety
+
+  // Helperi
+function showTip(text, x, y) {
+  tip.textContent = text;
+
+  // postavi na trenutne koordinate da dobijemo dimenzije
+  tip.style.transform = `translate(${x}px, ${y}px)`;
+
+  // visina tooltipa nakon renderiranja
+  var rect = tip.getBoundingClientRect();
+  var offY = 14; // udaljenost od kursora do tooltipa
+var nx = x - rect.width / 2; // centriraj tooltip iznad kursora
+  var ny = y - rect.height - offY; // iznad pokazivača
+
+  // spriječi ispadanje izvan ekrana
+  var vw = window.innerWidth, vh = window.innerHeight;
+  if (nx + rect.width + 8 > vw) nx = vw - rect.width - 8;
+  if (nx < 0) nx = 8;
+  if (ny < 0) ny = y + offY; // ako nema mjesta gore, prikaži ispod kursora
+
+  tip.style.transform = `translate(${nx}px, ${ny}px)`;
+  tip.classList.add('show');
+}
+
+  function hideTip() { tip.classList.remove('show'); }
+
+  // Da ne iskače nativni browser tooltip:
+  // Na mouseenter prebacimo title -> data-title, pa ga vratimo na mouseleave.
+  function getTitle(el) {
+    return el.getAttribute('data-title') || el.getAttribute('title') || '';
+  }
+  function stealTitle(el) {
+    if (el.hasAttribute('title')) {
+      el.setAttribute('data-title', el.getAttribute('title'));
+      el.removeAttribute('title');
+    }
+  }
+  function restoreTitle(el) {
+    var t = el.getAttribute('data-title');
+    if (t != null) {
+      el.setAttribute('title', t);
+      el.removeAttribute('data-title');
+    }
+  }
+
+  var currentEl = null;
+
+  root.addEventListener('mouseenter', function (e) {
+    var el = e.target.closest('[title], [data-title]');
+    if (!el || !root.contains(el)) return;
+    var text = getTitle(el);
+    if (!text) return;
+
+    currentEl = el;
+    stealTitle(el);     // utišaj native tooltip
+    showTip(text, e.clientX, e.clientY);
+  }, true); // capture faza da pokrijemo sve
+
+  root.addEventListener('mousemove', function (e) {
+    if (!currentEl) return;
+    var text = getTitle(currentEl);
+    if (!text) { hideTip(); return; }
+    showTip(text, e.clientX, e.clientY);
+  });
+
+  root.addEventListener('mouseleave', function (e) {
+    if (currentEl) restoreTitle(currentEl);
+    currentEl = null;
+    hideTip();
+  }, true);
+
+  // Ako se fokus prebaci tipkovnicom
+  root.addEventListener('focusin', function (e) {
+    var el = e.target.closest('[title], [data-title]');
+    if (!el) return;
+    var text = getTitle(el);
+    if (!text) return;
+    currentEl = el;
+    stealTitle(el);
+    // pozicioniraj uz fokusirani element
+    var r = el.getBoundingClientRect();
+    showTip(text, r.left + r.width/2, r.top - 8);
+  });
+  root.addEventListener('focusout', function () {
+    if (currentEl) restoreTitle(currentEl);
+    currentEl = null;
+    hideTip();
+  });
+
+  // Ako se prozor resizea, makni tooltip (manje treperenja)
+  window.addEventListener('resize', hideTip);
+})();

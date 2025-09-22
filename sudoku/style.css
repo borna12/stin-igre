@@ -341,3 +341,39 @@ body {
 @media all and (orientation:portrait) and  (max-width: 240px){
 	.sudoku_board .cell span { font-size:10px; }   
 }
+
+
+/* Custom tooltip za sudoku */
+#sudoku-tooltip {
+  position: fixed;
+  top: 0; left: 0;
+  transform: translate(-9999px, -9999px); /* default hidden */
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font: 12px/1.3 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  pointer-events: none;
+  z-index: 99999;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  opacity: 0;
+  transition: opacity .2s ease; /* fade only */
+}
+
+/* kad je aktivan */
+#sudoku-tooltip.show {
+  opacity: 1;
+}
+
+/* mala strelica ispod prozorčića */
+#sudoku-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* ispod tooltipa */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+}
