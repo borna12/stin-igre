@@ -11,7 +11,7 @@
 
 
 H1 { 
-    background:black;
+    background:#2F2D85;
     color:white;
     margin:0px 0px 2px 0px;
     font-size:20px;
@@ -22,12 +22,25 @@ H1 {
 body {
     font-family:verdana,helvetica,arial,sans-serif;
     border:0px; margin:0px; padding:0px;
-        
-    background:url(
-        data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIUlEQVQYV2N89urtfwYiACNIoZSYMCMhtaMK8YYQ0cEDAG5yJ8eLRhTfAAAAAElFTkSuQmCC
-    ) repeat;
+    
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+
+  background: url("pozadina.jpg") no-repeat center center;
+  background-size: cover; /* proširi cijelu sliku */
+  position: relative;
 }
 
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: white;
+  background-size: cover;
+  opacity: 0.8; /* podešavaš koliko da se nazire */
+  z-index: -1; /* da bude iza sadržaja */
+}
 /* board */
 .sudoku_board {
     margin:6px auto;
@@ -151,7 +164,7 @@ body {
 
 
 .restart {
-  background:#7F8C8D;
+  background:#B59A6B;
   color:#ecf0f1;
 }
 
@@ -245,7 +258,7 @@ body {
 }
 
 #sudoku_menu {
-    background-color: black;
+    background-color: #2e2d859d;
     position: absolute;
     z-index:2;
     width: 100%;
@@ -282,7 +295,7 @@ body {
 
 #sidebar-toggle {
     z-index:3;
-    background: #bdc3c7;
+    background: #B59A6B;
     border-radius: 3px;
     display: block;
     position: relative;
