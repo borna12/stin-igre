@@ -30,6 +30,7 @@ body {
   background: url("pozadina.jpg") no-repeat center center;
   background-size: cover; /* proširi cijelu sliku */
   position: relative;
+  overflow-y: hidden;
 }
 
 body::before {
