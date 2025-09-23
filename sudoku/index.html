@@ -2,27 +2,52 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Glagoljaški sudoku</title>
+  <title>Glagoljični sudoku</title>
   <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="description" content="Glagoljični sudoku u kojemu brojevi od 1 do 9 nisu zapisani arapskim brojkama, nego glagoljičnim slovima. Cilj je popuniti mrežu tako da se svaki glagoljični broj od 1 do 9 pojavi jednom u svakome redu, stupcu i svojoj matrici 3 × 3..">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="John Doe">
 
+      <link rel="icon" type="image/png" href="./favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+     <meta property="og:title" content="Glagoljični sudoku" />
+    <meta property="og:description" content="Glagoljični sudoku u kojemu brojevi od 1 do 9 nisu zapisani arapskim brojkama, nego glagoljičnim slovima. Cilj je popuniti mrežu tako da se svaki glagoljični broj od 1 do 9 pojavi jednom u svakome redu, stupcu i svojoj matrici 3 × 3." />
+    <meta property="og:image" content="og-slika.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@stin" />
+    <meta name="twitter:title" content="Prepoznaj broj napisan glagoljicom" />
+    <meta name="twitter:description" content="Glagoljični sudoku u kojemu brojevi od 1 do 9 nisu zapisani arapskim brojkama, nego glagoljičnim slovima. Cilj je popuniti mrežu tako da se svaki glagoljični broj od 1 do 9 pojavi jednom u svakome redu, stupcu i svojoj matrici 3 × 3." />
+    <meta name="twitter:image" content="og-slika.jpg" />
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<a href="#" id="sidebar-toggle">
-   <span class="bar"></span>
-   <span class="bar"></span>
-   <span class="bar"></span>
-</a>
+<div class="topbar">
+    <a href="#" id="sidebar-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
 
-<h1 id="sudoku_title"><span style="font-family: FSGLA; font-weight:300">glagoljaški</span> <span style="font-weight:300">sudoku</span></h1>
+    <h1 id="sudoku_title">
+      <span style="font-family: FSGLA; font-weight:300">glagoljični</span>
+      <span style="font-weight:300">sudoku</span>
+    </h1>
+  </div>
 
-<div id="sudoku_menu">
-  <ul>
-    <li><a class="restart" href="#">Nova igra</a></li>
-    <li></li>
-  </ul>
-</div>
-
+  <div id="sudoku_menu">
+    <ul>
+      <li><a class="restart" href="#">nova igra</a></li>
+      <li style="text-align:center; color:white;margin-top: 20px; font-size: 20px;">prilagodba sudoku igre za glagoljicu <a style="font-size: 20px;" href="https://stin.hr/sadrzaj/dr-sc-josip-mihaljevic/">Josip Mihaljević</a><br>izrađeno unutar projekta <a style="font-size: 20px;" href="https://stin.hr/sadrzaj/digistin/">DigiSTIN</a></li>
+    </ul>
+  </div>
 <div id="sudoku_container"></div>
 <!-- partial -->
   <script src='./jquery.min.js'></script><script  src="./script.js"></script>

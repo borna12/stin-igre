@@ -10,13 +10,27 @@
   }
 
 
-H1 { 
-    background:#2F2D85;
-    color:white;
-    margin:0px 0px 2px 0px;
-    font-size:20px;
-    padding:2px 1px 5px 1px;
-    text-align:center;    
+.topbar {
+  background: #2F2D85;
+  color: white;
+  margin: 0 0 2px 0;
+  /* OVA veličina kontrolira i naslov i hamburger */
+  font-size: 20px;
+  padding: 2px 1px 5px 1px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sam naslov više ne treba svoj background ni fiksni font-size */
+#sudoku_title {
+  margin: 0;
+  font-size: 1em;       /* nasljeđuje iz .topbar */
+  line-height: 1.2;
+  text-align: center;
+  color: white;
 }
 
 body {
@@ -151,7 +165,6 @@ body::before {
 .cell, .num:nth-child(-n+9) {font-family: "FSGLA";}
 
 .gameover_container .gameover {
-    color:white;
     font-weight:bold;
 	    text-align:center; 
     
@@ -159,11 +172,11 @@ body::before {
     position:absolute;       
     width:90%;    
     padding:10px;
-    
+    background: white;
     box-shadow: 0px 0px 5px 5px #bdc3c7;
 }
 
-
+.gameover,.restart{font-size: 30px;}
 .restart {
   background:#B59A6B;
   color:#ecf0f1;
@@ -295,27 +308,28 @@ body::before {
 }
 
 #sidebar-toggle {
-    z-index:3;
+    z-index: 3;
     background: #B59A6B;
-    border-radius: 3px;
+    border-radius: 0.2em;
     display: block;
-    position: relative;
-    padding: 22px 18px;
+    position: absolute;
+    left: 0.8em;
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    padding: 0.18em;
     float: left;
 }
 
-#sidebar-toggle .bar{
+#sidebar-toggle .bar {
     display: block;
-    width: 28px;
-    margin-bottom: 4px;
-    height: 4px;
+    width: 1em;
+    height: 0.15em;
+    margin-bottom: 0.2em;
     background-color: #f0f0f0;
-    border-radius: 1px;   
+    border-radius: 0.05em;
 }
 
-#sidebar-toggle .bar:last-child{
-     margin-bottom: 0;   
-}
+#sidebar-toggle .bar:last-child { margin-bottom: 0; }
 
 /*Responsive Stuff*/
 
@@ -390,4 +404,18 @@ body::before {
   border-width: 6px;
   border-style: solid;
   border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+}
+
+@media all and (orientation:portrait) and (min-width: 640px){
+  .topbar { font-size: 50px; }
+  .statistics { font-size:30px; }    
+  .sudoku_board .cell span { font-size:60px; }    
+  .board_console .num { font-size:60px; }
+}
+
+@media all and (orientation:landscape) and (min-height: 640px){
+  .topbar { font-size: 50px; }
+  .statistics { font-size:30px; }
+  .sudoku_board .cell span { font-size:50px; }
+  .board_console .num { font-size:50px; }
 }
