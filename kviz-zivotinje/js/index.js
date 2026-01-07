@@ -159,13 +159,13 @@ $(document).ready(function () {
         $(".questions-page__answer-list").show()
         question.html("<span style='font-size: 1.3rem;'>" + (questionCounter + 1) + "/" + podatci.length + ".</span> <br>");
         //riječ za koju se pogađa naziv
-        $(".definicija").html("<p>"+podatci[questionCounter].pitanje+"</p>")
+        $(".definicija").html("<p>"+podatci[questionCounter].pitanje+" (<span class='gla'>"+podatci[questionCounter].pitanje+"</span>)</p>")
     
     lista = podatci[questionCounter].krivi.split(";")
     lista.push(podatci[questionCounter].točan)
     shuffle(lista);
         for (x = 0; x < lista.length; x++) {
-            document.getElementById("linkovi").innerHTML += '<div class="questions-page__answer-div questions-page__answer-div-' + x + '" onclick="odabir(this)"><div class=questions-page__selection-div></div><div class=questions-page__feedback-div></div><li class=questions-page__answer-line><span class="questions-page__answer-' + x + ' questions-page__answer-span">' + lista[x] + '</span></div>'
+            document.getElementById("linkovi").innerHTML += '<div class="questions-page__answer-div questions-page__answer-div-' + x + '" onclick="odabir(this)"><div class=questions-page__selection-div></div><div class=questions-page__feedback-div></div><li class=questions-page__answer-line><span class="questions-page__answer-' + x + ' questions-page__answer-span">' + lista[x] + ' (<label class="gla">'+lista[x].replace(/^ /, '')+'</label>)</span></div>'
 
         }
 
@@ -186,7 +186,7 @@ $(document).ready(function () {
     // Store the user's selected (clicked) answer
     getUserAnswer = function (target) {
 
-        userSelectedAnswer = $(target).text();
+userSelectedAnswer = $(target).find('.questions-page__answer-span').contents().filter(function(){return this.nodeType===3;}).first().text().replace(/\(\s*$/,'').trim();
     };
 
     // Get the selected answer's div for highlighting purposes
@@ -271,7 +271,7 @@ function odgovor() {
         bodovi -= 10;
         Swal.fire({
             title: "Isteklo je vrijeme.",
-            html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + "</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
+            html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + " (<label class='gla'>"+podatci[questionCounter].točan.replace(/^ /, '')+"</label>)</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
             showCloseButton: true,
             confirmButtonText: ' dalje',
             backdrop: false,
@@ -338,7 +338,7 @@ function odgovor() {
             $("#krivo")[0].play();
             Swal.fire({
                 title: " <span style='color:#bb422a' >Netočno</span>",
-                html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + "</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
+                html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + " (<label class='gla'>"+podatci[questionCounter].točan.replace(/^ /, '')+"</label>)</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
                 showCloseButton: true,
                 confirmButtonText: ' dalje',
                 backdrop: false,
