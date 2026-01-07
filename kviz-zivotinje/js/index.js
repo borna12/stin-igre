@@ -159,7 +159,7 @@ $(document).ready(function () {
         $(".questions-page__answer-list").show()
         question.html("<span style='font-size: 1.3rem;'>" + (questionCounter + 1) + "/" + podatci.length + ".</span> <br>");
         //riječ za koju se pogađa naziv
-        $(".definicija").html("<p>"+podatci[questionCounter].pitanje+" (<span class='gla'>"+podatci[questionCounter].pitanje+"</span>)</p>")
+        $(".definicija").html("<p>"+podatci[questionCounter].pitanje+" (<span class='gla'>"+podatci[questionCounter].pitanje.trim()+"</span>)</p>")
     
     lista = podatci[questionCounter].krivi.split(";")
     lista.push(podatci[questionCounter].točan)
@@ -271,7 +271,7 @@ function odgovor() {
         bodovi -= 10;
         Swal.fire({
             title: "Isteklo je vrijeme.",
-            html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + " (<label class='gla'>"+podatci[questionCounter].točan.replace(/^ /, '')+"</label>)</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
+            html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + " (<label class='gla'>"+podatci[questionCounter].točan.trim()+"</label>)</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
             showCloseButton: true,
             confirmButtonText: ' dalje',
             backdrop: false,
@@ -338,7 +338,7 @@ function odgovor() {
             $("#krivo")[0].play();
             Swal.fire({
                 title: " <span style='color:#bb422a' >Netočno</span>",
-                html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + " (<label class='gla'>"+podatci[questionCounter].točan.replace(/^ /, '')+"</label>)</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
+                html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + " (<label class='gla'>"+podatci[questionCounter].točan.trim()+"</label>)</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
                 showCloseButton: true,
                 confirmButtonText: ' dalje',
                 backdrop: false,
