@@ -192,7 +192,7 @@ function showResultAndContinue(isCorrect, isTimeout, userText) {
 
         Swal.fire({
             title: "<span style='color:#bb422a'>Netočno</span>",
-            html: "<p style='text-align:center; font-size: 1.5em;'><strong>Upisano je: <span style='color:#bb422a;'>" + (userText || "") + " (<span class='gla2'>" + correctAnswer + "</span>)</span></strong></p>"
+            html: "<p style='text-align:center; font-size: 1.5em;'><strong>Upisano je: <span style='color:#bb422a;'>" + (userText || "") + " (<span class='gla2'>" + userText + "</span>)</span></strong></p>"
                 + "<p style='text-align:center; font-size: 1.5em;'><strong>Točno je: <span style='color:#bb422a;'>" + correctAnswer + "</span>  (<span class='gla2'>" + correctAnswer + "</span>)</strong></p>",
             showCloseButton: true,
             confirmButtonText: 'dalje',
