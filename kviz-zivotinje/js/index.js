@@ -159,7 +159,7 @@ $(document).ready(function () {
         $(".questions-page__answer-list").show()
         question.html("<span style='font-size: 1.3rem;'>" + (questionCounter + 1) + "/" + podatci.length + ".</span> <br>");
         //riječ za koju se pogađa naziv
-        $(".definicija").html("<p>"+podatci[questionCounter].pitanje+" (<span class='gla'>"+podatci[questionCounter].pitanje.trim()+"</span>)</p>")
+        $(".definicija").html("<p> (<span class='gla'>"+podatci[questionCounter].razina1.trim()+"</span>)</p>")
     
     lista = podatci[questionCounter].krivi.split(";")
     lista.push(podatci[questionCounter].točan)
