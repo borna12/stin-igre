@@ -50,10 +50,26 @@
 <p class="opis" style="text-align: justify; font-size:1.5rem; padding: 10px;"></p>
 
                         <button class="btn uglata gla" onclick="document.getElementById('uvod').style.display = 'none';document.getElementById('razina').style.display = 'block'">igraj</button></div>
-                        <div id="razina" style="display: none;"> <p class="opis" style="text-align: left; font-size:1.5rem; padding: 10px;text-align: center;">Odaberi razinu:</p>
-                        <button class="init-page__btn btn uglata" onclick="set_pitanja=1">I. razina</button>
-                        <button class="init-page__btn btn uglata" onclick="set_pitanja=2">II. razina</button>
-                        <button class="init-page__btn btn uglata" onclick="set_pitanja=3">III. razina</button></div>
+                        <div id="razina" style="display: none;">
+  <p class="opis" style="text-align: center; font-size:1.5rem; padding: 10px;">Odaberi razinu:</p>
+
+  <button class="btn " onclick="odaberiRazinu(1)">I. razina</button>
+  <button class="btn " onclick="odaberiRazinu(2)">II. razina</button>
+  <button class="btn " onclick="odaberiRazinu(3)">III. razina</button>
+</div>
+
+<div id="brojPitanja" style="display:none;">
+  <p class="opis" style="text-align: center; font-size:1.5rem; padding: 10px;">Odaberi broj pitanja:</p>
+
+  <button class="btn " onclick="odaberiBrojPitanja(20)">20</button>
+  <button class="btn " onclick="odaberiBrojPitanja(50)">50</button>
+  <button class="btn " onclick="odaberiBrojPitanja(80)">80</button>
+  <button class="btn " onclick="odaberiBrojPitanja(100)">100</button>
+
+  <div style="margin-top:10px;">
+    <button class="btn " onclick="nazadNaRazinu()">natrag</button>
+  </div>
+</div>
 
                         <br>
                         <p style="text-align: center;">Ovaj je kviz izrađen u sklopu projekta <a href="https://stin.hr/sadrzaj/digistin/" target="_blank">DigiSTIN</a>.</p>

@@ -46,7 +46,8 @@ var initPage,
     questionCounter = 0,
     correctAnswersCounter = 0,
     correctAnswer = "",
-    set_pitanja; // postavlja se klikom na razinu u HTML-u
+    set_pitanja,
+    broj_pitanja = 20; // default (ako želiš) // postavlja se klikom na razinu u HTML-u
 
 function shuffle(array) {
     var i = 0, j = 0, temp = null;
@@ -99,14 +100,19 @@ function buildPitanjaZaRazinu() {
 }
 
 function newQuiz() {
+    
     bodovi = 0;
     vrijeme = 0;
     questionCounter = 0;
     correctAnswersCounter = 0;
 
     // priprema pitanja iz CSV-a za odabranu razinu
-    buildPitanjaZaRazinu();
+buildPitanjaZaRazinu();
 
+// ograniči na odabrani broj pitanja (20/50/80/100), ali ne više od dostupnog
+if (Number.isFinite(broj_pitanja) && broj_pitanja > 0) {
+    pitanja = pitanja.slice(0, Math.min(broj_pitanja, pitanja.length));
+}
     // UI
     resultsPage.hide();
     questionsPage.show(300);
@@ -233,12 +239,28 @@ function nextQuestion(ide) {
     }
 }
 
+function odaberiRazinu(lvl) {
+    set_pitanja = lvl;
+    document.getElementById("razina").style.display = "none";
+    document.getElementById("brojPitanja").style.display = "block";
+}
+
+function odaberiBrojPitanja(n) {
+    broj_pitanja = n;
+    newQuiz();
+}
+
+function nazadNaRazinu() {
+    document.getElementById("brojPitanja").style.display = "none";
+    document.getElementById("razina").style.display = "block";
+}
+
+
 $(document).ready(function () {
     initPage = $('.init-page');
     questionsPage = $('.questions-page');
     resultsPage = $('.results-page');
 
-    startBtn = $('.init-page__btn, .results-page__retake-btn');
     retakeBtn = $('.results-page__retake-btn');
 
     question = $('.questions-page__question');
@@ -251,10 +273,13 @@ $(document).ready(function () {
     questionsPage.hide();
     resultsPage.hide();
 
+    startBtn = $('.results-page__retake-btn');
+startBtn.on('click', function () {
+    location.reload();
+});
+
     // start (klik na razinu)
-    startBtn.on('click', function () {
-        newQuiz();
-    });
+ 
 
     // submit (klik)
     $(document).on('click', '#submitAnswer', function () {
