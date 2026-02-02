@@ -63,6 +63,9 @@ function normalizeInput(s) {
     return String(s || "")
         .toLowerCase()
         .trim()
+        // makni završne točke, upitnike i uskličnike (jedan ili više)
+        .replace(/[.!?]+$/g, "")
+        // normaliziraj razmake
         .replace(/\s+/g, " ");
 }
 
