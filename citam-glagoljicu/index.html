@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Čitam glagoljicu</title>
     <meta charset="utf-8">
-    <meta name="description" content="Igra namijenjena ljudima koji žele naučiti čitati glagoljicu. Zadatak je česte riječi i rečenice koje su napisane glagoljicom prepisati latinicom.">
+    <meta name="description"
+        content="Igra namijenjena ljudima koji žele naučiti čitati glagoljicu. Zadatak je česte riječi i rečenice koje su napisane glagoljicom prepisati latinicom.">
     <meta name="keywords" content="Staroslavenski institut, glagoljica, čitanje">
     <meta name="author" content="STIN">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,13 +22,15 @@
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <link rel="stylesheet" href="css/style.css">
     <meta property="og:title" content="Čitam glagoljicu" />
-    <meta property="og:description" content="Igra namijenjena ljudima koji žele naučiti čitati glagoljicu. Zadatak je česte riječi i rečenice koje su napisane glagoljicom prepisati latinicom." />
+    <meta property="og:description"
+        content="Igra namijenjena ljudima koji žele naučiti čitati glagoljicu. Zadatak je česte riječi i rečenice koje su napisane glagoljicom prepisati latinicom." />
     <meta property="og:image" content="og-slika.jpg" />
     <meta property="og:url" content="https://ahrefs.com/blog/open-graph-meta-tags/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@stin" />
     <meta name="twitter:title" content="Čitam glagoljicu" />
-    <meta name="twitter:description" content="Igra namijenjena ljudima koji žele naučiti čitati glagoljicu. Zadatak je česte riječi i rečenice koje su napisane glagoljicom prepisati latinicom." />
+    <meta name="twitter:description"
+        content="Igra namijenjena ljudima koji žele naučiti čitati glagoljicu. Zadatak je česte riječi i rečenice koje su napisane glagoljicom prepisati latinicom." />
     <meta name="twitter:image" content="og-slika.jpg" />
 </head>
 
@@ -46,33 +50,55 @@
                         <h2 class="winner" style="text-transform: uppercase; font-size:2rem">Čitam glagoljicu</h2>
                         <br>
                         <hr class="style-two"><br>
-                        <div id="uvod"><p>Igra namijenjena ljudima koji žele naučiti čitati glagoljicu. Zadatak je česte riječi i rečenice koje su napisane glagoljicom prepisati latinicom.</p>
-<p class="opis" style="text-align: justify; font-size:1.5rem; padding: 10px;"></p>
+                        <div id="uvod">
+                            <p>Igra namijenjena ljudima koji žele naučiti čitati glagoljicu. Zadatak je česte riječi i
+                                rečenice koje su napisane glagoljicom prepisati latinicom.</p>
+                            <p class="opis" style="text-align: justify; font-size:1.5rem; padding: 10px;"></p>
 
-                        <button class="btn uglata gla" onclick="document.getElementById('uvod').style.display = 'none';document.getElementById('razina').style.display = 'block'">igraj</button></div>
+                            <button class="btn uglata gla"
+                                onclick="document.getElementById('uvod').style.display = 'none';document.getElementById('razina').style.display = 'block'">igraj</button>
+                        </div>
                         <div id="razina" style="display: none;">
-  <p class="opis" style="text-align: center; font-size:1.5rem; padding: 10px;">Odaberi razinu:</p>
+                            <p class="opis" style="text-align: center; font-size:1.5rem; padding: 10px;">Odaberi razinu:
+                            </p>
 
-  <button class="btn " onclick="odaberiRazinu(1)">I. razina</button>
-  <button class="btn " onclick="odaberiRazinu(2)">II. razina</button>
-  <button class="btn " onclick="odaberiRazinu(3)">III. razina</button>
-</div>
+                            <button class="btn " onclick="odaberiRazinu(1)">I. razina</button>
+                            <button class="btn " onclick="odaberiRazinu(2)">II. razina</button>
+                            <button class="btn " onclick="odaberiRazinu(3)">III. razina</button>
+                        </div>
 
-<div id="brojPitanja" style="display:none;">
-  <p class="opis" style="text-align: center; font-size:1.5rem; padding: 10px;">Odaberi broj pitanja:</p>
+                        <div id="brojPitanja" style="display:none;">
+                            <p class="opis" style="text-align: center; font-size:1.5rem; padding: 10px;">Odaberi broj
+                                pitanja:</p>
 
-  <button class="btn " onclick="odaberiBrojPitanja(20)">20</button>
-  <button class="btn " onclick="odaberiBrojPitanja(50)">50</button>
-  <button class="btn " onclick="odaberiBrojPitanja(80)">80</button>
-  <button class="btn " onclick="odaberiBrojPitanja(100)">100</button>
+                            <button class="btn " onclick="odaberiBrojPitanja(10)">10</button>
+                            <button class="btn " onclick="odaberiBrojPitanja(20)">20</button>
+                            <button class="btn " onclick="odaberiBrojPitanja(50)">50</button>
+                            <button class="btn " onclick="odaberiBrojPitanja(80)">80</button>
+                            <button class="btn " onclick="odaberiBrojPitanja(100)">100</button>
 
-  <div style="margin-top:10px;">
-    <button class="btn " onclick="nazadNaRazinu()">natrag</button>
-  </div>
-</div>
+                            <div style="margin-top:10px;">
+                                <button class="btn " onclick="nazadNaRazinu()">natrag</button>
+                            </div>
+                        </div>
+                        <div id="vrijemeOpcija" style="display:none;">
+                            <p class="opis" style="text-align: center; font-size:1.5rem; padding: 10px;">
+                                Odaberi vremensko ograničenje po pitanju:
+                            </p>
+
+                            <button class="btn uglata" onclick="odaberiVrijeme(90)">90 sekundi</button>
+                            <button class="btn uglata" onclick="odaberiVrijeme(60)">60 sekundi</button>
+                            <button class="btn uglata" onclick="odaberiVrijeme(30)">30 sekundi</button>
+                            <button class="btn uglata" onclick="odaberiVrijeme(0)">bez ograničenja</button>
+
+                            <div style="margin-top:10px;">
+                                <button class="btn uglata" onclick="nazadNaBrojPitanja()">natrag</button>
+                            </div>
+                        </div>
 
                         <br>
-                        <p style="text-align: center;">Ovaj je kviz izrađen u sklopu projekta <a href="https://stin.hr/sadrzaj/digistin/" target="_blank">DigiSTIN</a>.</p>
+                        <p style="text-align: center;">Ovaj je kviz izrađen u sklopu projekta <a
+                                href="https://stin.hr/sadrzaj/digistin/" target="_blank">DigiSTIN</a>.</p>
                     </div>
                 </div>
             </div>
@@ -86,14 +112,14 @@
                     <div class="col-md-12 text-center vrijeme">
                     </div>
                 </div>
-             <div class="typing-area" style="margin-top: 20px; text-align:center;">
-    <input id="userInput" type="text" autocomplete="off" autocapitalize="none" spellcheck="false"
-        style="font-size: 1.6rem; padding: 12px 14px; width: min(520px, 90%); border-radius: 6px; border: 1px solid #ccc;"
-        placeholder="upiši pročitan tekst" />
-    <div style="margin-top: 12px;">
-        <button id="submitAnswer" class="btn mrzim">provjeri</button>
-    </div>
-</div>
+                <div class="typing-area" style="margin-top: 20px; text-align:center;">
+                    <input id="userInput" type="text" autocomplete="off" autocapitalize="none" spellcheck="false"
+                        style="font-size: 1.6rem; padding: 12px 14px; width: min(520px, 90%); border-radius: 6px; border: 1px solid #ccc;"
+                        placeholder="upiši pročitan tekst" />
+                    <div style="margin-top: 12px;">
+                        <button id="submitAnswer" class="btn mrzim">provjeri</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="results-page">
@@ -106,9 +132,12 @@
                 <p class="results-page__info">Postotak točnih odgovora: <span class="results-page__score"></span>
                 </p>
                 <br>
-                <p class="results-page__info">S obzirom na broj točnih odgovora i vrijeme ostvaren je sljedeći broj bodova:</p>
+                <p class="results-page__info">S obzirom na broj točnih odgovora i vrijeme ostvaren je sljedeći broj
+                    bodova:</p>
                 <h3 class="results-page__bodovi"></h3>
-                <p class="results-page__info">Želite naučiti još novih riječi? Pratite nas na Facebooku i svaki mjesec naučite novu riječ!<br> <a href="https://www.facebook.com/stin.hr" target="_blank"><i class="fab fa-facebook-square"></i></a></p>
+                <p class="results-page__info">Želite naučiti još novih riječi? Pratite nas na Facebooku i svaki mjesec
+                    naučite novu riječ!<br> <a href="https://www.facebook.com/stin.hr" target="_blank"><i
+                            class="fab fa-facebook-square"></i></a></p>
                 <br>
                 <p>
 

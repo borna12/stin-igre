@@ -47,7 +47,8 @@ var initPage,
     correctAnswersCounter = 0,
     correctAnswer = "",
     set_pitanja,
-    broj_pitanja = 20; // default (ako želiš) // postavlja se klikom na razinu u HTML-u
+    broj_pitanja = 20;
+var vrijeme_po_pitanju = 60; // default (ako želiš) // postavlja se klikom na razinu u HTML-u
 
 function shuffle(array) {
     var i = 0, j = 0, temp = null;
@@ -103,19 +104,19 @@ function buildPitanjaZaRazinu() {
 }
 
 function newQuiz() {
-    
+
     bodovi = 0;
     vrijeme = 0;
     questionCounter = 0;
     correctAnswersCounter = 0;
 
     // priprema pitanja iz CSV-a za odabranu razinu
-buildPitanjaZaRazinu();
+    buildPitanjaZaRazinu();
 
-// ograniči na odabrani broj pitanja (20/50/80/100), ali ne više od dostupnog
-if (Number.isFinite(broj_pitanja) && broj_pitanja > 0) {
-    pitanja = pitanja.slice(0, Math.min(broj_pitanja, pitanja.length));
-}
+    // ograniči na odabrani broj pitanja (20/50/80/100), ali ne više od dostupnog
+    if (Number.isFinite(broj_pitanja) && broj_pitanja > 0) {
+        pitanja = pitanja.slice(0, Math.min(broj_pitanja, pitanja.length));
+    }
     // UI
     resultsPage.hide();
     questionsPage.show(300);
@@ -146,14 +147,27 @@ function generateQuestion() {
     question.html("<span style='font-size: 1.3rem;'>" + (questionCounter + 1) + "/" + pitanja.length + ".</span><br>");
     definicija.html("<span class='gla'>" + correctAnswer + "</span>");
 
-    // timer
-    $(".vrijeme").html('<progress value="60" max="60" id="pageBeginCountdown"></progress><p style="margin-top:6px;"><span id="pageBeginCountdownText">60</span> <span id="sekunde">sekundi</span> <span id="ostalo">ostalo</span></p>');
+    if (vrijeme_po_pitanju > 0) {
+        $(".vrijeme").html(
+            '<progress value="' + vrijeme_po_pitanju + '" max="' + vrijeme_po_pitanju + '" id="pageBeginCountdown"></progress>' +
+            '<p style="margin-top:6px;"><span id="pageBeginCountdownText">' + vrijeme_po_pitanju + '</span> ' +
+            '<span id="sekunde">sekundi</span> <span id="ostalo">ostalo</span></p>'
+        );
+
+        ProgressCountdown(
+            vrijeme_po_pitanju,
+            'pageBeginCountdown',
+            'pageBeginCountdownText'
+        ).then(() => evaluateAnswer(true));
+    } else {
+        // bez vremenskog ograničenja
+        $(".vrijeme").html("");
+    }
 
     // reset input
     $("#userInput").val("").focus();
 
     // start countdown; ako istekne, tretiraj kao timeout
-    ProgressCountdown(60, 'pageBeginCountdown', 'pageBeginCountdownText').then(() => evaluateAnswer(true));
 }
 
 function showResultAndContinue(isCorrect, isTimeout, userText) {
@@ -179,7 +193,8 @@ function showResultAndContinue(isCorrect, isTimeout, userText) {
         bodovi += 10;
         $("#tocno")[0].play();
 
-        let broj = vrijeme + 10;
+        let broj = (vrijeme_po_pitanju  ? vrijeme : 0) + 10;
+
         Swal.fire({
             title: "<span style='color:green'>Točno</span>",
             html: "<span style='font-size:1.5em'>+" + broj + "</span>",
@@ -211,9 +226,13 @@ function evaluateAnswer(isTimeout) {
     clearInterval(countdownTimer);
 
     // bodovi po preostalom vremenu (kao u originalu)
-    vrijeme = parseInt($("#pageBeginCountdownText").text(), 10);
-    if (!Number.isFinite(vrijeme)) vrijeme = 0;
-    bodovi += vrijeme;
+    vrijeme = 0;
+
+    if (vrijeme_po_pitanju > 0) {
+        vrijeme = parseInt($("#pageBeginCountdownText").text(), 10);
+        if (!Number.isFinite(vrijeme)) vrijeme = 0;
+        bodovi += vrijeme;
+    }
 
     if (isTimeout === true) {
         showResultAndContinue(false, true, "");
@@ -250,7 +269,17 @@ function odaberiRazinu(lvl) {
 
 function odaberiBrojPitanja(n) {
     broj_pitanja = n;
+    document.getElementById("brojPitanja").style.display = "none";
+    document.getElementById("vrijemeOpcija").style.display = "block";
+}
+function odaberiVrijeme(sekunde) {
+    vrijeme_po_pitanju = sekunde; // 0 = bez vremena
     newQuiz();
+}
+
+function nazadNaBrojPitanja() {
+    document.getElementById("vrijemeOpcija").style.display = "none";
+    document.getElementById("brojPitanja").style.display = "block";
 }
 
 function nazadNaRazinu() {
@@ -277,12 +306,12 @@ $(document).ready(function () {
     resultsPage.hide();
 
     startBtn = $('.results-page__retake-btn');
-startBtn.on('click', function () {
-    location.reload();
-});
+    startBtn.on('click', function () {
+        location.reload();
+    });
 
     // start (klik na razinu)
- 
+
 
     // submit (klik)
     $(document).on('click', '#submitAnswer', function () {
