@@ -1,0 +1,1 @@
+var json_KukljicaUgljan_7 = {"type":"FeatureCollection","name":"KukljicaUgljan_7","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":null,"Kukljica":null},"geometry":{"type":"Point","coordinates":[15.244532894453608,44.036480795677349]}}]}

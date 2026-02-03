@@ -1,0 +1,1 @@
+var json_Posedarje_2 = {"type":"FeatureCollection","name":"Posedarje_2","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":null,"Posedarje":"kasnogotička crkva Posedarje"},"geometry":{"type":"Point","coordinates":[15.437764924206954,44.244482505433304]}}]}

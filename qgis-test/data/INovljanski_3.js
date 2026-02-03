@@ -1,0 +1,1 @@
+var json_INovljanski_3 = {"type":"FeatureCollection","name":"INovljanski_3","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":null,"I. Novljan":"1459."},"geometry":{"type":"Point","coordinates":[14.820486661012765,45.127779596373514]}}]}
