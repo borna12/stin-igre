@@ -9,6 +9,7 @@ const csvData = Papa.parse(baza, {
     comments: "*=",
     complete: function (data) {
         podatci = data.data
+            .filter(r => r && Object.values(r).some(v => v !== null && v !== undefined && String(v).trim() !== ""));
         document.getElementById("loader").style.display = "none";
         document.getElementById("myDiv").style.display = "block";
     }
@@ -159,13 +160,15 @@ $(document).ready(function () {
         $(".questions-page__answer-list").show()
         question.html("<span style='font-size: 1.3rem;'>" + (questionCounter + 1) + "/" + podatci.length + ".</span> <br>");
         //riječ za koju se pogađa naziv
-        $(".definicija").html("<p> (<span class='gla'>"+podatci[questionCounter].razina1.trim()+"</span>)</p>")
-    
-    lista = podatci[questionCounter].krivi.split(";")
-    lista.push(podatci[questionCounter].točan)
-    shuffle(lista);
+const pitanje = (podatci[questionCounter].pitanje ?? "").toString().trim();
+$(".definicija").html(`<p><span class="gla">${pitanje}</span>(${pitanje})</p>`);
+
+        const krivi = (podatci[questionCounter].krivi ?? "").toString();
+        lista = krivi.split(";").filter(s => s.trim() !== "");
+        lista.push(podatci[questionCounter].točan)
+        shuffle(lista);
         for (x = 0; x < lista.length; x++) {
-            document.getElementById("linkovi").innerHTML += '<div class="questions-page__answer-div questions-page__answer-div-' + x + '" onclick="odabir(this)"><div class=questions-page__selection-div></div><div class=questions-page__feedback-div></div><li class=questions-page__answer-line><span class="questions-page__answer-' + x + ' questions-page__answer-span">' + lista[x] + ' (<label class="gla">'+lista[x].replace(/^ /, '')+'</label>)</span></div>'
+            document.getElementById("linkovi").innerHTML += '<div class="questions-page__answer-div questions-page__answer-div-' + x + '" onclick="odabir(this)"><div class=questions-page__selection-div></div><div class=questions-page__feedback-div></div><li class=questions-page__answer-line><span class="questions-page__answer-' + x + ' questions-page__answer-span">' + lista[x] + ' (<label class="gla">' + lista[x].replace(/^ /, '') + '</label>)</span></div>'
 
         }
 
@@ -186,7 +189,7 @@ $(document).ready(function () {
     // Store the user's selected (clicked) answer
     getUserAnswer = function (target) {
 
-userSelectedAnswer = $(target).find('.questions-page__answer-span').contents().filter(function(){return this.nodeType===3;}).first().text().replace(/\(\s*$/,'').trim();
+        userSelectedAnswer = $(target).find('.questions-page__answer-span').contents().filter(function () { return this.nodeType === 3; }).first().text().replace(/\(\s*$/, '').trim();
     };
 
     // Get the selected answer's div for highlighting purposes
@@ -217,15 +220,16 @@ userSelectedAnswer = $(target).find('.questions-page__answer-span').contents().f
     continueBtn.hide();
     // Clicking on start button:
     startBtn.on('click', function () {
+        if (!podatci || !podatci.length) {
+            Swal.fire({ title: "Pričekaj", text: "Podaci se još učitavaju…", icon: "info" });
+            return;
+        }
+
         newQuiz();
-        // Advance to questions page
         initPage.hide();
         questionsPage.show(300);
-        // Load question and answers
         generateQuestionAndAnswers();
-        // Store the correct answer in a variable
         getCorrectAnswer();
-        // Hide the submit and continue buttons
         submitBtn.hide();
         continueBtn.hide();
     });
@@ -269,9 +273,11 @@ function odgovor() {
     if (document.getElementById("pageBeginCountdown").value == "0") {
         $("#krivo")[0].play();
         bodovi -= 10;
+        const tocanTrim = (podatci[questionCounter].točan ?? "").toString().trim();
+
         Swal.fire({
             title: "Isteklo je vrijeme.",
-            html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + " (<label class='gla'>"+podatci[questionCounter].točan.trim()+"</label>)</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
+            html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + " (<label class='gla'>" + tocanTrim + "</label>)</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
             showCloseButton: true,
             confirmButtonText: ' dalje',
             backdrop: false,
@@ -336,9 +342,11 @@ function odgovor() {
             highlightIncorrectAnswerRed();
             bodovi -= 10;
             $("#krivo")[0].play();
+            const tocanTrim = (podatci[questionCounter].točan ?? "").toString().trim();
+
             Swal.fire({
                 title: " <span style='color:#bb422a' >Netočno</span>",
-                html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + " (<label class='gla'>"+podatci[questionCounter].točan.trim()+"</label>)</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
+                html: "<p style='text-align:center; font-size: 1.5em;'><strong>Točan je odgovor: <span style='color:#bb422a; ' >" + podatci[questionCounter].točan + " (<label class='gla'>" + tocanTrim + "</label>)</span></strong></p><br><figure><img src='slike/" + podatci[questionCounter].slika + " 'class='slikica2'/> </figure>",
                 showCloseButton: true,
                 confirmButtonText: ' dalje',
                 backdrop: false,
