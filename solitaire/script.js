@@ -646,7 +646,19 @@ function addCardContent(card,value,suit){
   var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 70 100");
   if (value==1){
-    svg.appendChild(addSuit(0.5,0.5,suit,2));
+    var img = document.createElementNS("http://www.w3.org/2000/svg","image");
+
+if (suit == 0) img.setAttribute("href","slike/herc.svg");
+if (suit == 1) img.setAttribute("href","slike/tref.svg");
+if (suit == 2) img.setAttribute("href","slike/karo.svg");
+if (suit == 3) img.setAttribute("href","slike/pik.svg");
+
+img.setAttribute("x","10");
+img.setAttribute("y","15");
+img.setAttribute("width","50");
+img.setAttribute("height","70");
+
+svg.appendChild(img);
   }else if (value<11){
     var arr=cardDistribution[value-2];
     for (var i=0;i<arr.length;i++){
