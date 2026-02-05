@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="hr" >
 <head>
   <meta charset="UTF-8">
-  <title>Solitaire</title>
+  <title>Pasijans</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
@@ -20,15 +20,15 @@
     <audio id="collapsesound" src="https://picturelements.github.io/games/solitaire/sounds/collapse.wav" type="audio/wav"></audio>
     <div id="header">
       <div id="gameinfo">
-        <div>Time: <span id="time">00:00</span></div>
+        <div>Vrijeme: <span id="time">00:00</span></div>
         <div id="gamename"></div>
-        <div style="text-align:right">Moves: <span id="movecount">0</span></div>
+        <div style="text-align:right">Potezi: <span id="movecount">0</span></div>
       </div>
       <div id="settingsinfo">
-        <div class="settingsitem selected" onclick="slideSettings(this,0)">Select solitaire</div>
-        <div class="settingsitem" onclick="slideSettings(this,1)">Settings</div>
-        <div class="settingsitem" onclick="slideSettings(this,2)">About</div>
-        <div class="settingsitem hidden">License</div>
+        <div class="settingsitem selected" onclick="slideSettings(this,0)">Odaberi tip pasijansa</div>
+        <div class="settingsitem" onclick="slideSettings(this,1)">Postavke</div>
+        <div class="settingsitem" onclick="slideSettings(this,2)">O igri</div>
+        <div class="settingsitem hidden">Prava</div>
       </div>
     </div>
     <div id="main">
@@ -121,11 +121,7 @@
           <circle r="15" cx="65" cy="95"></circle>
         </svg>
       </div>
-      <svg id="powerbuffer_11">
-        <path d="M20 57 l30 0 l10 -20 l-25 5 l-25 -5"></path>
-        <rect x="20" y="59" width="14" height="5"></rect>
-        <rect x="36" y="59" width="14" height="5"></rect>
-      </svg>
+     <svg id="powerbuffer_11" viewBox="0 0 70 100" preserveAspectRatio="xMidYMid meet"> <image href="decko.svg" x="5" y="10" width="60" height="80"></image> </svg>
       <svg id="powerbuffer_12">
         <path d="M20 55 l30 0 l10 -20 l-18 10 l-7 -10 l-7 10 l-18 -10"></path>
         <rect x="20" y="60" width="30" height="5"></rect>

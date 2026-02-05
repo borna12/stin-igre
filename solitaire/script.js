@@ -16,7 +16,7 @@
 
 var solitaires={
   klondike:{
-    name:"Klondike",
+    name:"Klondike (klasičan, lak)",
     cardinfo:{
       viewmode:"down",  //default direction cards are placed
       cardcount:[3]   //hearts,clubs,diamonds,spades
@@ -51,7 +51,7 @@ var solitaires={
     ]]
   },
   klondikebythrees:{
-    name:"Klondike by Threes",
+    name:"Klondike po tri karte (srednje težak)",
     cardinfo:{
       viewmode:"down",  //default direction cards are placed
       cardcount:[13]   //hearts,clubs,diamonds,spades
@@ -86,7 +86,7 @@ var solitaires={
     ]]
   },
   spider:{
-    name:"Spider",
+    name:"Pauk – jedna boja (lak)",
     cardinfo:{
       viewmode:"down",  //default direction cards are placed
       cardcount:[0,0,0,104]   //hearts,clubs,diamonds,spades
@@ -127,7 +127,7 @@ var solitaires={
     ]]
   },
   spider2s:{
-    name:"Spider - Two Suits",
+    name:"Pauk – dvije boje (srednje težak)",
     cardinfo:{
       viewmode:"down",  //default direction cards are placed
       cardcount:[52,0,0,52]   //hearts,clubs,diamonds,spades
@@ -169,7 +169,7 @@ var solitaires={
     ]]
   },
   spider4s:{
-    name:"Spider - Four Suits",
+    name:"Pauk – četiri boje (težak)",
     cardinfo:{
       viewmode:"down",  //default direction cards are placed
       cardcount:[26]   //hearts,clubs,diamonds,spades
@@ -211,7 +211,7 @@ var solitaires={
     ]]
   },
   fortythieves:{
-    name:"Forty Thieves",
+    name:"Četrdeset razbojnika (težak)",
     cardinfo:{
       viewmode:"up",  //default direction cards are placed
       cardcount:[26]   //hearts,clubs,diamonds,spades
@@ -254,7 +254,7 @@ var solitaires={
     ]]
   },
   freecell:{
-    name:"FreeCell",
+    name:"Slobodne ćelije (logički, srednje težak)",
     cardinfo:{
       viewmode:"up",  //default direction cards are placed
       cardcount:[13]   //hearts,clubs,diamonds,spades
@@ -294,7 +294,7 @@ var solitaires={
     ]]
   },
   golf:{
-    name:"Golf",
+    name:"Golf (brz, jednostavan)",
     cardinfo:{
       viewmode:"up",  //default direction cards are placed
       cardcount:[13]   //hearts,clubs,diamonds,spades
@@ -668,7 +668,7 @@ function addCardContent(card,value,suit){
 }
 
 function idToValue(val){
-  var vals=['a',2,3,4,5,6,7,8,9,10,'d','g','k'];
+  var vals=['a',2,3,4,5,6,7,8,9,'I','dečko','dama','kralj'];
   return vals[val-1];
 }
 
@@ -1209,7 +1209,7 @@ function getHints(){
     }
   }
   
-  document.getElementById("hintbutton").setAttribute("data-title",hints.length>0?"Get hint (1/"+hints.length+")":"No hints available");
+  document.getElementById("hintbutton").setAttribute("data-title",hints.length>0?"Traži pomoć (1/"+hints.length+")":"Nema dostupnih savjeta.");
   document.getElementById("hintbutton").setAttribute("data-hints",hints.length);
   if (hints.length==0){
     clearInterval(tick);
@@ -1350,15 +1350,15 @@ function showAndSlide(id){
 }
 
 var inputs=[
-  ["boolean","hintbutton","Hint mode",0,[0,"show hints",1,"hide hint count",2,"no hints"],setAttribute],
-  ["boolean","autoplace","Autoplace",true,[true,"on",false,"off"],setAP],
+  ["boolean","hintbutton","Pomoć u igri",0,[0,"omogući",1,"omogući s ograničenjem",2,"bez pomoći"],setAttribute],
+  ["boolean","autoplace","Automatsko slaganje",true,[true,"on",false,"off"],setAP],
   [
-    ["slider","zoom","Zoom",1,0.7,1.3,0.02,setZoom],
-    ["boolean","",[1,"Default"]]
+    ["slider","zoom","Povećaj prikaz",1,0.7,1.3,0.02,setZoom],
+    ["boolean","",[1,"Vrati na zadano"]]
   ],
   [
-    ["slider","globalVol","Volume",1,0,1,0.02,setVol],
-    ["boolean","",[0,"Mute"]]
+    ["slider","globalVol","Glasnoća",1,0,1,0.02,setVol],
+    ["boolean","",[0,"Isključi zvuk"]]
   ]
 ];
 
@@ -1407,4 +1407,4 @@ Math.hypot=function(a,b){
 };
 
 fillShowcase();
-setupGame("klondike");
+document.body.setAttribute("expanded","true");
