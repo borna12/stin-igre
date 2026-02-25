@@ -161,7 +161,7 @@ $(document).ready(function () {
         question.html("<span style='font-size: 1.3rem;'>" + (questionCounter + 1) + "/" + podatci.length + ".</span> <br>");
         //riječ za koju se pogađa naziv
 const pitanje = (podatci[questionCounter].pitanje ?? "").toString().trim();
-$(".definicija").html(`<p><span class="gla">${pitanje}</span>(${pitanje})</p>`);
+$(".definicija").html(`<p><span class="gla">${pitanje}</span> (${pitanje})</p>`);
 
         const krivi = (podatci[questionCounter].krivi ?? "").toString();
         lista = krivi.split(";").filter(s => s.trim() !== "");
