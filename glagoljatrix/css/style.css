@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Gla';
+  src: url('fsgla.eot');
+  src: url('fsgla.eot?#iefix') format('embedded-opentype'),
+       url('fsgla.woff') format('woff'),
+       url('fsgla.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+    font-family: 'Gla';
+    src: url('fsgla.TTF');
+}
+
+body {
+    background: #EEE;
+    color: #999;
+    margin: 0;
+    padding: 10px 0px 20px;
+    text-align: center;
+    font-size: 11px;
+    line-height: 16px;
+    font-family: "Gla";
+}
+
+a,
+a:visited,
+a:active {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover,
+a:visited:hover,
+a:active:hover {
+    color: #222;
+}
+
+.container h1 {
+    font-family: "Orbitron", "Helvetica", sans-serif;
+    font-size: 40px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
+}
+
+.container h2 {
+    margin: 10px 0;
+    color: #999;
+    font-size: 18px;
+    font-family: "Orbitron", "Helvetica", sans-serif;
+}
+
+.container p {
+    font-family: "Orbitron", "Helvetica", sans-serif;
+}
+
+#game {
+    position: relative;
+    max-width: 85vw;
+    max-height: 75vh;
+    margin: 20px auto 40px;
+    left: -10px;
+}
+
+#game canvas {
+    border: 10px solid white;
+}
+
+
+#slova_za_pogoditi {
+    font-size: 50px;
+    margin-bottom: 2%;
+    font-family: sans-serif;
+    color: #FF0000;
+}
