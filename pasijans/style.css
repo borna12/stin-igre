@@ -209,6 +209,19 @@ body[expanded="true"] #gameinfo{
   overflow:hidden;
   transition:background 200ms;
   font-family: FSGLA;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* keširaj sadržaj karte kao GPU teksturu da se teški SVG ne rasterizira na svakom frameu */
+.card svg, .card img{
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* nagovijesti pregledniku da će se ovi elementi animirati */
+.moving, .collapse, .collapse .cardwrapper, body.slideheap .cardwrapper{
+  will-change: transform, top, left;
 }
 
 .card:not(.bottom){

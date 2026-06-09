@@ -645,18 +645,20 @@ function addCardContent(card,value,suit){
   card.appendChild(span.cloneNode(true));
   var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
   svg.setAttribute("viewBox","0 0 70 100");
+  var suitNames=["herc","tref","karo","pik"];
   if (value==1){
     var img = document.createElementNS("http://www.w3.org/2000/svg","image");
 
 if (suit == 0) img.setAttribute("href","slike/herc.svg");
 if (suit == 1) img.setAttribute("href","slike/tref.svg");
 if (suit == 2) img.setAttribute("href","slike/karo.svg");
-if (suit == 3) img.setAttribute("href","slike/pik.svg");
+if (suit == 3) img.setAttribute("href","slike/piko.svg");
 
 img.setAttribute("x","10");
 img.setAttribute("y","15");
 img.setAttribute("width","50");
 img.setAttribute("height","70");
+img.setAttribute("preserveAspectRatio","xMidYMid meet");
 
 svg.appendChild(img);
   }else if (value<11){
@@ -672,7 +674,15 @@ svg.appendChild(img);
       }
     }
   }else{
-    svg.innerHTML=document.getElementById("powerbuffer_"+value).innerHTML;
+    var faceName=value==11?"decko":value==12?"dama":"kralj";
+    var fimg = document.createElementNS("http://www.w3.org/2000/svg","image");
+    fimg.setAttribute("href","slike/"+faceName+"-"+suitNames[suit]+".svg");
+    fimg.setAttribute("x","11");
+    fimg.setAttribute("y","18");
+    fimg.setAttribute("width","48");
+    fimg.setAttribute("height","64");
+    fimg.setAttribute("preserveAspectRatio","xMidYMid meet");
+    svg.appendChild(fimg);
   }
   svg.appendChild(addSuit(0.075,0.17,suit,0.35));
   svg.appendChild(addSuit(0.925,0.83,suit,0.35,true));
