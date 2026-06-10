@@ -640,11 +640,40 @@ html, body {
   touch-action: none;                 /* da preglednik ne presreće povlačenje karata */
 }
 
-/* Napomena: skaliranje ploče za mobitele radi se u JS-u (fitBoard) jer širi
-   modovi (npr. Pauk) imaju više stupaca, pa se mjeri stvarna širina i stane u ekran. */
+/* Skaliranje same PLOČE radi fitBoard (JS) — neovisno o ovom fontu.
+   Ovdje povećavamo osnovni font samo da zaglavlje i kontrole budu čitljivi na mobitelu. */
+@media (max-width: 760px) { body { font-size: 1.8vw; } }
+@media (max-width: 480px) { body { font-size: 2.2vw; } }
 
 /* tekstualne stranice (pravila, postavke) preko cijele širine na malom ekranu */
-@media (max-width: 700px) {
-  .textpage, #inputarea { margin: 3em 5%; }
-  .showcaseitem { left: 0; margin: 0.5em; }
+@media (max-width: 760px) {
+  .textpage, #inputarea { margin: 3em 5%; font-size: clamp(13px, 3.6vw, 19px); }
+
+  /* izbornik za igru: vertikalni popis (jedno ispod drugog) s okomitim scrollom */
+  #showcase {
+    font-size: clamp(13px, 3.7vw, 20px);
+    padding: 0.8em 0;
+    text-align: center;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .showcaseitem {
+    float: none;
+    display: block;
+    left: 0;
+    width: 90%;
+    max-width: 360px;
+    height: auto;
+    margin: 0.6em auto;
+    padding-bottom: 0.4em;
+  }
+  .solitairethumb {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1;
+    left: 0;
+  }
+  .showcaseitem p { font-size: 120%; }
 }

@@ -45,9 +45,7 @@ var solitaires={
       {type:"heap",startsize:2},
       {type:"heap",startsize:3},
       {type:"heap",startsize:4},
-      {type:"heap",startsize:5},
-      {type:"heap",startsize:6},
-      {type:"heap",startsize:7}
+      {type:"heap",startsize:5}
     ]]
   },
   klondikebythrees:{
