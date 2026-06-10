@@ -395,7 +395,7 @@ function scrollMove(evt){
   }
 }
 
-window.onresize=setHeapSpacing;
+window.onresize=function(){ fitBoard(); setHeapSpacing(); };
 
 function moveCards(evt){
   if (moveElem&&!noAction){
@@ -533,8 +533,35 @@ function setupGame(type){
   }
   flipTopCards();
   setAllMovable();
+  fitBoard();
   setHeapSpacing(true);
   getHints();
+}
+
+// Automatski skalira ploču da stane u širinu ekrana (svi modovi), a na malom
+// ekranu je poveća da popuni širinu — neovisno o broju stupaca.
+function fitBoard(){
+  var gc=document.getElementById("gamecontainer");
+  if (!gc||!zoomBasis) return;
+  var design=zoomBasis*settingsData.zoom;        // zamišljena (desktop) skala
+  gc.style.fontSize=design+"em";
+  // stvarna širina sadržaja = raspon djece najšireg reda (neovisno o centriranju)
+  var bars=gc.getElementsByClassName("contentbar"), natural=0;
+  for (var i=0;i<bars.length;i++){
+    var ch=bars[i].children, min=Infinity, max=-Infinity;
+    for (var j=0;j<ch.length;j++){
+      var l=ch[j].offsetLeft, r=l+ch[j].offsetWidth;
+      if (l<min) min=l;
+      if (r>max) max=r;
+    }
+    if (max>min) natural=Math.max(natural,max-min);
+  }
+  if (!natural) return;
+  var avail=window.innerWidth*0.98;
+  var scale=1;
+  if (natural>avail) scale=avail/natural;                              // smanji da stane (svi modovi)
+  else if (window.innerWidth<=900) scale=Math.min(avail/natural,1.8);  // popuni širinu na mobitelu
+  if (scale>0 && scale!=1) gc.style.fontSize=(design*scale)+"em";
 }
 
 function createBottomCard(){
@@ -637,6 +664,30 @@ function flipTopCards(){
   }
 }
 
+// omjeri (širina/visina) preuzeti iz originalnih .png slika
+var imageRatios={
+  herc:1.000, tref:1.000, karo:1.000, piko:1.000,
+  "decko-herc":0.724, "decko-tref":0.587, "decko-karo":0.580, "decko-pik":0.507,
+  "dama-herc":0.558, "dama-tref":0.594, "dama-karo":0.651, "dama-pik":0.647,
+  "kralj-herc":0.473, "kralj-tref":1.117, "kralj-karo":0.657, "kralj-pik":0.869
+};
+
+// postavlja sliku u središte karte s točnim omjerom (bez razvlačenja)
+function placeCardImage(svg,href,ratio){
+  if (!ratio) ratio=0.7;
+  var maxW=56, maxH=76, cx=35, cy=50;   // dozvoljeni prostor unutar 70x100, centriran
+  var w=maxH*ratio, h=maxH;
+  if (w>maxW){ w=maxW; h=maxW/ratio; }
+  var img=document.createElementNS("http://www.w3.org/2000/svg","image");
+  img.setAttribute("href",href);
+  img.setAttribute("x",round(cx-w/2));
+  img.setAttribute("y",round(cy-h/2));
+  img.setAttribute("width",round(w));
+  img.setAttribute("height",round(h));
+  img.setAttribute("preserveAspectRatio","xMidYMid meet");
+  svg.appendChild(img);
+}
+
 function addCardContent(card,value,suit){
   card.innerHTML="";
   var span=document.createElement("span");
@@ -647,20 +698,8 @@ function addCardContent(card,value,suit){
   svg.setAttribute("viewBox","0 0 70 100");
   var suitNames=["herc","tref","karo","pik"];
   if (value==1){
-    var img = document.createElementNS("http://www.w3.org/2000/svg","image");
-
-if (suit == 0) img.setAttribute("href","slike/herc.svg");
-if (suit == 1) img.setAttribute("href","slike/tref.svg");
-if (suit == 2) img.setAttribute("href","slike/karo.svg");
-if (suit == 3) img.setAttribute("href","slike/piko.svg");
-
-img.setAttribute("x","10");
-img.setAttribute("y","15");
-img.setAttribute("width","50");
-img.setAttribute("height","70");
-img.setAttribute("preserveAspectRatio","xMidYMid meet");
-
-svg.appendChild(img);
+    var aceName=["herc","tref","karo","piko"][suit];
+    placeCardImage(svg,"slike/"+aceName+".png",imageRatios[aceName]);
   }else if (value<11){
     var arr=cardDistribution[value-2];
     for (var i=0;i<arr.length;i++){
@@ -674,15 +713,8 @@ svg.appendChild(img);
       }
     }
   }else{
-    var faceName=value==11?"decko":value==12?"dama":"kralj";
-    var fimg = document.createElementNS("http://www.w3.org/2000/svg","image");
-    fimg.setAttribute("href","slike/"+faceName+"-"+suitNames[suit]+".svg");
-    fimg.setAttribute("x","11");
-    fimg.setAttribute("y","18");
-    fimg.setAttribute("width","48");
-    fimg.setAttribute("height","64");
-    fimg.setAttribute("preserveAspectRatio","xMidYMid meet");
-    svg.appendChild(fimg);
+    var faceName=(value==11?"decko":value==12?"dama":"kralj")+"-"+suitNames[suit];
+    placeCardImage(svg,"slike/"+faceName+".png",imageRatios[faceName]);
   }
   svg.appendChild(addSuit(0.075,0.17,suit,0.35));
   svg.appendChild(addSuit(0.925,0.83,suit,0.35,true));
@@ -739,7 +771,7 @@ function pickupCard(evt){
 function dropCards(evt){
   if (moveElem&&!noAction){
     var pp=getOverlappingPile(moveElem);
-    if (pp&&pp!=parentPile){
+    if (pp&&pp!=parentPile&&!moveElem.contains(pp)){
       if (canPlace(getTopCard(pp),getBottomCard(moveElem))){
         relayAppend(pp,moveElem,200,"sliding");
         return;
@@ -869,6 +901,7 @@ function relayAppend(target,cards,speed,extraClass,noSound){
 
 function appendCards(target,cards,noReset,noSound){
   var mElem=cards,pp,src=cards.parentElement;
+  if (target===cards||cards.contains(target)){ resetCardPos(mElem); return; }  // nevaljan potez: cilj je unutar premještanih karata
   if (!noReset) pp=getParentPile(target);
   if (target.classList.contains("cardwrapper")){
     if (cards.classList.contains("card")){
@@ -1256,12 +1289,56 @@ function optiElem(selector){
   return out;
 }
 
-function playEffect(type){
-  var audio=document.getElementById(type+"sound");
-  audio.volume=settingsData.globalVol;
-  audio.currentTime=0;
-  audio.play();
+// Web Audio: dekodiraj svaki zvuk jednom u buffer -> trenutno puštanje, preklapanje bez latencije
+var audioCtx=null, audioBuffers={}, audioReady=false;
+
+function initAudio(){
+  if (audioCtx) return;
+  try{
+    audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  }catch(e){ return; }
+  ["flip","place","collapse"].forEach(function(type){
+    var el=document.getElementById(type+"sound");
+    var urls=[el.getAttribute("data-local"), el.getAttribute("src")].filter(Boolean);
+    (function tryLoad(i){
+      if (i>=urls.length) return;
+      fetch(urls[i])
+        .then(function(r){ if(!r.ok) throw 0; return r.arrayBuffer(); })
+        .then(function(buf){ return audioCtx.decodeAudioData(buf); })
+        .then(function(decoded){ audioBuffers[type]=decoded; audioReady=true; })
+        .catch(function(){ tryLoad(i+1); });
+    })(0);
+  });
 }
+
+function playEffect(type){
+  if (settingsData.globalVol<=0) return;
+  // Web Audio put (bez latencije)
+  if (audioCtx){
+    if (audioCtx.state==="suspended") audioCtx.resume();
+    var buf=audioBuffers[type];
+    if (buf){
+      var src=audioCtx.createBufferSource();
+      src.buffer=buf;
+      var gain=audioCtx.createGain();
+      gain.gain.value=settingsData.globalVol;
+      src.connect(gain).connect(audioCtx.destination);
+      src.start(0);
+      return;
+    }
+  }
+  // fallback: kloniraj <audio> element da se zvukovi mogu preklapati
+  var audio=document.getElementById(type+"sound");
+  if (!audio) return;
+  var node=audio.cloneNode(true);
+  node.volume=settingsData.globalVol;
+  node.play();
+}
+
+// AudioContext se mora pokrenuti nakon korisničke geste (autoplay politika preglednika)
+["pointerdown","keydown","touchstart"].forEach(function(ev){
+  document.addEventListener(ev, initAudio, { once:true });
+});
 
 //UI stuff
 function setTick(){
@@ -1411,7 +1488,7 @@ function setAttribute(obj){
 
 function setZoom(obj){
   settingsData.zoom=obj.getValue();
-  document.getElementById("gamecontainer").style.fontSize=zoomBasis*settingsData.zoom+"em";
+  fitBoard();
   setHeapSpacing(true);
 }
 

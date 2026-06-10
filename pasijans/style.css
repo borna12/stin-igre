@@ -625,5 +625,26 @@ body[expanded="true"] #actionscreen{
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #157b2c; 
+  background: #157b2c;
+}
+
+/* ===================== Mobilne / touch prilagodbe ===================== */
+html, body {
+  overscroll-behavior: none;          /* bez "gumenog" povlačenja stranice */
+  -webkit-text-size-adjust: 100%;
+}
+#gamecontainer, .card, .btn, .settingsitem, #header {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);   /* bez plavog bljeska na dodir */
+}
+#actionscreen, #gamecontainer {
+  touch-action: none;                 /* da preglednik ne presreće povlačenje karata */
+}
+
+/* Napomena: skaliranje ploče za mobitele radi se u JS-u (fitBoard) jer širi
+   modovi (npr. Pauk) imaju više stupaca, pa se mjeri stvarna širina i stane u ekran. */
+
+/* tekstualne stranice (pravila, postavke) preko cijele širine na malom ekranu */
+@media (max-width: 700px) {
+  .textpage, #inputarea { margin: 3em 5%; }
+  .showcaseitem { left: 0; margin: 0.5em; }
 }
