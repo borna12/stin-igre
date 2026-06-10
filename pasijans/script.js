@@ -1396,7 +1396,7 @@ function fillShowcase(){
     sci.className="showcaseitem";
     var st=document.createElement("div");
     st.className="solitairethumb";
-    st.style.backgroundPosition=-100*(counter%2)+"% "+20*Math.floor(counter/2)+"%";
+    st.style.backgroundImage="url(\"slike/thumb-"+key+".jpg\")";
     var p=document.createElement("p");
     p.innerHTML=solitaires[key].name || "Untitled Solitaire";
     sci.appendChild(st);
