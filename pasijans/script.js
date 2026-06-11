@@ -720,7 +720,7 @@ function addCardContent(card,value,suit){
 }
 
 function idToValue(val){
-  var vals=['a',2,3,4,5,6,7,8,9,'I','dečko','dama','kralj'];
+  var vals=['a',2,3,4,5,6,7,8,9,'I','Ia','Ib','Iv'];
   return vals[val-1];
 }
 
@@ -1398,7 +1398,7 @@ function fillShowcase(){
     st.className="solitairethumb";
     st.style.backgroundImage="url(\"slike/thumb-"+key+".jpg\")";
     var p=document.createElement("p");
-    p.innerHTML=solitaires[key].name || "Untitled Solitaire";
+    p.innerHTML=solitaires[key].name || "Bezimeni pasijans";
     sci.appendChild(st);
     sci.appendChild(p);
     sc.appendChild(sci);
@@ -1423,7 +1423,7 @@ function markHints(){
   hints[hintCount][0].classList.add("hint");
   if (hints[hintCount][1]) hints[hintCount][1].classList.add("hint");
   hintCount=(hintCount+1)%hints.length;
-  document.getElementById("hintbutton").setAttribute("data-title","Get hint ("+(hintCount+1)+"/"+hints.length+")");
+  document.getElementById("hintbutton").setAttribute("data-title","Traži pomoć ("+(hintCount+1)+"/"+hints.length+")");
 }
 
 function removeHints(){
@@ -1448,7 +1448,7 @@ function showAndSlide(id){
 
 var inputs=[
   ["boolean","hintbutton","Pomoć u igri",0,[0,"omogući",1,"omogući s ograničenjem",2,"bez pomoći"],setAttribute],
-  ["boolean","autoplace","Automatsko slaganje",true,[true,"on",false,"off"],setAP],
+  ["boolean","autoplace","Automatsko slaganje",true,[true,"uključi",false,"isključi"],setAP],
   [
     ["slider","zoom","Povećaj prikaz",1,0.7,1.3,0.02,setZoom],
     ["boolean","",[1,"Vrati na zadano"]]

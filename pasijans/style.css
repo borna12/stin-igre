@@ -648,6 +648,14 @@ body[expanded="true"] #actionscreen{
   background: #157b2c;
 }
 
+.digistin-logo {
+  display: block;
+  width: 12em;
+  max-width: 60%;
+  height: auto;
+  margin: 1em 0;
+}
+
 /* ===================== Legende ilustracija (tab "O igri") ===================== */
 .legenda{
   margin-bottom: 3em;
@@ -713,6 +721,11 @@ html, body {
    Ovdje povećavamo osnovni font samo da zaglavlje i kontrole budu čitljivi na mobitelu. */
 @media (max-width: 760px) { body { font-size: 1.8vw; } }
 @media (max-width: 480px) { body { font-size: 2.2vw; } }
+
+/* na mobitelu kontrolni gumbi (izbornik/restart/savjet) idu u donji lijevi kut da ne smetaju kartama */
+@media (max-width: 760px) {
+  #buttonwrapper { top: auto; bottom: 0; }
+}
 
 /* tekstualne stranice (pravila, postavke) preko cijele širine na malom ekranu */
 @media (max-width: 760px) {
