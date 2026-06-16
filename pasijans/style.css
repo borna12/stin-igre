@@ -722,9 +722,16 @@ html, body {
 @media (max-width: 760px) { body { font-size: 1.8vw; } }
 @media (max-width: 480px) { body { font-size: 2.2vw; } }
 
-/* na mobitelu kontrolni gumbi (izbornik/restart/savjet) idu u donji lijevi kut da ne smetaju kartama */
+/* na mobitelu kontrolni gumbi (izbornik/restart/savjet) zalijepljeni su za donji lijevi
+   kut EKRANA (position:fixed) da ne odu izvan vidljivog dijela kad je ploča viša od ekrana */
 @media (max-width: 760px) {
-  #buttonwrapper { top: auto; bottom: 0; }
+  #buttonwrapper {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
 }
 
 /* tekstualne stranice (pravila, postavke) preko cijele širine na malom ekranu */
