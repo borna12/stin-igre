@@ -148,7 +148,6 @@
   </div>
 
   <div id="status" class="status">Tvoj potez</div>
-  <div id="thinking">Računalo razmišlja<span class="dotanim"></span></div>
 
   <div class="board-wrap"><div id="board"></div><canvas id="fx"></canvas></div>
 
@@ -630,7 +629,6 @@ let gameOver = false;
 
 const boardEl = document.getElementById('board');
 const statusEl = document.getElementById('status');
-const thinkEl = document.getElementById('thinking');
 const movesEl = document.getElementById('movelist');
 
 // ===== animacije: klizanje figura + raspad u prašinu =====
@@ -870,10 +868,10 @@ function afterPlayer(){
 }
 
 function scheduleAI(){
-  busy=true; thinkEl.style.display='block';
+  busy=true; setStatus('Računalo razmišlja…','cpu');
   setTimeout(()=>{
     const m=AI.chooseMove(game, difficulty);
-    busy=false; thinkEl.style.display='none';
+    busy=false;
     if(!m){ checkEnd(); return; }
     applyMove(m);
     checkEnd();
@@ -954,7 +952,6 @@ function askPromotion(color, cb){
 // ---- controls ----
 function newGame(){
   game=new Chess(); history=[]; selected=-1; legalForSel=[]; gameOver=false; busy=false;
-  thinkEl.style.display='none';
   orientationWhiteBottom = (playerColor==='w');
   buildBoard(); updateStatus(); renderMoves();
   if(game.turn!==playerColor) scheduleAI();
