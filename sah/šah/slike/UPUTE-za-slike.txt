@@ -1,0 +1,29 @@
+GLAGOLJAŠKI ŠAH — kako dodati svoje ilustracije
+================================================
+
+Spremi 12 ilustracija u OVU mapu (slike) pod točno ovim imenima:
+
+TVOJE figure (bijele, dolje na ploči):
+  1.png  → KRALJ   (oznaka K)
+  2.png  → DAMA    (oznaka D)
+  3.png  → TOP     (oznaka T)
+  4.png  → LOVAC   (oznaka L)
+  5.png  → SKAKAČ  (oznaka S)
+  6.png  → PJEŠAK  (oznaka P)
+
+RAČUNALOVE figure (crne, gore na ploči):
+  7.png  → KRALJ   (oznaka K)
+  8.png  → DAMA    (oznaka D)
+  9.png  → TOP     (oznaka T)
+  10.png → LOVAC   (oznaka L)
+  11.png → SKAKAČ  (oznaka S)
+  12.png → PJEŠAK  (oznaka P)
+
+Napomene:
+- Format može biti .png (najbolje s prozirnom pozadinom).
+- Koja ilustracija ide na koju figuru je čisto estetski izbor —
+  svaka figura ionako ima malo slovo u kutu (K/D/T/L/S/P) koje
+  govori koji je tip. Slobodno preimenuj kako želiš.
+- Dok slike ne dodaš, igra radi i prikazuje klasične šahovske simbole.
+
+Otvori "glagoljaski-sah.html" dvostrukim klikom u pregledniku.
