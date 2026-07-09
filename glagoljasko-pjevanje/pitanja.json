@@ -2,10 +2,10 @@
   {
     "pitanje": "Što je glagoljaško pjevanje?",
     "odgovori": [
-      "Liturgijsko i paraliturgijsko pučko crkveno pjevanje nastalo iz pjevanih tekstova glagoljske liturgije",
-      "Vrsta klapskog pjevanja s dalmatinskih otoka",
-      "Zborno pjevanje uz orgulje u katedralama",
-      "Srednjovjekovno viteško pjesništvo uz pratnju lutnje"
+      "liturgijsko i paraliturgijsko pučko crkveno pjevanje nastalo iz pjevanih tekstova glagoljske liturgije",
+      "vrsta klapskog pjevanja s dalmatinskih otoka",
+      "zborno pjevanje uz orgulje u katedralama",
+      "srednjovjekovno viteško pjesništvo uz pratnju lutnje"
     ],
     "tocan": 0,
     "objasnjenje": "Glagoljaško pjevanje razvilo se iz pjevanih tekstova glagoljske liturgije, koja se služila liturgijskim knjigama pisanim <b>glagoljicom</b>. Prenosilo se usmeno, s koljena na koljeno, bez notnih zapisa."
@@ -13,24 +13,24 @@
   {
     "pitanje": "Po čemu je glagoljaško pjevanje dobilo ime?",
     "odgovori": [
-      "Po glagoljici, najstarijem slavenskom pismu",
-      "Po glagolima, jer se pjevaju samo radnje",
-      "Po selu Glagoljani kraj Zadra",
-      "Po glazbalu zvanom glagolj"
+      "po glagoljici, najstarijem slavenskom pismu",
+      "po glagolima, jer se pjevaju samo radnje",
+      "po selu Glagoljani kraj Zadra",
+      "po glazbalu zvanom glagolj"
     ],
     "tocan": 0,
     "objasnjenje": "Ime dolazi od <b>glagoljice</b> — najstarijeg slavenskog pisma, kojim su bile pisane liturgijske knjige (misali i brevijari) iz kojih se pjevalo."
   },
   {
-    "pitanje": "Tko je i kada sastavio glagoljicu?",
+    "pitanje": "Na kojem se jeziku slavila glagoljska liturgija, iz koje je poteklo glagoljaško pjevanje?",
     "odgovori": [
-      "Sv. Ćiril (Konstantin) iz Soluna u 9. stoljeću",
-      "Sv. Jeronim u 4. stoljeću",
-      "Papa Aleksandar III. u 12. stoljeću",
-      "Biskup Antun Mahnić početkom 20. stoljeća"
+      "na hrvatskom crkvenoslavenskom jeziku",
+      "na latinskom jeziku",
+      "na grčkom jeziku",
+      "na talijanskom jeziku"
     ],
     "tocan": 0,
-    "objasnjenje": "Glagoljicu je u <b>9. stoljeću</b> sastavio <b>sv. Ćiril (Konstantin) Solunski</b> — pismo od 38 znakova. S bratom Metodom oblikovao je 863. godine i starocrkvenoslavenski književni jezik, postavivši temelje slavenske pismenosti."
+    "objasnjenje": "Glagoljska liturgija jedinstven je oblik katoličke liturgije slavljene na <b>hrvatskom crkvenoslavenskom jeziku</b>, prema liturgijskim knjigama (misalima i brevijarima) rimskoga obreda pisanim glagoljicom. Iz njezinih pjevanih tekstova razvilo se glagoljaško pjevanje."
   },
   {
     "pitanje": "Kada i gdje je zabilježen prvi pisani spomen glagoljaškog pjevanja?",
@@ -46,10 +46,10 @@
   {
     "pitanje": "U kojim se hrvatskim krajevima glagoljaško pjevanje stoljećima njegovalo?",
     "odgovori": [
-      "U Istri, na Kvarneru, u Dalmaciji i neretvanskom kraju",
-      "U Slavoniji i Baranji",
-      "U Zagorju i Međimurju",
-      "Samo na otoku Krku"
+      "u Istri, na Kvarneru, u Dalmaciji i neretvanskom kraju",
+      "u Slavoniji i Baranji",
+      "u Zagorju i Međimurju",
+      "samo na otoku Krku"
     ],
     "tocan": 0,
     "objasnjenje": "Tradicija je živjela u katoličkim zajednicama <b>Istre, Kvarnera, Dalmacije i neretvanskog kraja</b> — duž cijele jadranske obale, otoka i zaleđa. Predstavlja jedinstven prilog hrvatskih krajeva europskoj glazbenoj kulturi."
@@ -68,10 +68,10 @@
   {
     "pitanje": "Što je ordinarij mise, čiji su napjevi sačuvani u glagoljaškoj tradiciji?",
     "odgovori": [
-      "Stalni pjevani dijelovi mise: Kyrie, Gloria, Credo, Sanctus i Agnus Dei",
-      "Dijelovi mise koji se mijenjaju prema blagdanu",
-      "Molitve koje izgovara samo svećenik",
-      "Pjesme koje se pjevaju isključivo u korizmi"
+      "stalni pjevani dijelovi mise: Kyrie, Gloria, Credo, Sanctus i Agnus Dei",
+      "dijelovi mise koji se mijenjaju prema blagdanu",
+      "molitve koje izgovara samo svećenik",
+      "pjesme koje se pjevaju isključivo u korizmi"
     ],
     "tocan": 0,
     "objasnjenje": "<b>Ordinarij</b> čine stalni dijelovi mise (Kyrie, Gloria, Credo, Sanctus, Agnus Dei), a <b>proprij</b> promjenjivi, ovisni o blagdanu. Glagoljaška tradicija sačuvala je napjeve i jednih i drugih, uz bogat sloj paraliturgijskih pučkih pjesama."
@@ -90,9 +90,9 @@
   {
     "pitanje": "Kada su provedena velika sustavna terenska snimanja glagoljaškog pjevanja?",
     "odgovori": [
-      "Između 1954. i 1975. godine",
-      "Između 1902. i 1914. godine",
-      "Između 1991. i 2000. godine",
+      "između 1954. i 1975. godine",
+      "između 1902. i 1914. godine",
+      "između 1991. i 2000. godine",
       "Snimanja nikada nisu sustavno provedena"
     ],
     "tocan": 0,
@@ -101,9 +101,9 @@
   {
     "pitanje": "Koliko audiosnimaka danas čuva fonoteka Staroslavenskog instituta?",
     "odgovori": [
-      "Oko 3.000 snimaka",
-      "Oko 100 snimaka",
-      "Oko 50.000 snimaka",
+      "oko 3.000 snimaka",
+      "oko 100 snimaka",
+      "oko 50.000 snimaka",
       "Točan broj nije poznat jer snimke nisu popisane"
     ],
     "tocan": 0,
@@ -112,10 +112,10 @@
   {
     "pitanje": "Kako se glagoljaško pjevanje stoljećima prenosilo s naraštaja na naraštaj?",
     "odgovori": [
-      "Usmenom predajom, bez notnih zapisa",
-      "Tiskanim notnim zbirkama",
-      "Školskim udžbenicima glazbene kulture",
-      "Radijskim emisijama"
+      "usmenom predajom, bez notnih zapisa",
+      "tiskanim notnim zbirkama",
+      "školskim udžbenicima glazbene kulture",
+      "radijskim emisijama"
     ],
     "tocan": 0,
     "objasnjenje": "Napjevi su se prenosili <b>usmeno</b>, pjevanjem u zajednici, bez nota — zato svako mjesto čuva svoje arhaične, mjesno prepoznatljive melodije i načine pjevanja. Upravo ta mjesna raznolikost čini tradiciju dragocjenom."
@@ -123,10 +123,10 @@
   {
     "pitanje": "Zašto je važno da su snimke glagoljaškog pjevanja javno dostupne na internetu?",
     "odgovori": [
-      "Jer nematerijalna baština preživljava samo ako je ljudi mogu čuti, učiti i dalje izvoditi",
-      "Jer se time zarađuje od prodaje snimaka",
-      "Jer je to zakonska obveza svih arhiva",
-      "Jer se snimke na vrpcama više ne mogu preslušati"
+      "jer nematerijalna baština preživljava samo ako je ljudi mogu čuti, učiti i dalje izvoditi",
+      "jer se time zarađuje od prodaje snimaka",
+      "jer je to zakonska obveza svih arhiva",
+      "jer se snimke na vrpcama više ne mogu preslušati"
     ],
     "tocan": 0,
     "objasnjenje": "Prema suvremenom shvaćanju (i UNESCO-ovoj Konvenciji iz 2003.), nematerijalna baština živi samo dok je zajednica <b>čuje, uči i izvodi</b>. Zato su javni pristup i uključivanje zajednica središnji dio očuvanja — a ne tek dodatak. Snimke su danas dostupne svima na stranicama Staroslavenskog instituta."
