@@ -1,0 +1,84 @@
+@font-face{
+  font-family:'FSGLA';
+  src:url('fsgla.ttf') format('truetype');
+}
+:root{
+  --tamna:#2b2118; --pozadina:#f7f1e5; --kartica:#fffdf8;
+  --naglasak:#8c3b2e; --naglasak-svj:#b05442; --zlatna:#c99b3f;
+  --zelena:#3e6b4f; --crvena:#a33c2f; --siva:#7a6f60;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--pozadina);
+  color: var(--tamna);
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  padding:20px;
+  background-image: radial-gradient(circle at 10% 10%, rgba(201,155,63,.08) 0 40%, transparent 40%),
+                    radial-gradient(circle at 90% 90%, rgba(140,59,46,.07) 0 35%, transparent 35%);
+}
+.okvir{
+  width:100%; max-width:680px;
+  background:var(--kartica);
+  border:1px solid #e5d9c3;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(43,33,24,.12);
+  overflow:hidden;
+}
+.zaglavlje{
+  background:linear-gradient(135deg, var(--naglasak) 0%, var(--naglasak-svj) 100%);
+  color:#fdf6ea;
+  padding:26px 30px 22px;
+  text-align:center;
+}
+.zaglavlje .glagoljica{font-family:'FSGLA', Georgia, serif; font-size:38px; letter-spacing:8px; opacity:.92;}
+.zaglavlje h1{font-size:26px; margin-top:6px; font-weight:normal; letter-spacing:.5px;}
+.zaglavlje p{font-size:14px; margin-top:6px; opacity:.85; font-style:italic;}
+.traka{height:6px; background:#eee3cf;}
+.traka > div{height:100%; width:0%; background:var(--zlatna); transition:width .4s ease;}
+.sadrzaj{padding:28px 30px 32px;}
+.brojac{font-size:13px; color:var(--siva); text-transform:uppercase; letter-spacing:2px; margin-bottom:10px;}
+.pitanje{font-size:20px; line-height:1.45; margin-bottom:20px;}
+.odgovori{display:flex; flex-direction:column; gap:10px;}
+.odgovor{
+  text-align:left; font-family:inherit; font-size:16px;
+  padding:13px 16px; border-radius:9px; cursor:pointer;
+  border:1.5px solid #ddcfb4; background:#fbf7ee; color:var(--tamna);
+  transition:all .15s ease; line-height:1.4;
+}
+.odgovor:hover:not(:disabled){border-color:var(--zlatna); background:#f6edd9; transform:translateX(3px);}
+.odgovor:disabled{cursor:default; opacity:.85;}
+.odgovor.tocan{background:#e5efe4; border-color:var(--zelena); color:#28472f; font-weight:bold; opacity:1;}
+.odgovor.netocan{background:#f6e2dd; border-color:var(--crvena); color:#6e2318; opacity:1;}
+.objasnjenje{
+  margin-top:18px; padding:15px 17px; border-radius:9px;
+  background:#f3ecdd; border-left:4px solid var(--zlatna);
+  font-size:15px; line-height:1.55; display:none;
+}
+.objasnjenje b{color:var(--naglasak);}
+.gumb{
+  margin-top:20px; display:none;
+  font-family:inherit; font-size:16px; letter-spacing:.5px;
+  padding:12px 30px; border:none; border-radius:9px; cursor:pointer;
+  background:var(--naglasak); color:#fdf6ea;
+  transition:background .15s;
+}
+.gumb:hover{background:var(--naglasak-svj);}
+.sredina{text-align:center;}
+.rezultat-broj{font-size:52px; color:var(--naglasak); margin:12px 0 4px;}
+.rezultat-tekst{font-size:17px; line-height:1.6; margin:14px 0 6px;}
+.podnozje{
+  padding:14px 30px 20px; text-align:center;
+  font-size:12.5px; color:var(--siva); border-top:1px solid #eee3cf; line-height:1.5;
+}
+.podnozje a{color:var(--naglasak);}
+.greska{
+  padding:20px; background:#f6e2dd; border-radius:9px; border-left:4px solid var(--crvena);
+  font-size:15px; line-height:1.6;
+}
+@media (max-width:480px){
+  .sadrzaj{padding:20px 18px 24px;}
+  .pitanje{font-size:18px;}
+  .zaglavlje h1{font-size:21px;}
+}
