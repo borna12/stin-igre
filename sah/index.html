@@ -9,6 +9,8 @@
   :root{
     --cell:70px;                 /* FIKSNA veličina polja */
     --crveno:#d72631;
+    --board-red:#9e2731;
+    --board-red-dark:#75181f;
     --crveno-tamno:#b51e28;
     --tinta:#2b2118;
     --pergament:#efe4cf;
@@ -16,6 +18,8 @@
     --zlato:#c9a227;
     --mine-color:rgba(64,120,220,0.6);
     --theirs-color:rgba(60,160,85,0.58);
+    --mine-solid:#2f6fd6;
+    --theirs-solid:#2f9e4f;
   }
   *{box-sizing:border-box;}
   body{
@@ -43,22 +47,36 @@
   @keyframes dots{0%{content:"";}25%{content:".";}50%{content:"..";}75%{content:"...";}}
   #thinking .dotanim::after{ content:""; animation:dots 1.2s steps(4,end) infinite;}
 
-  .board-wrap{ margin:8px 14px; position:relative; }
+  .board-wrap{ position:relative; grid-column:2; grid-row:2; line-height:0; }
+  .board-frame{ display:grid; grid-template-columns:auto auto auto; grid-template-rows:auto auto auto;
+    background:linear-gradient(135deg,#6f5230,#54401f); padding:6px; border-radius:8px; margin:10px;
+    box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.06); }
+  .coord{ display:flex; color:#ecdfc2; font-weight:bold; font-family:Georgia,serif; font-size:calc(var(--cell)*0.3); user-select:none; }
+  .coord span{ display:flex; align-items:center; justify-content:center; }
+  .coord-file{ flex-direction:row; height:calc(var(--cell)*0.5); }
+  .coord-file span{ width:var(--cell); }
+  .coord-rank{ flex-direction:column; width:calc(var(--cell)*0.5); }
+  .coord-rank span{ height:var(--cell); }
+  .coord-top{ grid-column:2; grid-row:1; }
+  .coord-bottom{ grid-column:2; grid-row:3; }
+  .coord-left{ grid-column:1; grid-row:2; }
+  .coord-right{ grid-column:3; grid-row:2; }
+  .coord-top span, .coord-right span{ transform:rotate(180deg); }
   #board{
     box-sizing:content-box; user-select:none; -webkit-user-select:none; touch-action:manipulation;
     width:calc(var(--cell)*8); height:calc(var(--cell)*8);
     display:grid; grid-template-columns:repeat(8,var(--cell)); grid-template-rows:repeat(8,var(--cell));
-    border:10px solid #5a4326; border-radius:4px;
+    border:3px solid #3a2b18; border-radius:2px;
     box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 0 0 2px var(--zlato);
     background:#5a4326;
   }
   .cell{ position:relative; display:flex; align-items:center; justify-content:center; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
-  .cell.red{ background:repeating-linear-gradient(45deg, var(--crveno) 0 6px, var(--crveno-tamno) 6px 12px); }
+  .cell.red{ background:repeating-linear-gradient(45deg, var(--board-red) 0 6px, var(--board-red-dark) 6px 12px); }
   .cell.white{ background:linear-gradient(135deg,#fffaf0,#f0e6d2); }
   .cell.sel{ outline:4px solid var(--zlato); outline-offset:-4px; }
   .cell.lastmove::after{ content:""; position:absolute; inset:0; background:rgba(201,162,39,.30); pointer-events:none;}
   .cell.check{ box-shadow:inset 0 0 0 4px #ff2d2d, inset 0 0 22px rgba(255,0,0,.6); }
-  #fx{ position:absolute; left:10px; top:10px; pointer-events:none; z-index:7; }
+  #fx{ position:absolute; left:3px; top:3px; pointer-events:none; z-index:7; }
   .piece.anim{ transition:transform .27s cubic-bezier(.22,.7,.25,1); z-index:6; }
   .dot{ position:absolute; width:22%; height:22%; border-radius:50%; background:rgba(43,33,24,.45); pointer-events:none;}
   .cap{ position:absolute; inset:8%; border:5px solid rgba(43,33,24,.5); border-radius:50%; pointer-events:none;}
@@ -103,9 +121,16 @@
   .btn-main:hover{ filter:brightness(1.08);}
   .btn-sec{ background:#cbb079; color:var(--tinta); flex:1;}
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .diff-btn,.side-btn,.mdiff{ background:#e7d4ac; color:var(--tinta); border:1px solid #b39866; }
+  .grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+  .piece.letter{ border-radius:12px; border:2.5px solid var(--ring); box-shadow:0 2px 5px rgba(0,0,0,.45); }
+  .piece.wp.letter{ background:#f6efdd; }
+  .piece.bp.letter{ background:#2c2723; }
+  .piece.letter .lchar{ font-family:'FSGla',Georgia,serif; font-weight:bold; font-size:calc(var(--cell)*0.56); line-height:1; }
+  .piece.wp.letter .lchar{ color:#241c12; text-shadow:0 1px 1px rgba(255,255,255,.35); }
+  .piece.bp.letter .lchar{ color:#f3e8cf; text-shadow:0 1px 2px rgba(0,0,0,.6); }
+  .diff-btn,.side-btn,.mdiff,.stybtn,.mside{ background:#e7d4ac; color:var(--tinta); border:1px solid #b39866; }
   #mute.off{ background:#9a8a6a; color:#efe4cf; }
-  .diff-btn.active,.side-btn.active,.mdiff.active{ background:var(--crveno); color:#fff; border-color:var(--crveno-tamno); }
+  .diff-btn.active,.side-btn.active,.mdiff.active,.stybtn.active,.mside.active{ background:var(--crveno); color:#fff; border-color:var(--crveno-tamno); }
   #movelist{ font-family:"Courier New",monospace; font-size:13px; max-height:150px; overflow-y:auto; line-height:1.7; }
   .mv{ display:inline-block; margin-right:10px; }
   .legend{ font-size:12px; color:#5b4a30; line-height:1.6;}
@@ -135,7 +160,7 @@
 
   /* responzivnost: fiksna veličina polja po rasponu ekrana (ne mijenja se tijekom igre) */
   @media (max-width:780px){ :root{ --cell:54px; } .topbar h1{ font-size:19px; } }
-  @media (max-width:580px){ :root{ --cell:42px; } .board-wrap{ margin:8px 6px; } .status{ font-size:15px; padding:8px 14px; } }
+  @media (max-width:580px){ :root{ --cell:42px; } .board-frame{ margin:6px; } .status{ font-size:15px; padding:8px 14px; } }
   @media (max-width:430px){ :root{ --cell:37px; } .topbar h1{ font-size:17px; } body{ padding-bottom:16px; } }
   @media (max-width:360px){ :root{ --cell:33px; } }
   @media (max-width:780px){ #drawer{ width:280px; } .welcome-box{ padding:18px; } .welcome-box h2{ font-size:20px; } }
@@ -149,18 +174,33 @@
 
   <div id="status" class="status">Tvoj potez</div>
 
-  <div class="board-wrap"><div id="board"></div><canvas id="fx"></canvas></div>
+  <div class="board-frame">
+    <div class="coord coord-file coord-top" id="coord-top"></div>
+    <div class="coord coord-rank coord-left" id="coord-left"></div>
+    <div class="board-wrap"><div id="board"></div><canvas id="fx"></canvas></div>
+    <div class="coord coord-rank coord-right" id="coord-right"></div>
+    <div class="coord coord-file coord-bottom" id="coord-bottom"></div>
+  </div>
 
   <div id="drawer-overlay"></div>
   <aside id="drawer">
     <div class="drawer-head"><h2>Izbornik</h2><button id="drawer-close" title="Zatvori">✕</button></div>
     <div class="card">
-      <h3>Težina</h3>
+      <h3>Jačina (ELO)</h3>
+      <div class="grid3">
+        <button class="ctl diff-btn" data-elo="1400">1400</button>
+        <button class="ctl diff-btn active" data-elo="1600">1600</button>
+        <button class="ctl diff-btn" data-elo="1800">1800</button>
+        <button class="ctl diff-btn" data-elo="2000">2000</button>
+        <button class="ctl diff-btn" data-elo="2200">2200</button>
+        <button class="ctl diff-btn" data-elo="2400">2400</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Izgled figura</h3>
       <div class="grid2">
-        <button class="ctl diff-btn" data-diff="easy">Lako</button>
-        <button class="ctl diff-btn active" data-diff="medium">Srednje</button>
-        <button class="ctl diff-btn" data-diff="hard">Teško</button>
-        <button class="ctl diff-btn" data-diff="extreme">Ekstremno</button>
+        <button class="ctl stybtn active" data-style="slova">Slova</button>
+        <button class="ctl stybtn" data-style="figure">Ilustracije</button>
       </div>
     </div>
     <div class="card">
@@ -168,15 +208,6 @@
       <div class="grid2">
         <button class="ctl side-btn active" data-side="w">Bijele (dolje)</button>
         <button class="ctl side-btn" data-side="b">Crne (gore)</button>
-      </div>
-    </div>
-    <div class="card">
-      <h3>Boja tvojih figura</h3>
-      <div class="wcolors" id="d-color">
-        <button class="ctl dcol active" data-color="plava" style="--c:rgba(64,120,220,0.6)">Plava</button>
-        <button class="ctl dcol" data-color="zelena" style="--c:rgba(60,160,85,0.58)">Zelena</button>
-        <button class="ctl dcol" data-color="ljubicasta" style="--c:rgba(150,90,210,0.58)">Ljubičasta</button>
-        <button class="ctl dcol" data-color="narancasta" style="--c:rgba(225,140,45,0.62)">Narančasta</button>
       </div>
     </div>
     <div class="card">
@@ -202,20 +233,25 @@
   <div id="welcome">
     <div class="welcome-box">
       <h2>Dobrodošli na glagoljaški šah!</h2>
-      <p>Igraš protiv računala s glagoljaškim figurama. Odaberi težinu i boju svojih figura, pa kreni u igru.</p>
-      <h3>Težina</h3>
-      <div class="grid2">
-        <button class="ctl mdiff" data-diff="easy">Lako</button>
-        <button class="ctl mdiff active" data-diff="medium">Srednje</button>
-        <button class="ctl mdiff" data-diff="hard">Teško</button>
-        <button class="ctl mdiff" data-diff="extreme">Ekstremno</button>
+      <p>Igraš protiv računala. Odaberi jačinu i izgled figura, pa kreni u igru.</p>
+      <h3>Jačina (ELO)</h3>
+      <div class="grid3">
+        <button class="ctl mdiff" data-elo="1400">1400</button>
+        <button class="ctl mdiff active" data-elo="1600">1600</button>
+        <button class="ctl mdiff" data-elo="1800">1800</button>
+        <button class="ctl mdiff" data-elo="2000">2000</button>
+        <button class="ctl mdiff" data-elo="2200">2200</button>
+        <button class="ctl mdiff" data-elo="2400">2400</button>
       </div>
-      <h3>Boja tvojih figura</h3>
-      <div class="wcolors" id="w-color">
-        <button class="ctl mcol active" data-color="plava" style="--c:rgba(64,120,220,0.6)">Plava</button>
-        <button class="ctl mcol" data-color="zelena" style="--c:rgba(60,160,85,0.58)">Zelena</button>
-        <button class="ctl mcol" data-color="ljubicasta" style="--c:rgba(150,90,210,0.58)">Ljubičasta</button>
-        <button class="ctl mcol" data-color="narancasta" style="--c:rgba(225,140,45,0.62)">Narančasta</button>
+      <h3>Izgled figura</h3>
+      <div class="grid2">
+        <button class="ctl stybtn active" data-style="slova">Slova</button>
+        <button class="ctl stybtn" data-style="figure">Ilustracije</button>
+      </div>
+      <h3>Tvoja boja</h3>
+      <div class="grid2">
+        <button class="ctl mside active" data-side="w">Bijele</button>
+        <button class="ctl mside" data-side="b">Crne</button>
       </div>
       <button class="ctl btn-main" id="w-start">Započni igru</button>
     </div>
@@ -531,18 +567,44 @@ window.PIECE_IMG = {
     return score; // white positive
   }
 
+  function victimValue(game, m){
+    if(m.ep) return VAL.p;
+    const p=game.board[m.to];
+    return p ? VAL[p.toLowerCase()] : 0;
+  }
+  function mvvlva(game, m){
+    if(!m.capture) return 0;
+    const att=game.board[m.from];
+    return victimValue(game,m)*10 - (att?VAL[att.toLowerCase()]:0) + 1000;
+  }
+
+  // quiescence: search only captures until position is "quiet" (avoids horizon blunders)
+  function quiesce(game, alpha, beta){
+    let stand = evaluate(game); stand = (game.turn==='w') ? stand : -stand;
+    if(stand >= beta) return beta;
+    if(stand > alpha) alpha = stand;
+    const us = game.turn;
+    const caps = game.generateMoves().filter(function(m){ return m.capture; });
+    caps.sort(function(a,b){ return mvvlva(game,b)-mvvlva(game,a); });
+    for(const m of caps){
+      const u=game.makeMove(m);
+      if(game.inCheck(us)){ game.undoMove(u); continue; }
+      const s = -quiesce(game, -beta, -alpha);
+      game.undoMove(u);
+      if(s >= beta) return beta;
+      if(s > alpha) alpha = s;
+    }
+    return alpha;
+  }
+
   function search(game, depth, alpha, beta){
     const moves=game.legalMoves();
     if(moves.length===0){
       if(game.inCheck(game.turn)) return -100000 + (10-depth); // prefer faster mates
       return 0; // stalemate
     }
-    if(depth===0){
-      const e=evaluate(game);
-      return game.turn==='w'?e:-e;
-    }
-    // simple move ordering: captures first
-    moves.sort((a,b)=> (b.capture?1:0)-(a.capture?1:0));
+    if(depth===0){ return quiesce(game, alpha, beta); }
+    moves.sort(function(a,b){ return mvvlva(game,b)-mvvlva(game,a); });
     let best=-1e9;
     for(const m of moves){
       const u=game.makeMove(m);
@@ -555,39 +617,39 @@ window.PIECE_IMG = {
     return best;
   }
 
-  // difficulty: 'easy','medium','hard','extreme'
-  function chooseMove(game, difficulty){
+  // difficulty by ELO (approx). Higher ELO = deeper search, less randomness.
+  const ELO_CFG = {
+    1400: {depth:2, blunder:0.10, randomness:0.55},
+    1600: {depth:2, blunder:0.04, randomness:0.30},
+    1800: {depth:3, blunder:0.015, randomness:0.16},
+    2000: {depth:3, blunder:0.0,  randomness:0.06},
+    2200: {depth:4, blunder:0.0,  randomness:0.02},
+    2400: {depth:4, blunder:0.0,  randomness:0.0}
+  };
+
+  function chooseMove(game, elo){
     const moves=game.legalMoves();
     if(moves.length===0) return null;
-    const cfg={
-      easy:    {depth:1, randomness:0.85, blunder:0.5},
-      medium:  {depth:2, randomness:0.35, blunder:0.15},
-      hard:    {depth:3, randomness:0.08, blunder:0},
-      extreme: {depth:4, randomness:0,    blunder:0}
-    }[difficulty]||{depth:2,randomness:0.3,blunder:0.1};
+    const cfg = ELO_CFG[elo] || ELO_CFG[1800];
 
-    // Easy/medium: chance of a (semi)random move
     if(cfg.blunder>0 && Math.random()<cfg.blunder){
       return moves[Math.floor(Math.random()*moves.length)];
     }
-    // score all moves
-    const scored=moves.map(m=>{
+    const scored=moves.map(function(m){
       const u=game.makeMove(m);
       const val=-search(game,cfg.depth-1,-1e9,1e9);
       game.undoMove(u);
-      return {m, val};
+      return {m:m, val:val};
     });
-    scored.sort((a,b)=>b.val-a.val);
+    scored.sort(function(a,b){ return b.val-a.val; });
     if(cfg.randomness>0){
-      // pick within a window depending on randomness
       const best=scored[0].val;
-      const window = 30 + cfg.randomness*250;
-      const pool=scored.filter(s=> best - s.val <= window);
+      const window = 18 + cfg.randomness*210;
+      const pool=scored.filter(function(s){ return best - s.val <= window; });
       return pool[Math.floor(Math.random()*pool.length)].m;
     }
-    // extreme/hard: best (break ties randomly among equal best)
     const top=scored[0].val;
-    const ties=scored.filter(s=>s.val===top);
+    const ties=scored.filter(function(s){ return s.val===top; });
     return ties[Math.floor(Math.random()*ties.length)].m;
   }
 
@@ -605,6 +667,7 @@ const Chess = window.Chess, AI = window.ChessAI;
 const IMG = { K:1, Q:2, R:3, B:4, N:5, P:6, k:7, q:8, r:9, b:10, n:11, p:12 };
 // Croatian letter badges
 const BADGE = { k:'k', q:'d', r:'t', b:'l', n:'s', p:'p' };
+const LETTERS = { k:'K', q:'D', r:'T', b:'L', n:'S', p:'P' };
 // fallback unicode glyphs
 const GLYPH = { K:'♔',Q:'♕',R:'♖',B:'♗',N:'♘',P:'♙',
                 k:'♚',q:'♛',r:'♜',b:'♝',n:'♞',p:'♟' };
@@ -619,7 +682,8 @@ function playSound(n){ if(muted) return; const a=SND[n]; if(!a) return; try{ a.c
 
 let game = new Chess();
 let playerColor = 'w';        // human side
-let difficulty = 'medium';
+let difficulty = 1600;
+let pieceStyle = 'slova';
 let orientationWhiteBottom = true;
 let selected = -1;            // selected 0x88 square
 let legalForSel = [];
@@ -676,19 +740,14 @@ function ensureFx(){ if(!rafOn && fxCtx){ rafOn=true; requestAnimationFrame(fxTi
 
 function dustAt(sq, code){
   if(!fxCtx) return;
-  const img = PIMG[code];
-  if(!img) return;
   const box = Math.round(CELL*0.74);
   const base = squareToXY(sq);
   const cx = base.x + CELL/2, cy = base.y + CELL/2;
-  function burst(){
-    const tmp = document.createElement('canvas'); tmp.width=box; tmp.height=box;
-    const tctx = tmp.getContext('2d'); if(!tctx) return;
-    let dw=box, dh=box;
-    if(img.naturalWidth && img.naturalHeight){ const s=Math.min(box/img.naturalWidth, box/img.naturalHeight); dw=img.naturalWidth*s; dh=img.naturalHeight*s; }
-    try{ tctx.drawImage(img, (box-dw)/2, (box-dh)/2, dw, dh); }catch(e){ return; }
+  const x0 = cx - box/2, y0 = cy - box/2;
+  const isWhite = code===code.toUpperCase();
+  const owner = ((isWhite?'w':'b')===playerColor) ? 'mine' : 'theirs';
+  function sample(tctx){
     let data; try{ data = tctx.getImageData(0,0,box,box).data; }catch(e){ return; }
-    const x0 = cx - box/2, y0 = cy - box/2;
     const step = 3;
     for(let y=0; y<box; y+=step){
       for(let x=0; x<box; x+=step){
@@ -697,7 +756,7 @@ function dustAt(sq, code){
         const ml = 36 + Math.random()*24;
         particles.push({
           x: x0+x, y: y0+y, size: step+0.6,
-          color: 'rgb('+data[i]+','+data[i+1]+','+data[i+2]+')',
+          color: 'rgba('+data[i]+','+data[i+1]+','+data[i+2]+','+(data[i+3]/255).toFixed(2)+')',
           vx: (Math.random()-0.5)*1.7,
           vy: -(0.3 + Math.random()*1.5),
           life: ml, maxlife: ml
@@ -705,6 +764,32 @@ function dustAt(sq, code){
       }
     }
     ensureFx();
+  }
+  if(pieceStyle==='slova'){
+    const tmp = document.createElement('canvas'); tmp.width=box; tmp.height=box;
+    const tctx = tmp.getContext('2d'); if(!tctx) return;
+    const fill = isWhite ? '#f6efdd' : '#2c2723';
+    const r = Math.round(box*0.16);
+    tctx.fillStyle = fill;
+    tctx.beginPath();
+    tctx.moveTo(r,0); tctx.arcTo(box,0,box,box,r); tctx.arcTo(box,box,0,box,r); tctx.arcTo(0,box,0,0,r); tctx.arcTo(0,0,box,0,r); tctx.closePath(); tctx.fill();
+    tctx.lineWidth=Math.max(2, box*0.06); tctx.strokeStyle=(owner==='mine')?MINE_SOLID:THEIRS_SOLID; tctx.stroke();
+    tctx.fillStyle= isWhite ? '#241c12' : '#f3e8cf';
+    tctx.font=Math.round(box*0.62)+"px 'FSGla', Georgia, serif";
+    tctx.textAlign='center'; tctx.textBaseline='middle';
+    tctx.fillText(BADGE[code.toLowerCase()], box/2, box/2 + box*0.02);
+    sample(tctx);
+    return;
+  }
+  const img = PIMG[code];
+  if(!img) return;
+  function burst(){
+    const tmp = document.createElement('canvas'); tmp.width=box; tmp.height=box;
+    const tctx = tmp.getContext('2d'); if(!tctx) return;
+    let dw=box, dh=box;
+    if(img.naturalWidth && img.naturalHeight){ const s=Math.min(box/img.naturalWidth, box/img.naturalHeight); dw=img.naturalWidth*s; dh=img.naturalHeight*s; }
+    try{ tctx.drawImage(img, (box-dw)/2, (box-dh)/2, dw, dh); }catch(e){ return; }
+    sample(tctx);
   }
   if(img.complete && img.naturalWidth) burst();
   else img.addEventListener('load', burst, {once:true});
@@ -737,6 +822,17 @@ function squaresInOrder(){
   return out;
 }
 
+function renderCoords(){
+  // oznake su uvijek iste (kao standardna ploča): A-H dolje, 1-8 lijevo, donji-lijevi kut = A/1
+  const files = ['A','B','C','D','E','F','G','H'];
+  const ranks = [8,7,6,5,4,3,2,1];
+  const fhtml = files.map(f=>'<span>'+f+'</span>').join('');
+  const rhtml = ranks.map(r=>'<span>'+r+'</span>').join('');
+  const set=(id,h)=>{ const e=document.getElementById(id); if(e) e.innerHTML=h; };
+  set('coord-top',fhtml); set('coord-bottom',fhtml);
+  set('coord-left',rhtml); set('coord-right',rhtml);
+}
+
 function buildBoard(){
   boardEl.innerHTML='';
   const order=squaresInOrder();
@@ -749,6 +845,7 @@ function buildBoard(){
     cell.addEventListener('click', ()=>onCellClick(sq));
     boardEl.appendChild(cell);
   }
+  renderCoords();
   renderPieces();
 }
 
@@ -765,11 +862,15 @@ function renderPieces(){
       const isWhite = p===p.toUpperCase();
       const badge = BADGE[p.toLowerCase()];
       const owner = ((isWhite?'w':'b')===playerColor) ? 'mine' : 'theirs';
-      inner = `<div class="piece ${isWhite?'wp':'bp'} ${owner}">
-        <img src="${(window.PIECE_IMG&&window.PIECE_IMG[p])?window.PIECE_IMG[p]:(IMGDIR+num+".png")}" alt="${badge}" onerror="this.style.display='none';this.parentNode.querySelector('.fallback').style.display='flex';">
-        <span class="fallback">${GLYPH[p]}</span>
-        <span class="badge">${badge}</span>
-      </div>`;
+      if(pieceStyle==='slova'){
+        inner = `<div class="piece ${isWhite?'wp':'bp'} ${owner} letter"><span class="lchar">${BADGE[p.toLowerCase()]}</span></div>`;
+      } else {
+        inner = `<div class="piece ${isWhite?'wp':'bp'} ${owner}">
+          <img src="${(window.PIECE_IMG&&window.PIECE_IMG[p])?window.PIECE_IMG[p]:(IMGDIR+num+".png")}" alt="${badge}" onerror="this.style.display='none';this.parentNode.querySelector('.fallback').style.display='flex';">
+          <span class="fallback">${GLYPH[p]}</span>
+          <span class="badge">${badge}</span>
+        </div>`;
+      }
     }
     cell.innerHTML=inner;
   });
@@ -972,7 +1073,7 @@ document.getElementById('flip').onclick=()=>{ orientationWhiteBottom=!orientatio
 const muteBtn=document.getElementById('mute');
 if(muteBtn){ muteBtn.onclick=()=>{ muted=!muted; muteBtn.textContent = muted?'🔇 Nijemo':'🔊 Zvuk'; muteBtn.classList.toggle('off',muted); }; }
 document.querySelectorAll('.diff-btn').forEach(b=>{
-  b.onclick=()=>{ document.querySelectorAll('.diff-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); difficulty=b.dataset.diff; closeDrawer(); };
+  b.onclick=()=>{ document.querySelectorAll('.diff-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); difficulty=parseInt(b.dataset.elo,10); closeDrawer(); };
 });
 document.querySelectorAll('.side-btn').forEach(b=>{
   b.onclick=()=>{ document.querySelectorAll('.side-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); playerColor=b.dataset.side; newGame(); closeDrawer(); };
@@ -980,28 +1081,43 @@ document.querySelectorAll('.side-btn').forEach(b=>{
 
 // boje obruba figura
 const COLORS = { plava:'rgba(64,120,220,0.6)', zelena:'rgba(60,160,85,0.58)', ljubicasta:'rgba(150,90,210,0.58)', narancasta:'rgba(225,140,45,0.62)' };
+const SOLID  = { plava:'#2f6fd6', zelena:'#2f9e4f', ljubicasta:'#8a4fd0', narancasta:'#e07d1e' };
+let MINE_SOLID = '#2f6fd6', THEIRS_SOLID = '#2f9e4f';
 function applyMineColor(name){
   const mine = COLORS[name] || COLORS.plava;
   const opp = (name==='zelena') ? COLORS.plava : COLORS.zelena;
+  MINE_SOLID = SOLID[name] || SOLID.plava;
+  THEIRS_SOLID = (name==='zelena') ? SOLID.plava : SOLID.zelena;
   const r = document.documentElement;
   r.style.setProperty('--mine-color', mine);
   r.style.setProperty('--theirs-color', opp);
+  r.style.setProperty('--mine-solid', MINE_SOLID);
+  r.style.setProperty('--theirs-solid', THEIRS_SOLID);
   document.querySelectorAll('.dcol').forEach(x=>x.classList.toggle('active', x.dataset.color===name));
+  if(typeof renderPieces==='function') renderPieces();
 }
-document.querySelectorAll('#d-color .dcol').forEach(b=>{ b.onclick=()=>{ applyMineColor(b.dataset.color); }; });
+
+// izgled figura (ilustracije / slova)
+function setPieceStyle(s){
+  pieceStyle = s;
+  document.querySelectorAll('.stybtn').forEach(x=>x.classList.toggle('active', x.dataset.style===s));
+  renderPieces();
+}
+document.querySelectorAll('.stybtn').forEach(b=>{ b.onclick=()=>{ setPieceStyle(b.dataset.style); }; });
 
 // pozdravni modal (prikazuje se pri otvaranju)
 (function(){
   const wel = document.getElementById('welcome');
   if(!wel) return;
-  let wd='medium', wc='plava';
-  wel.querySelectorAll('.mdiff').forEach(b=>{ b.onclick=()=>{ wel.querySelectorAll('.mdiff').forEach(x=>x.classList.remove('active')); b.classList.add('active'); wd=b.dataset.diff; }; });
-  wel.querySelectorAll('.mcol').forEach(b=>{ b.onclick=()=>{ wel.querySelectorAll('.mcol').forEach(x=>x.classList.remove('active')); b.classList.add('active'); wc=b.dataset.color; }; });
+  let wd=1600, wside='w';
+  wel.querySelectorAll('.mdiff').forEach(b=>{ b.onclick=()=>{ wel.querySelectorAll('.mdiff').forEach(x=>x.classList.remove('active')); b.classList.add('active'); wd=parseInt(b.dataset.elo,10); }; });
+  wel.querySelectorAll('.mside').forEach(b=>{ b.onclick=()=>{ wel.querySelectorAll('.mside').forEach(x=>x.classList.remove('active')); b.classList.add('active'); wside=b.dataset.side; }; });
   const start=document.getElementById('w-start');
   if(start) start.onclick=()=>{
     difficulty = wd;
-    applyMineColor(wc);
-    document.querySelectorAll('#drawer .diff-btn').forEach(x=>x.classList.toggle('active', x.dataset.diff===wd));
+    playerColor = wside;
+    document.querySelectorAll('#drawer .diff-btn').forEach(x=>x.classList.toggle('active', parseInt(x.dataset.elo,10)===wd));
+    document.querySelectorAll('#drawer .side-btn').forEach(x=>x.classList.toggle('active', x.dataset.side===wside));
     wel.style.display='none';
     newGame();
   };
@@ -1019,6 +1135,8 @@ function closeDrawer(){ if(_drawer){_drawer.classList.remove('open');} if(_ov){_
 }
 
 // init
+try{ if(document.fonts&&document.fonts.load) document.fonts.load("20px 'FSGla'"); }catch(e){}
+applyMineColor('plava');
 initFx();
 buildBoard(); updateStatus();
 })();
