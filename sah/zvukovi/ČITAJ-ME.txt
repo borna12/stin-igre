@@ -1,16 +1,13 @@
-ZVUKOVI — zamijeni po želji
-===========================
-Igra svira ove datoteke iz mape "zvukovi". Da ubaciš svoje zvukove,
-samo zamijeni datoteku istim imenom (može .wav ili .mp3 ako preimenuješ kod;
-najjednostavnije je ostati na .wav s istim imenom):
+ZVUKOVI (pravi šahovski zvukovi)
+================================
+Izrezani iz "Chess Sound Effects - Free Sound Stock.wav", normalizirani.
 
-  potez.wav      → običan potez
-  jedenje.wav    → kad se pojede figura
+  potez.wav      → obični potez
+  jedenje.wav    → jedenje figure
   rokada.wav     → rokada
   sah.wav        → šah
   promocija.wav  → promocija pješaka
   pobjeda.wav    → tvoja pobjeda (mat protivniku)
   poraz.wav      → tvoj poraz (mat tebi)
 
-Trenutni zvukovi su jednostavni "placeholderi" — slobodno ih zamijeni.
-Gumb "Zvuk" u igri uključuje/isključuje zvuk.
+Za zamjenu samo stavi datoteku istog imena. Gumb "Zvuk" u igri uklj./isklj. zvuk.

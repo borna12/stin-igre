@@ -155,6 +155,9 @@
   .welcome-box p{ margin:0 0 8px; font-size:13px; color:#5b4a30; }
   .welcome-box h3{ margin:16px 0 8px; font-size:13px; text-transform:uppercase; letter-spacing:1.5px; color:#7a5c2e; text-align:left; }
   #w-start{ margin-top:20px; width:100%; font-size:16px; padding:12px; }
+  .wnotes{ margin-top:22px; padding-top:16px; border-top:1px solid rgba(122,92,46,.35); }
+  .wnote{ font-size:11px; color:#6b5a40; margin:10px 2px 0; line-height:1.55; text-align:center; }
+  .wnote a{ color:var(--crveno-tamno); font-weight:bold; }
   #promo{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); align-items:center; justify-content:center; z-index:60;}
   .promo-box{ background:var(--pergament); padding:20px; border-radius:12px; border:2px solid var(--zlato); text-align:center;}
   .promo-box h3{ margin:0 0 12px; color:#7a5c2e;}
@@ -203,13 +206,6 @@
       </div>
     </div>
     <div class="card">
-      <h3>Izgled figura</h3>
-      <div class="grid2">
-        <button class="ctl stybtn active" data-style="slova">Slova</button>
-        <button class="ctl stybtn" data-style="figure">Ilustracije</button>
-      </div>
-    </div>
-    <div class="card">
       <h3>Tvoja boja</h3>
       <div class="grid2">
         <button class="ctl side-btn active" data-side="w">Bijele (dolje)</button>
@@ -239,7 +235,7 @@
   <div id="welcome">
     <div class="welcome-box">
       <h2>Dobrodošli na glagoljaški šah!</h2>
-      <p>Igraš protiv računala. Odaberi jačinu i izgled figura, pa kreni u igru.</p>
+      <p>Igraš protiv računala. Odaberi jačinu i svoju stranu, pa kreni u igru.</p>
       <h3>Jačina (ELO)</h3>
       <div class="grid3">
         <button class="ctl mdiff" data-elo="1400">1400</button>
@@ -249,17 +245,14 @@
         <button class="ctl mdiff" data-elo="2200">2200</button>
         <button class="ctl mdiff" data-elo="2400">2400</button>
       </div>
-      <h3>Izgled figura</h3>
-      <div class="grid2">
-        <button class="ctl stybtn active" data-style="slova">Slova</button>
-        <button class="ctl stybtn" data-style="figure">Ilustracije</button>
-      </div>
       <h3>Tvoja boja</h3>
       <div class="grid2">
         <button class="ctl mside active" data-side="w">Bijele</button>
         <button class="ctl mside" data-side="b">Crne</button>
       </div>
       <button class="ctl btn-main" id="w-start">Započni igru</button>
+      <div class="wnotes"><p class="wnote">U pozadini igre nalazi se <a href="https://www.google.com/maps/search/?api=1&amp;query=Crkva%20sv.%20Lucije%20Jurandvor" target="_blank" rel="noopener">crkva sv. Lucije u Jurandvoru</a>, gdje je otkrivena Bašćanska ploča. Na njezinu je pročelju ugrađen spolij sa šahovskom pločom.</p>
+      <p class="wnote">Ova igra izrađena je u sklopu projekta <a href="https://stin.hr/sadrzaj/digistin/" target="_blank" rel="noopener">DigiSTIN</a>.</p></div>
     </div>
   </div>
 <script>
@@ -680,7 +673,7 @@ const GLYPH = { K:'♔',Q:'♕',R:'♖',B:'♗',N:'♘',P:'♙',
 const IMGDIR = 'slike/';
 const SNDDIR = 'zvukovi/';
 const SND = {};
-['potez','jedenje','rokada','sah','promocija','pobjeda','poraz'].forEach(function(n){
+['potez','jedenje','rokada','sah','promocija','pobjeda','poraz','kraj'].forEach(function(n){
   try{ const a=new Audio(SNDDIR+n+'.wav'); a.preload='auto'; SND[n]=a; }catch(e){}
 });
 let muted = false;
@@ -990,12 +983,12 @@ function checkEnd(){
     gameOver=true;
     const winner = game.turn===playerColor ? 'Računalo' : 'Ti';
     setStatus((game.turn===playerColor?'Šah-mat — izgubio si!':'Šah-mat — pobijedio si! 🎉'), 'end');
-    playSound(game.turn===playerColor?'poraz':'pobjeda');
+    playSound('kraj');
     renderPieces();
     return true;
   }
-  if(st==='stalemate'){ gameOver=true; setStatus('Pat — neriješeno.', 'end'); return true; }
-  if(st==='draw50'){ gameOver=true; setStatus('Neriješeno (pravilo 50 poteza).', 'end'); return true; }
+  if(st==='stalemate'){ gameOver=true; setStatus('Pat — neriješeno.', 'end'); playSound('kraj'); return true; }
+  if(st==='draw50'){ gameOver=true; setStatus('Neriješeno (pravilo 50 poteza).', 'end'); playSound('kraj'); return true; }
   updateStatus();
   return false;
 }
